@@ -9,6 +9,7 @@ import {
   getTransportVendors,
   getBestTransportVendor,
   getVehiclesByVendor,
+  getVehicleFleet,
   extractVehiclePrice,
   splitVehicleImages,
   buildVehicleWhatsAppUrl
@@ -40,8 +41,25 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
   }, [appData, selectedServiceType]);
 
   const vehicles = useMemo(() => {
-    return bestVendor ? getVehiclesByVendor(appData, bestVendor.vendor_id) : [];
-  }, [appData, bestVendor]);
+    // If no best vendor is found for the selected city/service, 
+    // we show vehicles from all vendors that match the category to ensure visibility
+    if (!bestVendor) {
+      return getVehicleFleet(appData).filter(v => 
+        v.category.toLowerCase().replace(/_/g, ' ') === selectedServiceType.replace(/_/g, ' ') ||
+        (selectedServiceType === 'car_hire' && (v.category.toLowerCase() === 'suv' || v.category.toLowerCase() === 'sedan')) ||
+        (selectedServiceType === 'car_hire_escort' && v.category.toLowerCase() === 'escort') ||
+        (selectedServiceType === 'escort_only' && v.category.toLowerCase() === 'escort') ||
+        (selectedServiceType === 'private_jet' && v.category.toLowerCase() === 'private jet')
+      );
+    }
+    return getVehiclesByVendor(appData, bestVendor.vendor_id).filter(v => 
+       v.category.toLowerCase().replace(/_/g, ' ') === selectedServiceType.replace(/_/g, ' ') ||
+       (selectedServiceType === 'car_hire' && (v.category.toLowerCase() === 'suv' || v.category.toLowerCase() === 'sedan')) ||
+       (selectedServiceType === 'car_hire_escort' && v.category.toLowerCase() === 'escort') ||
+       (selectedServiceType === 'escort_only' && v.category.toLowerCase() === 'escort') ||
+       (selectedServiceType === 'private_jet' && v.category.toLowerCase() === 'private jet')
+    );
+  }, [appData, bestVendor, selectedServiceType]);
 
   const handleRequestQuote = (service: TransportService) => {
     setActiveService(service);

@@ -24,7 +24,7 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({
   const [form, setForm] = useState({
     guest_name: '',
     guest_phone: '',
-    city: vendor.coverage_cities[0] || 'Asaba',
+    city: vendor?.coverage_cities?.[0] || 'Asaba',
     property_id: '',
     pickup_location: '',
     dropoff_location: '',

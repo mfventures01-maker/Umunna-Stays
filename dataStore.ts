@@ -227,7 +227,7 @@ export const getBestTransportVendor = (data: AppData, city: string, serviceType:
 
 export const getVehiclesByVendor = (data: AppData, vendorId: string): TransportVehicle[] => {
   return (data.transport_vehicles || [])
-    .filter(v => v.vendor_id === vendorId && v.is_available === "Yes")
+    .filter(v => v.vendor_id === vendorId)
     .sort((a, b) => a.sort_order - b.sort_order);
 };
 
