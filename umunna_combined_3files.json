@@ -1,0 +1,585 @@
+{
+  "meta": {
+    "brand_name": "Umunna Stays",
+    "whatsapp_main_number": "2348102453361",
+    "default_city": "Asaba",
+    "currency_symbol": "₦"
+  },
+  "policies_global": {
+    "check_in": "2:00 PM",
+    "check_out": "12:00 PM",
+    "self_check_in": "Contact concierge for access",
+    "children": "Allowed",
+    "beds": "Per listing",
+    "pets": "Not allowed",
+    "service_animals": "Allowed"
+  },
+  "properties": [
+    {
+      "property_id": "UMUNNA_001",
+      "name": "Nate Signature Stays",
+      "city": "Benin City",
+      "state": "Edo",
+      "category": "Luxury Duplex",
+      "capacity": "8 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 500000,
+      "hero_image_url": "https://i.postimg.cc/FRLmJ1Fc/4_bed_living_space.jpg",
+      "badges": ["Private", "24/7 Power", "Concierge", "Cinema", "PS5", "Jacuzzi"],
+      "about_this_space": "Luxury 4-bedroom duplex behind Wellspring University, Ihriri (Benin City). Smart-home comfort with premium entertainment, cinema room, game room, and reliable power backup.",
+      "is_featured": true,
+      "display_order": 1,
+      "host": {
+        "host_name": "RAPHAEL",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nate Signature Stays in Benin City for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_002",
+      "name": "Enclave 02",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "12 Adults",
+      "bedrooms": 12,
+      "nightly_rate": 150000,
+      "hero_image_url": "https://i.postimg.cc/VNTbH1yp/enclave_apartments.jpg",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Private short-stay apartments in Asaba with easy city access and a calm, comfortable setup.",
+      "is_featured": true,
+      "display_order": 5,
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Enclave 02 in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_003",
+      "name": "Azraa 2",
+      "city": "Awka",
+      "state": "Anambra",
+      "category": "Apartment",
+      "capacity": "18 Adults",
+      "bedrooms": 2,
+      "nightly_rate": 260000,
+      "hero_image_url": "https://i.postimg.cc/k4jVPCX7/azraa_outdoor.jpg",
+      "badges": ["Private", "24/7 Power", "Free Wi‑Fi"],
+      "about_this_space": "Modern short-stay apartment in Awka designed for comfort, privacy, and convenience.",
+      "is_featured": true,
+      "display_order": 2,
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Azraa 2 in Awka for [dates].",
+        "minimum_stay": 2
+      }
+    },
+    {
+      "property_id": "UMUNNA_004",
+      "name": "Nine A Apartment",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 160000,
+      "hero_image_url": "https://i.postimg.cc/Kc3F2Tfn/9apt_exterior.avif",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Simple, clean short-let in Asaba with a comfortable living space and guest-ready kitchen.",
+      "is_featured": true,
+      "display_order": 6,
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nine A Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_005",
+      "name": "Elkridge Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Home / Apartment",
+      "capacity": "9 Adults",
+      "bedrooms": 3,
+      "nightly_rate": 200000,
+      "hero_image_url": "https://i.postimg.cc/0Q3tnbKd/elk_exterior.jpg",
+      "badges": ["Private", "Family Friendly", "PS5"],
+      "about_this_space": "Charming 3-bedroom stay in Asaba with bright living space, stocked kitchen, free Wi‑Fi, and entertainment (PS5) for downtime.",
+      "is_featured": false,
+      "display_order": 7,
+      "host": {
+        "host_name": "Oluchukwu J",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Elkridge Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_006",
+      "name": "Hamaboi Apartment (Presidential)",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "6 Adults",
+      "bedrooms": 3,
+      "nightly_rate": 220000,
+      "hero_image_url": "https://i.postimg.cc/ryrdYB2M/hamaboi_living_room_1.avif",
+      "badges": ["Private", "Business Stay", "Spacious"],
+      "about_this_space": "Expansive Presidential-style apartment for executives, families, and long stays—beautifully furnished with a calm, refined ambiance in Asaba.",
+      "is_featured": true,
+      "display_order": 8,
+      "host": {
+        "host_name": "Henry",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Hamaboi Apartment (Presidential) in Asaba for [dates].",
+        "minimum_stay": 3
+      }
+    },
+    {
+      "property_id": "UMUNNA_007",
+      "name": "4‑Bedroom Waterfront Villa",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Villa",
+      "capacity": "6 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 450000,
+      "hero_image_url": "https://i.postimg.cc/nrcWR63m/living_room_beach_front_44.avif",
+      "badges": ["Waterfront", "Pool", "Private", "Family Trips"],
+      "about_this_space": "Peaceful waterfront villa for families and groups—relax, play pool, and enjoy a calm riverside vibe.",
+      "is_featured": false,
+      "display_order": 3,
+      "host": {
+        "host_name": "luxury.ng",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in 4‑Bedroom Waterfront Villa in Asaba for [dates].",
+        "minimum_stay": 3
+      }
+    },
+    {
+      "property_id": "UMUNNA_008",
+      "name": "Aniyah’s Home (GRA)",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Luxury Home",
+      "capacity": "10 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 500000,
+      "hero_image_url": "https://i.postimg.cc/Dyfn1jsr/aniyah_exterior.avif",
+      "badges": ["Luxury", "Pool & Gym", "Gated Estate", "24/7 Security"],
+      "about_this_space": "Luxury home in Asaba GRA inside a secure gated estate—private pool and gym for a wellness-style stay with modern comfort and privacy.",
+      "is_featured": false,
+      "display_order": 4,
+      "host": {
+        "host_name": "Fidelis",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Aniyah’s Home (GRA) in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_009",
+      "name": "Olive Branch Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "15 Adults",
+      "bedrooms": 12,
+      "nightly_rate": 200000,
+      "hero_image_url": "https://i.postimg.cc/v8qHvMm2/olive_branch_exterior22.avif",
+      "badges": ["Private", "Near Airport", "Near Shoprite", "Near Hospital"],
+      "about_this_space": "Olive Branch Apartment is in a highbrow area of Asaba—about 7 minutes to Asaba International Airport, 4 minutes to ShopRite Asaba Mall, under 2 minutes to Asaba Specialist Hospital, and ~4 minutes to Mariam Babangida Recreation Centre.",
+      "is_featured": false,
+      "display_order": 9,
+      "host": {
+        "host_name": "Olive",
+        "host_whatsapp": "2347036095489",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Olive Branch Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_010",
+      "name": "Fobbs Apartments and Suites",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Aparthotel",
+      "capacity": "30 Adults",
+      "bedrooms": 25,
+      "nightly_rate": 100000,
+      "hero_image_url": "https://i.postimg.cc/4yW6cmcC/fobbs_apartments_and_suites_ng_asaba_ep_49006928_2.jpg",
+      "badges": ["Aparthotel", "Breakfast", "Poolside Bar", "Hot Tub", "Concierge"],
+      "about_this_space": "Poolside bar + complimentary buffet breakfast (7:00–10:00). Relax with a hot tub and enjoy free Wi‑Fi plus concierge services.",
+      "is_featured": true,
+      "display_order": 10,
+      "host": {
+        "host_name": "Fobbs Stays",
+        "host_whatsapp": "2349077917808",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Fobbs Apartments and Suites in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_011",
+      "name": "Lexaren Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment / Aparthotel",
+      "capacity": "30 Adults",
+      "bedrooms": 10,
+      "nightly_rate": 100000,
+      "hero_image_url": "https://i.postimg.cc/PxLqzgHm/LIVINMG_ROOM.jpg",
+      "badges": ["Aparthotel", "City Access", "Value Stay"],
+      "about_this_space": "Comfortable Asaba apartments designed for group stays and convenient city access.",
+      "is_featured": false,
+      "display_order": 11,
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Lexaren Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_012",
+      "name": "Dejudex Apartment",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 1,
+      "nightly_rate": 180000,
+      "hero_image_url": "https://i.postimg.cc/MTjWj10N/SUTTING_ROOM.jpg",
+      "badges": ["Private", "Cozy", "City Stay"],
+      "about_this_space": "Private apartment in Asaba—ideal for couples or small families looking for comfort and quiet.",
+      "is_featured": false,
+      "display_order": 12,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Dejudex Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_013",
+      "name": "Surujudex Apartment",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 2,
+      "nightly_rate": 185000,
+      "hero_image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg",
+      "badges": ["Private", "City Stay"],
+      "about_this_space": "Private 2-bedroom apartment in Asaba designed for simple, comfortable short stays.",
+      "is_featured": false,
+      "display_order": 13,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Surujudex Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_014",
+      "name": "Abijudex",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 2,
+      "nightly_rate": 90000,
+      "hero_image_url": "https://i.postimg.cc/YSWV6RVW/SITTING_RROM_2.jpg",
+      "badges": ["Budget Friendly", "Private", "Asaba"],
+      "about_this_space": "Affordable private apartment in Asaba—clean basics for guests who want value without stress.",
+      "is_featured": false,
+      "display_order": 14,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Abijudex in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_015",
+      "name": "Judexia Apartment",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 2,
+      "nightly_rate": 90000,
+      "hero_image_url": "https://i.postimg.cc/7PfQz7sF/OUTDOOR.jpg",
+      "badges": ["Budget Friendly", "Private", "Asaba"],
+      "about_this_space": "Affordable 2-bedroom apartment option in Asaba—great for short visits and weekend stays.",
+      "is_featured": false,
+      "display_order": 15,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Judexia Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_016",
+      "name": "Umunna Loft",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "4 Adults",
+      "bedrooms": 2,
+      "nightly_rate": 110000,
+      "hero_image_url": "https://i.postimg.cc/BnGDq9Ph/3_BED_DUPLEX_STAIR.jpg",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Modern loft living in the heart of Asaba with a signature spiral staircase and airy interiors.",
+      "is_featured": false,
+      "display_order": 16,
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Umunna Loft in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_017",
+      "name": "Ulo City Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "8 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 300000,
+      "hero_image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Premium city living for larger groups. Features spacious rooms and modern amenities in a central location.",
+      "is_featured": false,
+      "display_order": 17,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Ulo City Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_018",
+      "name": "Gudjud Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "8 Adults",
+      "bedrooms": 4,
+      "nightly_rate": 340000,
+      "hero_image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Luxury defined in Asaba. Large, elegantly furnished apartment perfect for high-profile stays.",
+      "is_featured": false,
+      "display_order": 18,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Gudjud Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_019",
+      "name": "Pearl City Apartment",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "6 Adults",
+      "bedrooms": 3,
+      "nightly_rate": 282000,
+      "hero_image_url": "https://i.postimg.cc/sxw9N3cV/BEDROOM22.jpg",
+      "badges": ["Private", "Concierge"],
+      "about_this_space": "Refined 3-bedroom stay in Asaba. Contemporary design meets executive comfort.",
+      "is_featured": false,
+      "display_order": 19,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Pearl City Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    },
+    {
+      "property_id": "UMUNNA_020",
+      "name": "Selina Spice Apartments",
+      "city": "Asaba",
+      "state": "Delta",
+      "category": "Apartment",
+      "capacity": "3 Adults",
+      "bedrooms": 1,
+      "nightly_rate": 195000,
+      "hero_image_url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200",
+      "badges": ["Gym", "Private", "Concierge"],
+      "about_this_space": "Exclusive 1-bedroom suite with access to a private gym. Perfect for business travelers.",
+      "is_featured": false,
+      "display_order": 20,
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2348102453361",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Selina Spice Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
+    }
+  ],
+  "photo_gallery": {
+    "photos": [
+      { "property_id": "UMUNNA_001", "photo_id": "P1", "sequence_order": 1, "image_url": "https://i.postimg.cc/3xz3br6K/Gemini_Generated_Image_f20z6if20z6if20z.png", "caption": "Living Area", "alt_text": "Nate Signature Stays Interior", "room_category": "Living Room" },
+      { "property_id": "UMUNNA_001", "photo_id": "P2", "sequence_order": 2, "image_url": "https://i.postimg.cc/2yFvzcnD/2_bedliving_space.jpg", "caption": "Bedroom", "alt_text": "Nate Signature Stays Master Bedroom", "room_category": "Bedroom" }
+    ]
+  },
+  "city_summary": [
+    { "city": "Asaba", "state": "Delta", "total_properties": 17 },
+    { "city": "Benin City", "state": "Edo", "total_properties": 1 },
+    { "city": "Awka", "state": "Anambra", "total_properties": 1 },
+    { "city": "Lagos", "state": "Lagos", "total_properties": 0 }
+  ],
+  "services_catalog": [
+    {
+      "service_id": "SVC_001",
+      "type": "Ride",
+      "name": "Airport Pickup",
+      "description": "Premium airport pickup and transfer services in luxury vehicles.",
+      "coverage_cities": ["Asaba", "Lagos", "Abuja"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I need an airport pickup for my upcoming stay.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_002",
+      "type": "Food",
+      "name": "Private Chef",
+      "description": "Authentic local and continental dishes curated for your palate and prepared in your kitchen.",
+      "coverage_cities": ["Asaba", "Lagos", "Abuja"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I want to book a private chef for my residence.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_003",
+      "type": "Security Escort",
+      "name": "Elite Security Detail",
+      "description": "Professional, vetted security escorts (plain-clothes or uniformed) for safe city movement and transit.",
+      "coverage_cities": ["Lagos", "Abuja", "Port Harcourt"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I require a private security detail during my stay.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_004",
+      "type": "Experiences",
+      "name": "Guided City Tours",
+      "description": "Bespoke, expert-led tours of historical landmarks, art galleries, and hidden gems.",
+      "coverage_cities": ["Benin City", "Lagos", "Abuja"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I'm interested in booking a private guided city tour.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_005",
+      "type": "Event Planning",
+      "name": "Private Celebration Curation",
+      "description": "End-to-end planning for intimate dinners, birthdays, or corporate retreats at our luxury venues.",
+      "coverage_cities": ["Asaba", "Lagos", "Abuja"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I'd like to plan a private celebration at a property.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_006",
+      "type": "Experiences",
+      "name": "Luxury Boat Cruise",
+      "description": "Private yacht and boat charters for lagoon excursions, sundowners, or island picnics.",
+      "coverage_cities": ["Lagos", "Port Harcourt", "Warri"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I want to book a private boat cruise experience.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_007",
+      "type": "Security Escort",
+      "name": "High-Value Asset Transit",
+      "description": "Discrete and secure transport services for valuable items or VIP personnel requiring extra protection.",
+      "coverage_cities": ["Lagos", "Abuja", "Benin City"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I require secure asset transit services.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_008",
+      "type": "Event Planning",
+      "name": "Bespoke Decor & Logistics",
+      "description": "Premium decoration services and logistics support for high-end residential events.",
+      "coverage_cities": ["Lagos", "Abuja", "Asaba"],
+      "whatsapp_prefill": "Hello Umunna Concierge, I need bespoke decor for an upcoming event.",
+      "status": "Active"
+    }
+  ]
+}
