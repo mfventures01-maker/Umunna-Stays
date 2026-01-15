@@ -162,8 +162,10 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   <div className="mb-6 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1">Estimated Cost</span>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black text-gray-900">₦{extractPrice(service.starting_price_ngn)}</span>
-                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">/{service.pricing_unit}</span>
+                      <span className="text-xl md:text-2xl font-black text-gray-900">{extractPrice(service.starting_price_ngn)}</span>
+                      {service.pricing_unit !== 'quote' && (
+                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">/{service.pricing_unit.replace('_', ' ')}</span>
+                      )}
                     </div>
                   </div>
 

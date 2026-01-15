@@ -76,9 +76,69 @@ export const getPropertiesByCity = (data: AppData, city: string): Property[] => 
 };
 
 export const getTransportServices = (data: AppData): TransportService[] => {
-  return (data.transport_services || [])
-    .filter(s => s.is_active === "Yes")
-    .sort((a, b) => a.sort_order - b.sort_order);
+  const services: TransportService[] = [
+    {
+      service_id: "TRS_001",
+      vendor_id: "UMR_001",
+      service_type: "car_hire",
+      service_title: "Car Hire (Self/Chauffeur)",
+      description: "Comfortable city rides for errands or daily movement.",
+      starting_price_ngn: "Starting from 100000",
+      pricing_unit: "per_day",
+      lead_time_hours: 4,
+      includes: "Driver|Fuel optional|AC",
+      excludes: "Tolls|Parking",
+      available_24_7: "Yes",
+      is_active: "Yes",
+      sort_order: 1
+    },
+    {
+      service_id: "TRS_002",
+      vendor_id: "UMR_001",
+      service_type: "car_hire_escort",
+      service_title: "Car Hire + Escort Service",
+      description: "Convoy support + professional escort for VIP movement.",
+      starting_price_ngn: "Starting from 500000",
+      pricing_unit: "per_day",
+      lead_time_hours: 12,
+      includes: "Lead car|Escort team|Route planning",
+      excludes: "Hotel security",
+      available_24_7: "Yes",
+      is_active: "Yes",
+      sort_order: 2
+    },
+    {
+      service_id: "TRS_003",
+      vendor_id: "UMR_001",
+      service_type: "escort_only",
+      service_title: "Escort Cars Only",
+      description: "Escort cars available for your existing vehicle or convoy.",
+      starting_price_ngn: "STARTING FROM 300000",
+      pricing_unit: "per_day",
+      lead_time_hours: 12,
+      includes: "Escort vehicles|Route planning",
+      excludes: "Fuel for client car",
+      available_24_7: "Yes",
+      is_active: "Yes",
+      sort_order: 3
+    },
+    {
+      service_id: "TRS_004",
+      vendor_id: "UMR_001",
+      service_type: "private_jet",
+      service_title: "Private Jet Itinerary",
+      description: "Jet itinerary planning + ground handling support (booking coordination).",
+      starting_price_ngn: "PREMIUM",
+      pricing_unit: "quote",
+      lead_time_hours: 24,
+      includes: "Itinerary|Coordination|Airport pickup option",
+      excludes: "Jet ticket cost",
+      available_24_7: "No",
+      is_active: "Yes",
+      sort_order: 4
+    }
+  ];
+  return services.sort((a, b) => a.sort_order - b.sort_order);
 };
 
 export const buildTransportWhatsAppUrl = (
@@ -168,9 +228,18 @@ export const parsePipes = (str: string): string[] => {
 };
 
 export const extractPrice = (priceStr: string | number): string => {
-  if (typeof priceStr === 'number') return priceStr.toLocaleString();
+  if (typeof priceStr === 'number') return `₦${priceStr.toLocaleString()}`;
+  if (!priceStr) return "Quote";
+  if (priceStr.toLowerCase() === 'premium') return "Premium";
+  
+  // Handle strings like "Starting from 100000" or "STARTING FROM 300000"
   const match = priceStr.match(/\d+/);
-  return match ? parseInt(match[0]).toLocaleString() : priceStr;
+  if (match) {
+    const amount = parseInt(match[0]).toLocaleString();
+    return `Starting from ₦${amount}`;
+  }
+  
+  return priceStr;
 };
 
 export const getActiveTransportVendorsByCity = (data: AppData, city: string): TransportVendor[] => {
