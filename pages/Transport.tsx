@@ -41,25 +41,10 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
   }, [appData, selectedServiceType]);
 
   const vehicles = useMemo(() => {
-    // If no best vendor is found for the selected city/service, 
-    // we show vehicles from all vendors that match the category to ensure visibility
-    if (!bestVendor) {
-      return getVehicleFleet(appData).filter(v => 
-        v.category.toLowerCase().replace(/_/g, ' ') === selectedServiceType.replace(/_/g, ' ') ||
-        (selectedServiceType === 'car_hire' && (v.category.toLowerCase() === 'suv' || v.category.toLowerCase() === 'sedan')) ||
-        (selectedServiceType === 'car_hire_escort' && v.category.toLowerCase() === 'escort') ||
-        (selectedServiceType === 'escort_only' && v.category.toLowerCase() === 'escort') ||
-        (selectedServiceType === 'private_jet' && v.category.toLowerCase() === 'private jet')
-      );
-    }
-    return getVehiclesByVendor(appData, bestVendor.vendor_id).filter(v => 
-       v.category.toLowerCase().replace(/_/g, ' ') === selectedServiceType.replace(/_/g, ' ') ||
-       (selectedServiceType === 'car_hire' && (v.category.toLowerCase() === 'suv' || v.category.toLowerCase() === 'sedan')) ||
-       (selectedServiceType === 'car_hire_escort' && v.category.toLowerCase() === 'escort') ||
-       (selectedServiceType === 'escort_only' && v.category.toLowerCase() === 'escort') ||
-       (selectedServiceType === 'private_jet' && v.category.toLowerCase() === 'private jet')
-    );
-  }, [appData, bestVendor, selectedServiceType]);
+    // Return the entire fleet for all tabs to ensure maximum visibility, 
+    // sorting by the defined sort_order
+    return getVehicleFleet(appData);
+  }, [appData]);
 
   const handleRequestQuote = (service: TransportService) => {
     setActiveService(service);
@@ -246,15 +231,32 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {vehicles.map((v) => (
-                <div key={v.vehicle_id} className="group bg-white rounded-[40px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
+                <div 
+                  key={v.vehicle_id} 
+                  className={`group bg-white rounded-[40px] overflow-hidden border shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col ${
+                    v.category.toLowerCase().includes('jet') 
+                    ? 'border-yellow-200 ring-1 ring-yellow-100/50' 
+                    : 'border-gray-100'
+                  }`}
+                >
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     <VehicleImageGallery images={splitVehicleImages(v.image_url)} alt={v.make_model} />
-                    <div className="absolute top-4 left-4 px-4 py-2 bg-white/95 rounded-2xl backdrop-blur-md shadow-xl border border-white/20 text-[10px] font-black uppercase tracking-widest text-gray-900">
+                    <div className={`absolute top-4 left-4 px-4 py-2 rounded-2xl backdrop-blur-md shadow-xl border text-[10px] font-black uppercase tracking-widest ${
+                      v.category.toLowerCase().includes('jet')
+                      ? 'bg-yellow-50/90 border-yellow-200 text-yellow-700'
+                      : 'bg-white/95 border-white/20 text-gray-900'
+                    }`}>
                       {v.category}
                     </div>
                     {/* Price Tag Overlay */}
-                    <div className="absolute bottom-4 right-4 px-4 py-2 bg-black/80 backdrop-blur-md rounded-xl text-white shadow-lg border border-white/10">
-                      <span className="text-[8px] font-black uppercase tracking-widest text-gray-400 block -mb-0.5">Rate</span>
+                    <div className={`absolute bottom-4 right-4 px-4 py-2 backdrop-blur-md rounded-xl shadow-lg border ${
+                      v.category.toLowerCase().includes('jet')
+                      ? 'bg-yellow-900/80 border-yellow-500/30 text-yellow-100'
+                      : 'bg-black/80 border-white/10 text-white'
+                    }`}>
+                      <span className={`text-[8px] font-black uppercase tracking-widest block -mb-0.5 ${
+                        v.category.toLowerCase().includes('jet') ? 'text-yellow-400' : 'text-gray-400'
+                      }`}>Rate</span>
                       <span className="text-sm font-black">{extractVehiclePrice(v.daily_rate_ngn)}</span>
                     </div>
                   </div>
@@ -262,7 +264,9 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-6">
                       <div>
-                        <h4 className="text-xl font-black text-gray-900 group-hover:text-[#C46210] transition-colors">{v.make_model}</h4>
+                        <h4 className={`text-xl font-black transition-colors ${
+                          v.category.toLowerCase().includes('jet') ? 'text-yellow-900 group-hover:text-yellow-700' : 'text-gray-900 group-hover:text-[#C46210]'
+                        }`}>{v.make_model}</h4>
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">ID: {v.vehicle_id}</p>
                       </div>
                       <div className="flex items-center gap-1.5 text-gray-400 font-black text-xs">
