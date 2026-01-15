@@ -213,6 +213,24 @@ export const getBestServiceForVehicle = (vehicle: TransportVehicle): string => {
   return 'TRS_001';
 };
 
+export const getBestTransportVendor = (data: AppData, city: string, serviceType: string): TransportVendor | null => {
+  const normalizedCity = city.toLowerCase().trim();
+  const activeVendors = getTransportVendors(data);
+  
+  const matches = activeVendors.filter(v => 
+    v.coverage_cities.some(c => c.toLowerCase().trim() === normalizedCity) &&
+    v.service_types.some(s => s.toLowerCase().trim() === serviceType.toLowerCase().trim())
+  );
+
+  return matches.length > 0 ? matches.sort((a, b) => a.sort_order - b.sort_order)[0] : null;
+};
+
+export const getVehiclesByVendor = (data: AppData, vendorId: string): TransportVehicle[] => {
+  return (data.transport_vehicles || [])
+    .filter(v => v.vendor_id === vendorId && v.is_available === "Yes")
+    .sort((a, b) => a.sort_order - b.sort_order);
+};
+
 export const buildVehicleWhatsAppUrl = (
   vendor: TransportVendor, 
   vehicle: TransportVehicle,

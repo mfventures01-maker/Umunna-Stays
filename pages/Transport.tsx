@@ -6,14 +6,16 @@ import {
   extractPrice, 
   parsePipes, 
   buildTransportWhatsAppUrl, 
-  getActiveTransportVendorsByCity,
-  getVehicleFleet,
+  getTransportVendors,
+  getBestTransportVendor,
+  getVehiclesByVendor,
   extractVehiclePrice,
   splitVehicleImages,
   buildVehicleWhatsAppUrl
 } from '../dataStore';
 import VehicleImageGallery from '../components/VehicleImageGallery';
-import { Check, Clock, ShieldCheck, Zap, Plane, MessageCircle, MapPin, Users, Star } from 'lucide-react';
+import TransportLeadForm from '../components/TransportLeadForm';
+import { Check, Clock, ShieldCheck, Zap, Plane, MessageCircle, MapPin, Users, Star, ArrowRight, Info } from 'lucide-react';
 
 interface TransportProps {
   appData: AppData;
@@ -21,28 +23,40 @@ interface TransportProps {
 
 const Transport: React.FC<TransportProps> = ({ appData }) => {
   const [selectedCity, setSelectedCity] = useState(appData.meta.default_city || 'Asaba');
-  
-  const allServices = getTransportServices(appData);
-  const fleet = getVehicleFleet(appData);
-  const cityVendors = getActiveTransportVendorsByCity(appData, selectedCity);
-  
-  const availableCities = useMemo(() => {
-    const cities = new Set<string>();
-    appData.transport_vendors.forEach(v => {
-      if (v.is_active) v.coverage_cities.forEach(c => cities.add(c));
-    });
-    return Array.from(cities).sort();
-  }, [appData]);
+  const [selectedServiceType, setSelectedServiceType] = useState<'car_hire' | 'car_hire_escort' | 'escort_only' | 'private_jet'>('car_hire');
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+  const [activeService, setActiveService] = useState<TransportService | null>(null);
+  const [leadNotes, setLeadNotes] = useState('');
 
-  const groupedFleet = useMemo(() => {
-    const groups: Record<string, TransportVehicle[]> = {};
-    fleet.forEach(v => {
-      const cat = v.category;
-      if (!groups[cat]) groups[cat] = [];
-      groups[cat].push(v);
-    });
-    return groups;
-  }, [fleet]);
+  const availableCities = ['Asaba', 'Benin', 'Lagos', 'Port Harcourt', 'Uyo', 'Abuja'];
+  
+  const bestVendor = useMemo(() => 
+    getBestTransportVendor(appData, selectedCity, selectedServiceType) || getTransportVendors(appData)[0],
+    [appData, selectedCity, selectedServiceType]
+  );
+
+  const filteredServices = useMemo(() => {
+    return getTransportServices(appData).filter(s => s.service_type === selectedServiceType);
+  }, [appData, selectedServiceType]);
+
+  const vehicles = useMemo(() => {
+    return bestVendor ? getVehiclesByVendor(appData, bestVendor.vendor_id) : [];
+  }, [appData, bestVendor]);
+
+  const handleRequestQuote = (service: TransportService) => {
+    setActiveService(service);
+    setLeadNotes('');
+    setIsLeadFormOpen(true);
+  };
+
+  const handleVehicleSelect = (vehicle: TransportVehicle) => {
+    const serviceType = vehicle.category.toLowerCase().includes('jet') ? 'private_jet' : 'car_hire';
+    const service = getTransportServices(appData).find(s => s.service_type === serviceType) || null;
+    
+    setActiveService(service);
+    setLeadNotes(`Interested in Vehicle: ${vehicle.make_model} (ID: ${vehicle.vehicle_id})`);
+    setIsLeadFormOpen(true);
+  };
 
   return (
     <div className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
@@ -52,175 +66,239 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
           <span className="text-[#C46210] font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Fleet & Aviation</span>
           <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-none">Umunna Rides</h1>
           <p className="text-lg text-gray-500 font-medium leading-relaxed">
-            Premium Nigerian Movement. Car Hire • Escort • Private Jet.
+            Premium Nigerian Movement. Car Hire • Escort • Private Jet Itinerary.
           </p>
         </div>
 
-        {/* City Filter */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400">
-            <MapPin size={14} className="text-[#C46210]" /> Select Coverage City:
-          </div>
-          <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
-            {availableCities.map(city => (
-              <button
-                key={city}
-                onClick={() => setSelectedCity(city)}
-                className={`whitespace-nowrap px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
-                  selectedCity === city ? 'bg-[#C46210] text-white border-[#C46210]' : 'bg-white text-gray-500 border-gray-100'
-                }`}
-              >
-                {city}
-              </button>
-            ))}
+        {/* Filters */}
+        <div className="bg-white p-6 rounded-[40px] shadow-xl border border-gray-100 mb-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* City Selection */}
+            <div>
+              <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 block ml-1">Select City</label>
+              <div className="relative">
+                <select 
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-[#C46210] transition-all"
+                >
+                  {availableCities.map(city => <option key={city} value={city}>{city}</option>)}
+                </select>
+                <MapPin className="absolute right-5 top-1/2 -translate-y-1/2 text-[#C46210]" size={20} />
+              </div>
+            </div>
+
+            {/* Service Type Tabs */}
+            <div>
+              <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 block ml-1">Service Category</label>
+              <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+                {(['car_hire', 'car_hire_escort', 'escort_only', 'private_jet'] as const).map(type => (
+                  <button
+                    key={type}
+                    onClick={() => setSelectedServiceType(type)}
+                    className={`whitespace-nowrap px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+                      selectedServiceType === type 
+                      ? 'bg-[#C46210] text-white border-[#C46210] shadow-lg shadow-orange-100' 
+                      : 'bg-gray-50 text-gray-500 border-gray-100 hover:bg-white'
+                    }`}
+                  >
+                    {type.replace(/_/g, ' ')}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Services Section */}
-        <div className="mb-24">
-          <div className="flex items-center gap-4 mb-10">
-            <h2 className="text-2xl font-black text-gray-900 tracking-tight">Transport Packages</h2>
-            <div className="h-px flex-grow bg-gray-200" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {allServices.map((service: TransportService) => (
-              <div key={service.service_id} className="bg-white rounded-[32px] border border-gray-100 shadow-sm p-8 flex flex-col hover:shadow-xl transition-all h-full">
-                <div className="mb-6 flex justify-between items-start">
-                   {service.available_24_7 === "Yes" && <span className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-[9px] font-black uppercase border border-green-100 flex items-center gap-1"><Zap size={10} /> 24/7</span>}
-                </div>
-                <h3 className="text-xl font-black text-gray-900 mb-4">{service.service_title}</h3>
-                <div className="mb-4">
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Starting From</span>
-                  <span className="text-2xl font-black text-gray-900">₦{extractPrice(service.starting_price_ngn)}</span>
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">/{service.pricing_unit}</span>
-                </div>
-                <p className="text-gray-500 text-sm mb-6 flex-grow">{service.description}</p>
-                <div className="space-y-4 mb-8">
-                   <div className="flex items-center gap-2 text-[#C46210] text-[10px] font-black uppercase">
-                     <Clock size={14} /> Ready in {service.lead_time_hours}hr
-                   </div>
-                   <ul className="space-y-1">
-                     {(parsePipes(service.includes) as string[]).slice(0, 3).map((inc: string) => (
-                       <li key={inc} className="text-[11px] font-bold text-gray-600 flex items-center gap-2"><Check size={12} className="text-green-500" /> {inc}</li>
-                     ))}
-                   </ul>
-                </div>
-                <a 
-                  href={buildTransportWhatsAppUrl(appData.transport_vendors[0], { service_type: service.service_title, city: selectedCity })}
-                  target="_blank" rel="noopener noreferrer"
-                  className="w-full bg-black text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#C46210] transition-all text-center"
-                >
-                  {service.service_type === 'private_jet' ? 'Get Quote' : 'Book Now'}
-                </a>
+        {/* Vendor Info (If Matched) */}
+        {bestVendor && (
+          <div className="mb-12 flex items-center justify-between bg-[#C46210]/5 p-6 rounded-3xl border border-[#C46210]/10">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center overflow-hidden border border-gray-100">
+                {bestVendor.logo_url ? <img src={bestVendor.logo_url} alt={bestVendor.vendor_name} className="w-full h-full object-contain" /> : <Star className="text-[#C46210]" />}
               </div>
-            ))}
+              <div>
+                <p className="text-[9px] font-black uppercase text-[#C46210] tracking-widest">Selected Provider</p>
+                <h3 className="font-black text-gray-900">{bestVendor.vendor_name}</h3>
+              </div>
+            </div>
+            <div className="hidden md:flex items-center gap-6">
+              <div className="text-right">
+                <p className="text-[9px] font-black uppercase text-gray-400 tracking-widest">Coverage</p>
+                <p className="text-xs font-bold text-gray-600">{bestVendor.coverage_cities.join(' • ')}</p>
+              </div>
+            </div>
           </div>
+        )}
+
+        {/* Services Grid */}
+        <div className="mb-24">
+          {filteredServices.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredServices.map(service => (
+                <div key={service.service_id} className="bg-white rounded-[40px] border border-gray-100 shadow-sm p-10 flex flex-col hover:shadow-2xl transition-all duration-500 group">
+                  <div className="mb-6 flex justify-between items-start">
+                    <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-[#C46210] group-hover:bg-[#C46210] group-hover:text-white transition-all duration-500">
+                      {service.service_type === 'private_jet' ? <Plane size={28} /> : <Zap size={28} />}
+                    </div>
+                    {service.available_24_7 === "Yes" && (
+                      <span className="bg-green-50 text-green-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase border border-green-100">24/7 Live</span>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-[#C46210] transition-colors">{service.service_title}</h3>
+                  
+                  <div className="mb-6 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1">Estimated Cost</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-3xl font-black text-gray-900">₦{extractPrice(service.starting_price_ngn)}</span>
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">/{service.pricing_unit}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-500 text-sm mb-8 leading-relaxed flex-grow">{service.description}</p>
+                  
+                  <div className="space-y-6 mb-10">
+                    <div className="flex items-center gap-3 text-[#C46210] text-[10px] font-black uppercase tracking-widest">
+                      <Clock size={16} /> Ready in {service.lead_time_hours}hr
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-black uppercase text-gray-400 tracking-[0.2em] block mb-3">What's Included</span>
+                      <div className="flex flex-wrap gap-2">
+                        {(parsePipes(service.includes) as string[]).map(inc => (
+                          <span key={inc} className="px-3 py-1.5 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-600 border border-gray-100 uppercase tracking-tighter">
+                            {inc}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <a 
+                      href={bestVendor ? buildTransportWhatsAppUrl(bestVendor, { service_type: service.service_title, city: selectedCity }) : '#'}
+                      target="_blank" rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-gray-900 text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all shadow-lg"
+                    >
+                      <MessageCircle size={16} /> WhatsApp
+                    </a>
+                    <button 
+                      onClick={() => handleRequestQuote(service)}
+                      className="flex items-center justify-center gap-2 bg-[#C46210] text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg shadow-orange-100"
+                    >
+                      Request Quote
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 bg-white rounded-[40px] border border-dashed border-gray-200">
+              <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Info size={32} className="text-gray-300" />
+              </div>
+              <h3 className="text-xl font-black text-gray-900 mb-2">No specialized vendor in {selectedCity}</h3>
+              <p className="text-gray-400 font-medium mb-8">But don't worry, our main concierge can handle this for you.</p>
+              <a 
+                href={`https://wa.me/${appData.meta.whatsapp_main_number}?text=Hello, I need ${selectedServiceType.replace(/_/g, ' ')} in ${selectedCity}. Can you help?`}
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#C46210] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-orange-100"
+              >
+                Contact Main Concierge <ArrowRight size={18} />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Vehicle Fleet Section */}
-        <div className="mb-24">
-          <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-3xl font-black text-gray-900 tracking-tight">Premium Fleet</h2>
-            <div className="h-px flex-grow bg-gray-200" />
-          </div>
+        {vehicles.length > 0 && (
+          <div className="mb-24">
+            <div className="flex items-center gap-4 mb-12">
+              <h2 className="text-3xl font-black text-gray-900 tracking-tight">Available Fleet</h2>
+              <div className="h-px flex-grow bg-gray-200" />
+            </div>
 
-          <div className="space-y-20">
-            {(Object.entries(groupedFleet) as [string, TransportVehicle[]][]).map(([category, vehicles]) => (
-              <div key={category}>
-                <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#C46210] mb-8 border-l-4 border-[#C46210] pl-4">{category} Fleet</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                  {vehicles.map((v: TransportVehicle) => {
-                    const price = extractVehiclePrice(v.daily_rate_ngn);
-                    const images = splitVehicleImages(v.image_url);
-                    const features = parsePipes(v.features);
-                    const isPremiumJet = v.category.toLowerCase() === 'private jet';
-                    const vendor = appData.transport_vendors.find(vend => vend.vendor_id === v.vendor_id) || appData.transport_vendors[0];
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {vehicles.map((v) => (
+                <div key={v.vehicle_id} className="group bg-white rounded-[40px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                    <VehicleImageGallery images={splitVehicleImages(v.image_url)} alt={v.make_model} />
+                    <div className="absolute top-4 left-4 px-4 py-2 bg-white/95 rounded-2xl backdrop-blur-md shadow-xl border border-white/20 text-[10px] font-black uppercase tracking-widest text-gray-900">
+                      {v.category}
+                    </div>
+                  </div>
 
-                    return (
-                      <div key={v.vehicle_id} className={`group bg-white rounded-[40px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col ${isPremiumJet ? 'ring-2 ring-[#C46210]/20' : ''}`}>
-                        {/* 60% Height Primary Image */}
-                        <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                          <VehicleImageGallery images={images} alt={v.make_model} />
-                          <div className={`absolute top-4 left-4 px-4 py-2 rounded-2xl backdrop-blur-md shadow-xl border border-white/20 text-[10px] font-black uppercase tracking-widest ${isPremiumJet ? 'bg-[#C46210] text-white' : 'bg-white/95 text-gray-900'}`}>
-                            {v.category}
-                          </div>
-                          {v.is_available === "Yes" ? (
-                            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center gap-1">
-                              <Zap size={10} fill="currentColor" /> Available
-                            </div>
-                          ) : (
-                            <div className="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">
-                              Check Availability
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="p-8 flex flex-col flex-grow">
-                          <div className="flex justify-between items-start mb-4">
-                            <h4 className="text-xl font-black text-gray-900 group-hover:text-[#C46210] transition-colors">{v.make_model}</h4>
-                            <div className="flex items-center gap-1.5 text-gray-400 font-black text-xs">
-                              <Users size={16} className="text-[#C46210]" /> {v.seats}
-                            </div>
-                          </div>
-
-                          <div className="mb-6 flex items-baseline gap-1">
-                            <span className="text-2xl font-black text-gray-900">{price}</span>
-                          </div>
-
-                          <div className="space-y-4 mb-10 flex-grow">
-                            <span className="text-[9px] font-black uppercase tracking-widest text-gray-400 block mb-2">Top Features</span>
-                            <ul className="flex flex-wrap gap-2">
-                              {(features as string[]).map((feat: string, i: number) => (
-                                <li key={i} className="px-3 py-1.5 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-600 border border-gray-100 uppercase tracking-tight">
-                                  {feat}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <a 
-                            href={buildVehicleWhatsAppUrl(vendor, v, selectedCity)}
-                            target="_blank" rel="noopener noreferrer"
-                            className={`w-full flex items-center justify-center gap-3 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-lg active:scale-95 ${isPremiumJet ? 'bg-[#C46210] text-white hover:bg-black' : 'bg-gray-900 text-white hover:bg-[#C46210]'}`}
-                          >
-                            {isPremiumJet ? 'Inquire Luxury Jet' : 'Book This Vehicle'}
-                            <MessageCircle size={16} />
-                          </a>
-                        </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-6">
+                      <h4 className="text-xl font-black text-gray-900 group-hover:text-[#C46210] transition-colors">{v.make_model}</h4>
+                      <div className="flex items-center gap-1.5 text-gray-400 font-black text-xs">
+                        <Users size={16} className="text-[#C46210]" /> {v.seats} Seats
                       </div>
-                    );
-                  })}
+                    </div>
+
+                    <div className="mb-8 flex flex-wrap gap-2">
+                      {(parsePipes(v.features) as string[]).map((feat, i) => (
+                        <span key={i} className="px-3 py-1.5 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-600 border border-gray-100 uppercase tracking-tight">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Daily Rate</span>
+                        <span className="text-xl font-black text-gray-900">{extractVehiclePrice(v.daily_rate_ngn)}</span>
+                      </div>
+                      <button 
+                        onClick={() => handleVehicleSelect(v)}
+                        className="bg-gray-900 text-white px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all"
+                      >
+                        Select
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Trust Bar */}
-        <div className="p-12 bg-white rounded-[48px] border border-gray-100 shadow-sm flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 text-center">
+        <div className="p-12 bg-white rounded-[48px] border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="flex flex-col items-center">
-            <div className="w-14 h-14 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-4">
-              <ShieldCheck size={28} />
+            <div className="w-16 h-16 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-6">
+              <ShieldCheck size={32} />
             </div>
-            <h4 className="text-xs font-black uppercase tracking-widest mb-1">Vetted Drivers</h4>
-            <p className="text-[10px] text-gray-400 font-medium tracking-tight">Security & Clearance Checked</p>
+            <h4 className="text-xs font-black uppercase tracking-widest mb-2">Vetted Drivers</h4>
+            <p className="text-[11px] text-gray-400 font-medium leading-relaxed max-w-[200px]">Rigorous security clearance for all personnel.</p>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-14 h-14 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-4">
-              <Clock size={28} />
+            <div className="w-16 h-16 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-6">
+              <Clock size={32} />
             </div>
-            <h4 className="text-xs font-black uppercase tracking-widest mb-1">Punctuality</h4>
-            <p className="text-[10px] text-gray-400 font-medium tracking-tight">On-Time Professional Fleet</p>
+            <h4 className="text-xs font-black uppercase tracking-widest mb-2">Punctuality</h4>
+            <p className="text-[11px] text-gray-400 font-medium leading-relaxed max-w-[200px]">Strict adherence to schedules and timelines.</p>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-14 h-14 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-4">
-              <Plane size={28} />
+            <div className="w-16 h-16 bg-[#C46210]/10 rounded-2xl flex items-center justify-center text-[#C46210] mb-6">
+              <Plane size={32} />
             </div>
-            <h4 className="text-xs font-black uppercase tracking-widest mb-1">Elite Fleet</h4>
-            <p className="text-[10px] text-gray-400 font-medium tracking-tight">Luxury Sedans to Private Jets</p>
+            <h4 className="text-xs font-black uppercase tracking-widest mb-2">Global Standards</h4>
+            <p className="text-[11px] text-gray-400 font-medium leading-relaxed max-w-[200px]">Luxury fleet maintained to aviation standards.</p>
           </div>
         </div>
       </div>
+
+      {isLeadFormOpen && (
+        <TransportLeadForm 
+          appData={appData}
+          selectedService={activeService}
+          selectedVendor={bestVendor}
+          selectedCity={selectedCity}
+          initialNotes={leadNotes}
+          onClose={() => setIsLeadFormOpen(false)}
+        />
+      )}
     </div>
   );
 };
