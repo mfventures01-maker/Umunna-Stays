@@ -1,4 +1,4 @@
-import { AppData, TransportService, TransportVendor, FoodVendor, Dish, TransportVehicle, Property, Photo } from './types';
+import { AppData, TransportService, TransportVendor, FoodVendor, Dish, TransportVehicle, Property, Photo, TransportLead } from './types';
 
 let appData: AppData | null = null;
 
@@ -141,13 +141,68 @@ export const getTransportServices = (data: AppData): TransportService[] => {
   return services.sort((a, b) => a.sort_order - b.sort_order);
 };
 
-export const buildTransportWhatsAppUrl = (
-  vendor: TransportVendor,
-  context: { service_type: string; city: string }
-): string => {
-  const cleanNumber = vendor.whatsapp_number.replace(/\D/g, '');
-  const text = `Hello Umunna Rides, I'm interested in the ${context.service_type} service in ${context.city}. Please provide details and availability.`;
-  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
+export const generateLeadId = (prefix = "LEAD"): string => {
+  const now = new Date();
+  const dateStr = now.toISOString().replace(/[-:T]/g, '').slice(0, 14);
+  const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  return `${prefix}_${dateStr}_${random}`;
+};
+
+export const nowISO = (): string => new Date().toISOString();
+
+export const buildTransportWhatsAppClickUrl = (vendorWhatsAppNumber: string, prefillText: string): string => {
+  const digits = vendorWhatsAppNumber.replace(/\D/g, '');
+  return `https://wa.me/${digits}?text=${encodeURIComponent(prefillText)}`;
+};
+
+export const saveTransportLead = async (lead: TransportLead, endpointUrl?: string) => {
+  // 1. Local Storage save
+  const existingLeads = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
+  existingLeads.push(lead);
+  localStorage.setItem('umunna_transport_leads', JSON.stringify(existingLeads));
+
+  // 2. Endpoint POST if available
+  if (endpointUrl) {
+    try {
+      await fetch(endpointUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lead)
+      });
+    } catch (err) {
+      console.error('Failed to post lead to endpoint:', err);
+    }
+  }
+};
+
+export const exportLeadsToCSV = () => {
+  const leads: TransportLead[] = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
+  if (leads.length === 0) return;
+
+  const columns = [
+    'lead_id', 'created_at', 'guest_name', 'guest_phone', 'guest_email', 'city', 'property_id', 
+    'service_type', 'service_id', 'vendor_id', 'pickup_location', 'dropoff_location', 
+    'date_needed', 'time_needed', 'passengers', 'budget_ngn', 'notes', 'status', 
+    'assigned_to', 'whatsapp_click_url'
+  ];
+
+  const csvRows = [
+    columns.join(','),
+    ...leads.map(lead => columns.map(col => {
+      const val = (lead as any)[col] || '';
+      return `"${String(val).replace(/"/g, '""')}"`;
+    }).join(','))
+  ];
+
+  const blob = new Blob([csvRows.join('\n')], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.setAttribute('hidden', '');
+  a.setAttribute('href', url);
+  a.setAttribute('download', 'umunna_transport_leads.csv');
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 };
 
 export const buildTransportWhatsAppLink = (params: {

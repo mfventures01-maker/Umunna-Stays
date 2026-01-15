@@ -101,12 +101,36 @@ export interface Dish {
   sort_order: number;
 }
 
+export interface TransportLead {
+  lead_id: string;
+  created_at: string;
+  guest_name: string;
+  guest_phone: string;
+  guest_email?: string;
+  city: string;
+  property_id?: string;
+  service_type: string;
+  service_id?: string;
+  vendor_id: string;
+  pickup_location: string;
+  dropoff_location?: string;
+  date_needed: string;
+  time_needed?: string;
+  passengers?: number | string;
+  budget_ngn?: number | string;
+  notes?: string;
+  status: "new" | "contacted" | "quoted" | "booked" | "closed";
+  assigned_to: string;
+  whatsapp_click_url: string;
+}
+
 export interface AppData {
   meta: {
     brand_name: string;
     whatsapp_main_number: string;
     default_city: string;
     currency_symbol: string;
+    leads_endpoint_url?: string;
   };
   properties: Property[];
   photo_gallery: {

@@ -1,8 +1,14 @@
 
 import React, { useState } from 'react';
-import { AppData, TransportVendor, TransportService, TransportVehicle } from '../types';
-import { buildTransportWhatsAppLink } from '../dataStore';
-import { X, Send, MapPin, Calendar, Clock, Users } from 'lucide-react';
+import { X, Send, MapPin, Calendar, Clock, Download } from 'lucide-react';
+import { AppData, TransportService, TransportVendor, TransportVehicle, TransportLead } from '../types';
+import { 
+  generateLeadId, 
+  nowISO, 
+  buildTransportWhatsAppClickUrl, 
+  saveTransportLead,
+  exportLeadsToCSV
+} from '../dataStore';
 
 interface TransportLeadFormProps {
   appData: AppData;
@@ -24,6 +30,7 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({
   const [form, setForm] = useState({
     guest_name: '',
     guest_phone: '',
+    guest_email: '',
     city: vendor?.coverage_cities?.[0] || 'Asaba',
     property_id: '',
     pickup_location: '',
@@ -31,37 +38,56 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({
     date_needed: '',
     time_needed: '',
     passengers: '',
+    budget_ngn: '',
     notes: initialNotes || (selectedVehicle ? `Interested in: ${selectedVehicle.make_model} (${selectedVehicle.category})` : '')
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const hasLocalLeads = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]').length > 0;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    // Replace placeholders in vendor prefill or use fallback
+    let prefillText = vendor?.whatsapp_prefill || "Hello Umunna Stays, I need transport service: [service_type] in [city] on [date]. Pickup: [pickup_location].";
+    prefillText = prefillText
+      .replace('[service_type]', service?.service_title || 'Transport')
+      .replace('[city]', form.city)
+      .replace('[date]', form.date_needed)
+      .replace('[pickup_location]', form.pickup_location);
     
-    const waUrl = buildTransportWhatsAppLink({
-      vendorWhatsapp: vendor.whatsapp_number,
-      fallbackWhatsapp: appData.meta.whatsapp_main_number,
-      template: vendor.whatsapp_prefill,
-      formValues: {
-        ...form,
-        service_type: service?.service_title || 'General Transport Inquiry'
-      }
-    });
+    if (form.passengers) prefillText += ` Passengers: ${form.passengers}.`;
+    if (form.notes) prefillText += ` Notes: ${form.notes}.`;
 
-    // Save lead locally
-    const existingLeads = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
-    const newLead = {
-      ...form,
-      lead_id: `TL_${Date.now()}`,
-      created_at: new Date().toISOString(),
-      service_id: service.service_id,
+    const whatsappUrl = buildTransportWhatsAppClickUrl(vendor?.whatsapp_number || appData.meta.whatsapp_main_number, prefillText);
+
+    const lead: TransportLead = {
+      lead_id: generateLeadId(),
+      created_at: nowISO(),
+      guest_name: form.guest_name,
+      guest_phone: form.guest_phone,
+      guest_email: form.guest_email,
+      city: form.city,
+      property_id: form.property_id,
+      service_type: service?.service_type || 'car_hire',
+      service_id: service?.service_id || '',
       vendor_id: vendor.vendor_id,
-      whatsapp_click_url: waUrl,
-      status: 'new'
+      pickup_location: form.pickup_location,
+      dropoff_location: form.dropoff_location,
+      date_needed: form.date_needed,
+      time_needed: form.time_needed,
+      passengers: form.passengers,
+      budget_ngn: form.budget_ngn,
+      notes: form.notes,
+      status: "new",
+      assigned_to: "",
+      whatsapp_click_url: whatsappUrl
     };
-    localStorage.setItem('umunna_transport_leads', JSON.stringify([...existingLeads, newLead]));
 
-    // Open WhatsApp
-    window.open(waUrl, '_blank');
+    await saveTransportLead(lead, appData.meta.leads_endpoint_url);
+    window.open(whatsappUrl, '_blank');
+    setIsSubmitting(false);
     onClose();
   };
 
@@ -76,9 +102,20 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({
               <h2 className="text-2xl font-black text-gray-900 mb-2">Request Quote</h2>
               <p className="text-sm text-gray-500 font-medium">Service: <span className="text-[#C46210]">{service.service_title}</span></p>
             </div>
+          <div className="flex items-center gap-2">
+            {hasLocalLeads && (
+              <button 
+                onClick={(e) => { e.preventDefault(); exportLeadsToCSV(); }}
+                className="p-2 text-gray-400 hover:text-[#C46210] transition-colors"
+                title="Export Leads CSV"
+              >
+                <Download size={20} />
+              </button>
+            )}
             <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <X size={24} />
             </button>
+          </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6 overflow-y-auto max-h-[70vh] pr-2 hide-scrollbar">

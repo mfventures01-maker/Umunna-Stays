@@ -1,0 +1,87 @@
+You are an expert React + TypeScript developer working inside an existing Vite + React + TS + Tailwind Umunna Stays codebase.
+
+CONSTRAINTS (MUST FOLLOW):
+- Do NOT change the current website layout/frame/skeleton or existing design system.
+- No backend is available right now. Use Google Sheets + simple client-side submit (Web3Forms or Apps Script endpoint) OR mailto fallback.
+- Keep everything appData-driven and compatible with the existing patterns (dataStore helpers, types.ts, pages/ components/).
+
+TASK:
+Implement a Transport Leads data model + lead capture form + WhatsApp click tracking URL generator using the following columns:
+
+LEADS SHEET COLUMNS (MUST MATCH EXACTLY):
+lead_id, created_at, guest_name, guest_phone, guest_email, city, property_id, service_type, service_id, vendor_id,
+pickup_location, dropoff_location, date_needed, time_needed, passengers, budget_ngn, notes, status, assigned_to, whatsapp_click_url
+
+REQUIREMENTS:
+1) TYPES (types.ts)
+- Create a type TransportLead with fields matching the columns above.
+- Use:
+  - lead_id: string (generate locally)
+  - created_at: string (ISO timestamp)
+  - passengers: number | string (but normalize to number when possible)
+  - budget_ngn: number | string (normalize)
+  - status: "new" | "contacted" | "quoted" | "booked" | "closed" (default "new")
+  - assigned_to: string (default empty)
+- Ensure property_id, service_id, vendor_id can be empty string when not selected.
+
+2) LEAD ID + TIMESTAMP
+- Add helpers in dataStore.ts:
+  - generateLeadId(prefix="LEAD"): returns "LEAD_YYYYMMDD_HHMMSS_XXXX"
+  - nowISO(): new Date().toISOString()
+
+3) WHATSAPP CLICK URL
+- Implement:
+  buildTransportWhatsAppClickUrl(vendorWhatsAppNumber: string, prefillText: string): string
+  - Must output: https://wa.me/<digits>?text=<encoded>
+  - Remove "+" and spaces from number.
+- Save this final url into whatsapp_click_url on submit.
+
+4) FORM (Transport page or a TransportLeadForm component)
+- Add a compact form section (do NOT redesign the page; keep same card style):
+  Fields:
+   - guest_name (required)
+   - guest_phone (required)
+   - guest_email (optional)
+   - city (required dropdown: Asaba, Benin, Lagos, Portharcourt, Uyo, Abuja)
+   - property_id (optional dropdown: "None" + list of properties from appData.properties)
+   - service_type (required dropdown: car_hire, car_hire_escort, escort_only, private_jet)
+   - vendor_id (auto-select UMR_001 for now; keep as dropdown-ready)
+   - pickup_location (required)
+   - dropoff_location (optional)
+   - date_needed (required)
+   - time_needed (optional)
+   - passengers (optional number)
+   - budget_ngn (optional number)
+   - notes (optional textarea)
+- On submit:
+  - Create TransportLead object with generated lead_id + created_at
+  - status = "new"
+  - assigned_to = ""
+  - compute whatsapp_click_url using the vendor whatsapp number and the prefill text with placeholders replaced:
+    [service_type], [city], [date], [pickup_location]
+  - Then:
+    A) POST the lead to a configurable endpoint:
+       appData.meta.leads_endpoint_url (string)
+       If empty, fallback to:
+    B) Save to localStorage (key: "umunna_transport_leads") as an array append
+  - After saving, open WhatsApp in a new tab using whatsapp_click_url.
+
+5) CSV EXPORT (optional but lightweight)
+- Add a small “Export Leads CSV” button (only if there’s at least 1 saved in localStorage).
+- Generate CSV with the exact column order above and download as:
+  umunna_transport_leads.csv
+
+6) DELIVERABLES (RETURN CODE ONLY)
+Provide exact code edits in code blocks with file headers:
+- // src/types.ts (add TransportLead type)
+- // src/dataStore.ts (helpers + localStorage save + csv export helper)
+- // src/pages/Transport.tsx OR // src/components/TransportLeadForm.tsx (form UI + submit logic)
+- // appData JSON snippet showing:
+   meta.leads_endpoint_url (optional)
+   transport_vendors includes UMR_001 whatsapp number/prefill
+
+IMPORTANT:
+- Don’t introduce new libraries.
+- Don’t change existing routing or global layouts.
+- Keep styling consistent (rounded-2xl/3xl, border-gray-100, shadow hover, accent #C46210).
+Return ONLY code blocks; no explanations.

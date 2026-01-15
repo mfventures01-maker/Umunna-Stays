@@ -5,7 +5,6 @@ import {
   getTransportServices, 
   extractPrice, 
   parsePipes, 
-  buildTransportWhatsAppUrl, 
   getTransportVendors,
   getBestTransportVendor,
   getVehiclesByVendor,
@@ -189,7 +188,7 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
 
                   <div className="grid grid-cols-2 gap-3">
                     <a 
-                      href={bestVendor ? buildTransportWhatsAppUrl(bestVendor, { service_type: service.service_title, city: selectedCity }) : '#'}
+                      href={bestVendor ? `https://wa.me/${bestVendor.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello Umunna Rides, I'm interested in the ${service.service_title} service in ${selectedCity}. Please provide details and availability.`)}` : '#'}
                       target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 bg-gray-900 text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all shadow-lg"
                     >
