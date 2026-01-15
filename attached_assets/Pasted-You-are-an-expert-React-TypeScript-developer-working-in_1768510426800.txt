@@ -1,0 +1,100 @@
+You are an expert React + TypeScript developer working inside an existing Vite + React + TS + Tailwind project for Umunna Stays.
+
+GOAL:
+Add a new “Transport / Umunna Rides” section that can scale to many vendors, vehicles, and service types, and can capture leads + route users to the right option (WhatsApp + Lead form). 
+DO NOT change the existing layout skeleton, styling system, routes structure, or global components. Match the UI style already used in PropertyDetail.tsx (rounded-2xl/3xl, shadow, clean cards, orange accent #C46210). Reuse existing patterns like Food page: getServicesByType, appData.meta.whatsapp_main_number, dataStore helpers.
+
+DATA:
+Use these 4 datasets in appData:
+1) appData.transport_services[]  (rows like TRS_001...)
+Columns:
+service_id, vendor_id, service_type, service_title, description, starting_price_ngn, pricing_unit, lead_time_hours, includes, excludes, available_24_7, is_active, sort_order
+
+2) appData.transport_vendors[] (rows like UMR_001...)
+Columns:
+vendor_id, vendor_name, service_types, coverage_cities, whatsapp_number, whatsapp_prefill, logo_url, primary_contact_name, is_active, sort_order, notes
+
+3) appData.transport_vehicles[] (rows like UMRV_001...)
+Columns:
+vehicle_id, vendor_id, vehicle_type, make_model, category, seats, features, daily_rate_ngn, image_url, is_available, sort_order
+
+4) appData.transport_leads[] (CSV schema only; this is captured at runtime and stored locally for now)
+Columns:
+lead_id, created_at, guest_name, guest_phone, guest_email, city, property_id, service_type, service_id, vendor_id, pickup_location, dropoff_location, date_needed, time_needed, passengers, budget_ngn, notes, status, assigned_to, whatsapp_click_url
+
+REQUIREMENTS:
+A) Add a new page: pages/Transport.tsx
+- Page header: "Umunna Rides" + subtitle like “Car Hire • Escort • Private Jet Itinerary”
+- Use same spacing as other pages: pt-24 md:pt-32 pb-20 container mx-auto px-4
+- Do NOT break existing navigation. If a nav exists, add a menu link “Transport” pointing to /transport.
+- UI sections:
+  1) City filter (dropdown): show vendor coverage cities + fallback (Asaba, Benin, Lagos, Port Harcourt, Uyo, Abuja)
+  2) Service type tabs or pill filters: car_hire, car_hire_escort, escort_only, private_jet
+  3) Service cards grid (like Food cards):
+      - show service_title, description, starting_price_ngn + pricing_unit, lead_time_hours, badges: 24/7, Active
+      - includes/excludes shown as small bullet chips
+      - CTA buttons:
+         (i) “WhatsApp Now” → routes to the right vendor WhatsApp number with prefilled message
+         (ii) “Request Quote” → opens a lead form modal/drawer on the same page
+
+  4) Vehicles strip (optional but included): shows available vehicles for the selected vendor/service_type
+      - vehicle image, make_model, seats, features, daily_rate_ngn
+      - clicking a vehicle pre-fills vehicle info into the lead form notes field (do not add a new schema field; append to notes)
+
+B) Routing Logic (simple, seamless):
+- The page should automatically determine the best vendor for the selected city + service_type:
+   1) Filter vendors where is_active === true
+   2) vendor.coverage_cities includes selected city
+   3) vendor.service_types includes selected service_type
+   4) Choose the vendor with lowest sort_order
+- Then show that vendor’s services + vehicles.
+- If no vendor matches: show a friendly message + fallback CTA “Contact Umunna Stays” using appData.meta.whatsapp_main_number
+
+C) Lead Form Logic:
+- Create a reusable component in components/TransportLeadForm.tsx (or inside Transport.tsx if preferred).
+- Fields:
+  guest_name, guest_phone, guest_email (optional), city (required), property_id (optional dropdown from appData.properties), 
+  service_type (required), pickup_location (required), dropoff_location (optional), date_needed (required), time_needed (optional),
+  passengers (optional), budget_ngn (optional), notes (optional)
+- On submit:
+  1) Create whatsapp_click_url for the vendor (or main WhatsApp fallback)
+  2) Save lead locally in localStorage key: "umunna_transport_leads"
+  3) Also push into app state if app has a setter; if not, just localStorage
+  4) Immediately open WhatsApp link in new tab so the guest can book
+- Use vendor.whatsapp_prefill template:
+  "Hello Umunna Stays, I need transport service: [service_type] in [city] on [date]. Pickup: [pickup_location]."
+  Replace tokens with submitted values and include: passengers + dropoff + budget if provided.
+
+D) Type Safety:
+- Update types.ts to include:
+  TransportService, TransportVendor, TransportVehicle, TransportLead
+- Update AppData type to include:
+  transport_services, transport_vendors, transport_vehicles
+  (transport_leads optional runtime; it can be local only)
+
+E) dataStore Helpers:
+Add helper functions in dataStore.ts:
+- getTransportServices(appData): returns active services sorted by sort_order
+- getTransportVendors(appData): returns active vendors sorted by sort_order
+- getBestTransportVendor(appData, city, serviceType): returns best match or null
+- getVehiclesByVendor(appData, vendorId): returns vehicles where is_available === true sorted by sort_order
+- buildTransportWhatsAppLink({vendorWhatsapp, fallbackWhatsapp, template, formValues}): returns wa.me url
+
+F) Styling + UX:
+- Maintain existing aesthetic: rounded-2xl/3xl, shadow, clean typography, #C46210 accent
+- Desktop: grid 3 columns for services, 2–3 columns for vehicles
+- Mobile: 1 column stacks
+- Accessibility: form labels, keyboard close modal (Esc), focus trap optional
+- No layout changes to the rest of the site.
+
+G) Seed Data:
+- Ensure the page works with the provided sample vendor UMR_001 (Umunna Rides) and the 4 services TRS_001..TRS_004 and vehicles UMRV_001..UMRV_006.
+- Handle weird values gracefully (e.g., “PREMIUM” or “quote” pricing_unit). If starting_price_ngn is not numeric, display as text.
+
+DELIVERABLE:
+Return the exact code changes:
+- New file: pages/Transport.tsx
+- New component: components/TransportLeadForm.tsx (if used)
+- Updates: types.ts, dataStore.ts
+- Update routes config to include /transport (wherever routes are defined)
+- Minimal edits only. No refactors. No design changes.
