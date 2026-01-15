@@ -226,11 +226,19 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                     <div className="absolute top-4 left-4 px-4 py-2 bg-white/95 rounded-2xl backdrop-blur-md shadow-xl border border-white/20 text-[10px] font-black uppercase tracking-widest text-gray-900">
                       {v.category}
                     </div>
+                    {/* Price Tag Overlay */}
+                    <div className="absolute bottom-4 right-4 px-4 py-2 bg-black/80 backdrop-blur-md rounded-xl text-white shadow-lg border border-white/10">
+                      <span className="text-[8px] font-black uppercase tracking-widest text-gray-400 block -mb-0.5">Rate</span>
+                      <span className="text-sm font-black">{extractVehiclePrice(v.daily_rate_ngn)}</span>
+                    </div>
                   </div>
 
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-6">
-                      <h4 className="text-xl font-black text-gray-900 group-hover:text-[#C46210] transition-colors">{v.make_model}</h4>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-900 group-hover:text-[#C46210] transition-colors">{v.make_model}</h4>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">ID: {v.vehicle_id}</p>
+                      </div>
                       <div className="flex items-center gap-1.5 text-gray-400 font-black text-xs">
                         <Users size={16} className="text-[#C46210]" /> {v.seats} Seats
                       </div>
@@ -244,16 +252,19 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                       ))}
                     </div>
 
-                    <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
-                      <div>
-                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Daily Rate</span>
-                        <span className="text-xl font-black text-gray-900">{extractVehiclePrice(v.daily_rate_ngn)}</span>
-                      </div>
+                    <div className="mt-auto pt-6 border-t border-gray-50 grid grid-cols-2 gap-3">
+                      <a 
+                        href={bestVendor ? buildVehicleWhatsAppUrl(bestVendor, v, selectedCity) : '#'}
+                        target="_blank" rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-gray-900 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg"
+                      >
+                        <MessageCircle size={16} /> WhatsApp
+                      </a>
                       <button 
                         onClick={() => handleVehicleSelect(v)}
-                        className="bg-gray-900 text-white px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all"
+                        className="bg-[#C46210] text-white px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg shadow-orange-100"
                       >
-                        Select
+                        Book Now
                       </button>
                     </div>
                   </div>

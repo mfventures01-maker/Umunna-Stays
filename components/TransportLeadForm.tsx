@@ -7,12 +7,20 @@ import { X, Send, MapPin, Calendar, Clock, Users } from 'lucide-react';
 interface TransportLeadFormProps {
   appData: AppData;
   vendor: TransportVendor;
-  service: TransportService;
+  service: TransportService | null;
   selectedVehicle?: TransportVehicle | null;
+  initialNotes?: string;
   onClose: () => void;
 }
 
-const TransportLeadForm: React.FC<TransportLeadFormProps> = ({ appData, vendor, service, selectedVehicle, onClose }) => {
+const TransportLeadForm: React.FC<TransportLeadFormProps> = ({ 
+  appData, 
+  vendor, 
+  service, 
+  selectedVehicle, 
+  initialNotes = '',
+  onClose 
+}) => {
   const [form, setForm] = useState({
     guest_name: '',
     guest_phone: '',
@@ -23,7 +31,7 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({ appData, vendor, 
     date_needed: '',
     time_needed: '',
     passengers: '',
-    notes: selectedVehicle ? `Interested in: ${selectedVehicle.make_model} (${selectedVehicle.category})` : ''
+    notes: initialNotes || (selectedVehicle ? `Interested in: ${selectedVehicle.make_model} (${selectedVehicle.category})` : '')
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,7 +43,7 @@ const TransportLeadForm: React.FC<TransportLeadFormProps> = ({ appData, vendor, 
       template: vendor.whatsapp_prefill,
       formValues: {
         ...form,
-        service_type: service.service_title
+        service_type: service?.service_title || 'General Transport Inquiry'
       }
     });
 
