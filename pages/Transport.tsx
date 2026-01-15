@@ -69,11 +69,19 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
 
   const handleVehicleSelect = (vehicle: TransportVehicle) => {
     const serviceType = vehicle.category.toLowerCase().includes('jet') ? 'private_jet' : 'car_hire';
-    const service = getTransportServices(appData).find(s => s.service_type === serviceType) || null;
+    const service = getTransportServices(appData).find(s => s.service_id === getBestServiceForVehicle(vehicle)) || null;
     
     setActiveService(service);
     setLeadNotes(`Interested in Vehicle: ${vehicle.make_model} (ID: ${vehicle.vehicle_id})`);
     setIsLeadFormOpen(true);
+  };
+
+  const getBestServiceForVehicle = (vehicle: TransportVehicle): string => {
+    const cat = vehicle.category.toLowerCase();
+    if (cat === 'private jet') return 'TRS_004';
+    if (cat === 'escort') return 'TRS_002';
+    if (cat === 'van') return 'TRS_003';
+    return 'TRS_001';
   };
 
   return (
