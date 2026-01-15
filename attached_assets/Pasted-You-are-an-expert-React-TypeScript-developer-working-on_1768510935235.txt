@@ -1,0 +1,98 @@
+You are an expert React + TypeScript developer working on the Umunna Stays platform. You need to implement ONLY the vehicle fleet display section that complements the existing transport services structure. DO NOT alter any other part of the website - only add/update vehicle display components that integrate with the transport services.
+
+**CRITICAL CONSTRAINTS:**
+- DO NOT change navigation, layout, or any existing pages
+- DO NOT modify property listings, food services, or other transport sections
+- ONLY add vehicle display components that complement transport services
+- Use the EXACT mapping IDs provided (UMRV_001, UMRV_002, etc.)
+- Preserve all existing website functionality
+- Highlight vehicle images prominently as per design requirements
+
+**DATA STRUCTURE:**
+The vehicle fleet data has this exact format:
+vehicle_id	vendor_id	vehicle_type	make_model	category	seats	features	daily_rate_ngn	image_url	is_available	sort_order
+UMRV_001	UMR_001	SUV	Toyota Prado	SUV	7	Leather seats|AC|Airport-ready	From 320000	https://i.postimg.cc/FRsy8Drz/Save_Inta_com_488621108_18021914246690295_5868630574891386945_n.jpg	Yes	1
+UMRV_002	UMR_001	Sedan	Toyota Camry	Sedan	5	AC|Comfort ride	From 170000	https://i.postimg.cc/nLFLL99Z/toyota-camry-silver.jpg	Yes	2
+UMRV_003	UMR_001	Bus	Hiace Bus	Van	14	Group movement|AC optional	From 320000	https://i.postimg.cc/VNh5HL5w/haice.jpg	Yes	3
+UMRV_004	UMR_001	Escort Car	Toyota Hilux	Escort	5	Convoy lead/support	From 320000	https://i.postimg.cc/Vk1nfsq9/hilux.jpg	Yes	4
+UMRV_005	UMR_001	SEINNA	Toyota Seinna	Van	6	AC|Comfort ride	From 320000	https://i.postimg.cc/c41ZwGL4/Rob-and-Kerri-s-new-Toyota-Sienna.jpg		5
+UMRV_006	UMR_001	Bombardier Global 8000	Bombardier Global 8000	private jet	8	Premium	Premium	https://i.postimg.cc/hvPp51CH/PRIVATE_JET.jpg	https://i.postimg.cc/y8wp89dz/CHAMGNE_PJ.jpg	6
+
+**SPECIFIC REQUIREMENTS:**
+
+1. **Image-Centric Design:**
+   - Vehicle images must be the primary visual element (large, high-quality display)
+   - Implement image carousel for vehicles with multiple images (like UMRV_006 has two URLs)
+   - Add hover effects: zoom on image, shadow enhancement
+   - Use lazy loading for all images
+   - Provide image fallbacks for missing URLs
+
+2. **Strict ID Mapping:**
+   - Each vehicle must use its exact vehicle_id (UMRV_001, UMRV_002, etc.)
+   - Map vehicles to existing vendor_id (UMR_001) - ensure consistency
+   - Link vehicles to appropriate transport services using category matching
+
+3. **Vehicle Card Components:**
+   Each vehicle card must display:
+   - PRIMARY: Large vehicle image (occupying 60% of card height)
+   - Vehicle make/model as prominent heading
+   - Category badge (SUV, Sedan, Van, Escort, private jet)
+   - Seats count with passenger icon
+   - Price: Extract numeric value from "From 320000" → display "₦320,000/day"
+   - Features as bullet points (split pipe-separated string)
+   - Availability status badge
+   - "Book This Vehicle" button that links to transport service booking
+
+4. **Integration with Transport Services:**
+   - Vehicles should complement existing TRS_001-TRS_004 services
+   - When clicking "Book This Vehicle", pre-select appropriate service type:
+     * SUV/Sedan → TRS_001 (Car Hire)
+     * Escort → TRS_002/TRS_003 (Escort services)
+     * Bus/Van → Group transport options
+     * Private Jet → TRS_004 (Jet Itinerary)
+   - Pass vehicle_id in booking data for service providers
+
+5. **Data Processing:**
+   - Parse "From 320000" to extract numeric price (320000)
+   - Handle "Premium" pricing as custom quote
+   - Split multiple image URLs (UMRV_006 has two URLs - create array)
+   - Parse pipe-separated features into array
+   - Handle missing is_available (UMRV_005) as "Check Availability"
+
+6. **Display Logic:**
+   - Sort by sort_order (1-6)
+   - Filter by is_available = "Yes" where specified
+   - Group by vehicle_type for better organization
+   - Show private jet as premium highlight with special styling
+   - Responsive grid: mobile (1 col), tablet (2 col), desktop (3 col)
+
+7. **WhatsApp Integration:**
+   - "Book This Vehicle" opens WhatsApp with vendor (UMR_001)
+   - Pre-fill message: "Hello Umunna Rides, I'm interested in [make_model] (ID: [vehicle_id]) for [service_type]. Please confirm availability."
+   - Include vehicle details and preferred dates if date picker exists
+
+8. **TypeScript Implementation:**
+   - Create Vehicle interface matching exact CSV structure
+   - Add image gallery type for multiple images
+   - Create helper functions for price parsing and URL handling
+   - Ensure strict type safety for all vehicle properties
+
+9. **Visual Design:**
+   - Use existing Umunna Stays Tailwind classes
+   - Maintain #C46210 accent color for buttons/badges
+   - Match card design with property listings but vehicle-focused
+   - Premium styling for private jet (gold accents, special badge)
+
+**OUTPUT REQUIREMENTS:**
+Provide ONLY the following code files:
+1. New VehicleFleet.tsx component (if adding new) OR updated TransportServices.tsx
+2. Updated types.ts (Vehicle interface and related types)
+3. Updated dataStore.ts (vehicle data fetching functions)
+4. VehicleImageGallery.tsx component for image carousel
+
+Do NOT include:
+- Explanations or comments outside code
+- Changes to other pages/components (Food, Properties, etc.)
+- Navigation or layout modifications
+- Anything not directly related to displaying these 6 vehicles
+- Modifications to existing transport services logic (only complement)
