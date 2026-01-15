@@ -100,7 +100,6 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                      <Clock size={14} /> Ready in {service.lead_time_hours}hr
                    </div>
                    <ul className="space-y-1">
-                     {/* Fix: Directly use the return type of parsePipes and provide explicit type casting to string[] to resolve unknown type error */}
                      {(parsePipes(service.includes) as string[]).slice(0, 3).map((inc: string) => (
                        <li key={inc} className="text-[11px] font-bold text-gray-600 flex items-center gap-2"><Check size={12} className="text-green-500" /> {inc}</li>
                      ))}
@@ -126,7 +125,7 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
           </div>
 
           <div className="space-y-20">
-            {Object.entries(groupedFleet).map(([category, vehicles]) => (
+            {(Object.entries(groupedFleet) as [string, TransportVehicle[]][]).map(([category, vehicles]) => (
               <div key={category}>
                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#C46210] mb-8 border-l-4 border-[#C46210] pl-4">{category} Fleet</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -171,7 +170,6 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                           <div className="space-y-4 mb-10 flex-grow">
                             <span className="text-[9px] font-black uppercase tracking-widest text-gray-400 block mb-2">Top Features</span>
                             <ul className="flex flex-wrap gap-2">
-                              {/* Fix: Provide explicit type casting for features to string[] to ensure correctness */}
                               {(features as string[]).map((feat: string, i: number) => (
                                 <li key={i} className="px-3 py-1.5 bg-gray-50 rounded-xl text-[10px] font-bold text-gray-600 border border-gray-100 uppercase tracking-tight">
                                   {feat}
