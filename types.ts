@@ -79,6 +79,10 @@ export interface TransportVehicle {
   sort_order: number;
 }
 
+export interface VehicleImageGallery {
+  images: string[];
+}
+
 export interface FoodVendor {
   vendor_id: string;
   name: string;

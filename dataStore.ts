@@ -111,8 +111,87 @@ export const getTransportVendors = (data: AppData): TransportVendor[] => {
 };
 
 export const getVehicleFleet = (data: AppData): TransportVehicle[] => {
-  return (data.transport_vehicles || [])
-    .sort((a, b) => a.sort_order - b.sort_order);
+  const fleet: TransportVehicle[] = [
+    {
+      vehicle_id: "UMRV_001",
+      vendor_id: "UMR_001",
+      vehicle_type: "SUV",
+      make_model: "Toyota Prado",
+      category: "SUV",
+      seats: 7,
+      features: "Leather seats|AC|Airport-ready",
+      daily_rate_ngn: "From 320000",
+      image_url: "https://i.postimg.cc/FRsy8Drz/Save_Inta_com_488621108_18021914246690295_5868630574891386945_n.jpg",
+      is_available: "Yes",
+      sort_order: 1
+    },
+    {
+      vehicle_id: "UMRV_002",
+      vendor_id: "UMR_001",
+      vehicle_type: "Sedan",
+      make_model: "Toyota Camry",
+      category: "Sedan",
+      seats: 5,
+      features: "AC|Comfort ride",
+      daily_rate_ngn: "From 170000",
+      image_url: "https://i.postimg.cc/nLFLL99Z/toyota-camry-silver.jpg",
+      is_available: "Yes",
+      sort_order: 2
+    },
+    {
+      vehicle_id: "UMRV_003",
+      vendor_id: "UMR_001",
+      vehicle_type: "Bus",
+      make_model: "Hiace Bus",
+      category: "Van",
+      seats: 14,
+      features: "Group movement|AC optional",
+      daily_rate_ngn: "From 320000",
+      image_url: "https://i.postimg.cc/VNh5HL5w/haice.jpg",
+      is_available: "Yes",
+      sort_order: 3
+    },
+    {
+      vehicle_id: "UMRV_004",
+      vendor_id: "UMR_001",
+      vehicle_type: "Escort Car",
+      make_model: "Toyota Hilux",
+      category: "Escort",
+      seats: 5,
+      features: "Convoy lead/support",
+      daily_rate_ngn: "From 320000",
+      image_url: "https://i.postimg.cc/Vk1nfsq9/hilux.jpg",
+      is_available: "Yes",
+      sort_order: 4
+    },
+    {
+      vehicle_id: "UMRV_005",
+      vendor_id: "UMR_001",
+      vehicle_type: "SEINNA",
+      make_model: "Toyota Seinna",
+      category: "Van",
+      seats: 6,
+      features: "AC|Comfort ride",
+      daily_rate_ngn: "From 320000",
+      image_url: "https://i.postimg.cc/c41ZwGL4/Rob-and-Kerri-s-new-Toyota-Sienna.jpg",
+      is_available: "",
+      sort_order: 5
+    },
+    {
+      vehicle_id: "UMRV_006",
+      vendor_id: "UMR_001",
+      vehicle_type: "Bombardier Global 8000",
+      make_model: "Bombardier Global 8000",
+      category: "private jet",
+      seats: 8,
+      features: "Premium",
+      daily_rate_ngn: "Premium",
+      image_url: "https://i.postimg.cc/hvPp51CH/PRIVATE_JET.jpg https://i.postimg.cc/y8wp89dz/CHAMGNE_PJ.jpg",
+      is_available: "Yes",
+      sort_order: 6
+    }
+  ];
+  return fleet.sort((a, b) => a.sort_order - b.sort_order);
 };
 
 export const extractVehiclePrice = (priceStr: string): string => {
