@@ -226,7 +226,9 @@ export const getTransportVendors = (data: AppData): TransportVendor[] => {
 };
 
 export const getVehicleFleet = (data: AppData): TransportVehicle[] => {
-  const fleet: TransportVehicle[] = [
+  return data.transport_vehicles && data.transport_vehicles.length > 0 
+    ? data.transport_vehicles.sort((a, b) => a.sort_order - b.sort_order)
+    : [
     {
       vehicle_id: "UMRV_001",
       vendor_id: "UMR_001",
@@ -305,8 +307,7 @@ export const getVehicleFleet = (data: AppData): TransportVehicle[] => {
       is_available: "Yes",
       sort_order: 6
     }
-  ];
-  return fleet.sort((a, b) => a.sort_order - b.sort_order);
+  ].sort((a, b) => a.sort_order - b.sort_order);
 };
 
 export const extractVehiclePrice = (priceStr: string): string => {
