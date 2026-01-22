@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Umunna Stays
 
-# Run and deploy your AI Studio app
+A premium hospitality super-app for short stays, food delivery, transport, and security services.
 
-This contains everything you need to run your app locally.
+## Quick Start
 
-View your app in AI Studio: https://ai.studio/apps/drive/11OMqQtaxxzTU3OdDvIxNDQyIKka-Llp1
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-## Run Locally
+### 2. Development
+Run the local development server:
+```bash
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+### 3. Production Build
+Create an optimized production build:
+```bash
+npm run build
+```
+Preview the production build locally:
+```bash
+npm run preview
+```
 
+## Configuration
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Environment Variables
+Create a `.env` or `.env.local` file for optional features:
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_SUPABASE_URL` | Optional. Supabase URL for persistent analytics. |
+| `VITE_SUPABASE_ANON_KEY` | Optional. Supabase Anon Key for analytics. |
+
+*Note: The app runs fully functional without these variables (analytics will log to localStorage).*
+
+## Architecture & Features
+
+- **Framework**: React + Vite + Tailwind CSS.
+- **Routing**: Hash-based routing (`/#stays`, `/#food`) for easy static deployment.
+- **Hero Carousel**: `ServiceHeroCarousel.tsx` with hardware-accelerated animations, lazy loading, and error boundaries.
+- **Lead Capture**: `LeadCapturePopup.tsx` with session-based frequency capping (once per session) and direct WhatsApp integration.
+- **Analytics**: `src/lib/analytics.ts` tracks slides, lead forms, and service requests.
+
+## Deployment
+
+This is a **Static Site**. You can deploy the `dist/` folder to any static host:
+- Vercel
+- Netlify
+- GitHub Pages
+- AWS S3 / CloudFront
+
+Ensure your build script runs `npm install && npm run build`.

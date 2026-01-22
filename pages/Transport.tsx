@@ -1,10 +1,10 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { AppData, TransportService, TransportVendor, TransportVehicle } from '../types';
-import { 
-  getTransportServices, 
-  extractPrice, 
-  parsePipes, 
+import {
+  getTransportServices,
+  extractPrice,
+  parsePipes,
   getTransportVendors,
   getBestTransportVendor,
   getVehiclesByVendor,
@@ -15,35 +15,83 @@ import {
 } from '../dataStore';
 import VehicleImageGallery from '../components/VehicleImageGallery';
 import TransportLeadForm from '../components/TransportLeadForm';
+import ConciergeLeadForm from '../components/concierge/ConciergeLeadForm';
+import RequestForm from '../components/concierge/RequestForm';
 import { Check, Clock, ShieldCheck, Zap, Plane, MessageCircle, MapPin, Users, Star, ArrowRight, Info } from 'lucide-react';
 
 interface TransportProps {
   appData: AppData;
+  transportData?: {
+    services: TransportService[];
+    vendors: TransportVendor[];
+    vehicles: TransportVehicle[];
+  } | null;
+  isLoading?: boolean;
 }
 
-const Transport: React.FC<TransportProps> = ({ appData }) => {
+const Transport: React.FC<TransportProps> = ({ appData, transportData, isLoading = false }) => {
+  // ======================
+  // ALL HOOKS AT THE TOP - BEFORE ANY CONDITIONAL RETURNS
+  // ======================
+
+  // State hooks
   const [selectedCity, setSelectedCity] = useState(appData.meta.default_city || 'Asaba');
   const [selectedServiceType, setSelectedServiceType] = useState<'car_hire' | 'car_hire_escort' | 'escort_only' | 'private_jet'>('car_hire');
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
   const [activeService, setActiveService] = useState<TransportService | null>(null);
   const [leadNotes, setLeadNotes] = useState('');
 
-  const availableCities = ['Asaba', 'Benin', 'Lagos', 'Port Harcourt', 'Uyo', 'Abuja'];
-  
-  const bestVendor = useMemo(() => 
-    getBestTransportVendor(appData, selectedCity, selectedServiceType) || getTransportVendors(appData)[0],
-    [appData, selectedCity, selectedServiceType]
+  // Memo hooks
+  // Combine prop data with fallback helpers for robust data availability
+  const services = useMemo(() => transportData?.services || getTransportServices(appData), [transportData, appData]);
+  const allVendors = useMemo(() => transportData?.vendors || getTransportVendors(appData), [transportData, appData]);
+  const allVehicles = useMemo(() => transportData?.vehicles || getVehicleFleet(appData), [transportData, appData]);
+
+  const availableCities = useMemo(() =>
+    ['Asaba', 'Benin', 'Lagos', 'Port Harcourt', 'Uyo', 'Abuja'],
+    []
   );
 
+  const bestVendor = useMemo(() => {
+    const normalizedCity = selectedCity.toLowerCase().trim();
+    // Helper function logic adapted locally to use the reactive 'allVendors' array
+    const matches = allVendors
+      .filter(v => v.is_active)
+      .filter(v =>
+        v.coverage_cities.some(c => c.toLowerCase().trim() === normalizedCity) &&
+        v.service_types.some(s => s.toLowerCase().trim() === selectedServiceType.toLowerCase().trim())
+      );
+    return matches.length > 0 ? matches.sort((a, b) => a.sort_order - b.sort_order)[0] : allVendors[0];
+  }, [allVendors, selectedCity, selectedServiceType]);
+
   const filteredServices = useMemo(() => {
-    return getTransportServices(appData).filter(s => s.service_type === selectedServiceType);
-  }, [appData, selectedServiceType]);
+    return services.filter(s => s.service_type === selectedServiceType).sort((a, b) => a.sort_order - b.sort_order);
+  }, [services, selectedServiceType]);
 
   const vehicles = useMemo(() => {
     // Return the entire fleet for all tabs to ensure maximum visibility, 
     // sorting by the defined sort_order
-    return getVehicleFleet(appData);
-  }, [appData]);
+    return allVehicles.sort((a, b) => a.sort_order - b.sort_order);
+  }, [allVehicles]);
+
+  // ======================
+  // CONDITIONAL RETURNS ONLY AFTER ALL HOOKS
+  // ======================
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-32 pb-20 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#C46210] border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">Loading Fleet...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ======================
+  // REST OF THE COMPONENT
+  // ======================
 
   const handleRequestQuote = (service: TransportService) => {
     setActiveService(service);
@@ -52,24 +100,20 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
   };
 
   const handleVehicleSelect = (vehicle: TransportVehicle) => {
-    const serviceType = vehicle.category.toLowerCase().includes('jet') ? 'private_jet' : 'car_hire';
-    const service = getTransportServices(appData).find(s => s.service_id === getBestServiceForVehicle(vehicle)) || null;
-    
-    setActiveService(service);
+    setActiveService(null); // Vehicle selection is specific, might not map purely to a service ID without logic
     setLeadNotes(`Interested in Vehicle: ${vehicle.make_model} (ID: ${vehicle.vehicle_id})`);
     setIsLeadFormOpen(true);
   };
 
-  const getBestServiceForVehicle = (vehicle: TransportVehicle): string => {
-    const cat = vehicle.category.toLowerCase();
-    if (cat === 'private jet') return 'TRS_004';
-    if (cat === 'escort') return 'TRS_002';
-    if (cat === 'van') return 'TRS_003';
-    return 'TRS_001';
-  };
+  const serviceTypes = [
+    { id: 'car_hire', label: 'Car Hire', icon: <Zap className="w-5 h-5" /> },
+    { id: 'car_hire_escort', label: 'Car + Escort', icon: <ShieldCheck className="w-5 h-5" /> },
+    { id: 'escort_only', label: 'Escort Only', icon: <ShieldCheck className="w-5 h-5" /> },
+    { id: 'private_jet', label: 'Private Jet', icon: <Plane className="w-5 h-5" /> },
+  ];
 
   return (
-    <div className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-20">
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -87,7 +131,7 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
             <div>
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 block ml-1">Select City</label>
               <div className="relative">
-                <select 
+                <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
                   className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-[#C46210] transition-all"
@@ -106,11 +150,10 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   <button
                     key={type}
                     onClick={() => setSelectedServiceType(type)}
-                    className={`whitespace-nowrap px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${
-                      selectedServiceType === type 
-                      ? 'bg-[#C46210] text-white border-[#C46210] shadow-lg shadow-orange-100' 
+                    className={`whitespace-nowrap px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all border ${selectedServiceType === type
+                      ? 'bg-[#C46210] text-white border-[#C46210] shadow-lg shadow-orange-100'
                       : 'bg-gray-50 text-gray-500 border-gray-100 hover:bg-white'
-                    }`}
+                      }`}
                   >
                     {type.replace(/_/g, ' ')}
                   </button>
@@ -155,9 +198,9 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                       <span className="bg-green-50 text-green-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase border border-green-100">24/7 Live</span>
                     )}
                   </div>
-                  
+
                   <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-[#C46210] transition-colors">{service.service_title}</h3>
-                  
+
                   <div className="mb-6 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1">Estimated Cost</span>
                     <div className="flex items-baseline gap-1">
@@ -169,7 +212,7 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   </div>
 
                   <p className="text-gray-500 text-sm mb-8 leading-relaxed flex-grow">{service.description}</p>
-                  
+
                   <div className="space-y-6 mb-10">
                     <div className="flex items-center gap-3 text-[#C46210] text-[10px] font-black uppercase tracking-widest">
                       <Clock size={16} /> Ready in {service.lead_time_hours}hr
@@ -187,14 +230,14 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <a 
+                    <a
                       href={bestVendor ? `https://wa.me/${bestVendor.whatsapp_number.replace(/\D/g, '')}?text=${encodeURIComponent(`Hello Umunna Rides, I'm interested in the ${service.service_title} service in ${selectedCity}. Please provide details and availability.`)}` : '#'}
                       target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 bg-gray-900 text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all shadow-lg"
                     >
                       <MessageCircle size={16} /> WhatsApp
                     </a>
-                    <button 
+                    <button
                       onClick={() => handleRequestQuote(service)}
                       className="flex items-center justify-center gap-2 bg-[#C46210] text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg shadow-orange-100"
                     >
@@ -205,20 +248,40 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-white rounded-[40px] border border-dashed border-gray-200">
-              <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Info size={32} className="text-gray-300" />
+            // Specific Zero State or Error State logic
+            vehicles.length === 0 ? (
+              // Case: No data at all (likely error or empty database)
+              <div className="text-center py-20 bg-white rounded-[40px] border border-dashed border-red-100">
+                <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Info size={32} className="text-red-300" />
+                </div>
+                <h3 className="text-xl font-black text-gray-900 mb-2">Service Temporarily Unavailable</h3>
+                <p className="text-gray-400 font-medium mb-8">We couldn't load the fleet data. Please check your connection or contact our concierge directly.</p>
+                <a
+                  href={`https://wa.me/${appData.meta.whatsapp_main_number}?text=Hello, I'm trying to view transport options but the page failed to load.`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all shadow-xl shadow-red-100"
+                >
+                  Contact Helper <ArrowRight size={18} />
+                </a>
               </div>
-              <h3 className="text-xl font-black text-gray-900 mb-2">No specialized vendor in {selectedCity}</h3>
-              <p className="text-gray-400 font-medium mb-8">But don't worry, our main concierge can handle this for you.</p>
-              <a 
-                href={`https://wa.me/${appData.meta.whatsapp_main_number}?text=Hello, I need ${selectedServiceType.replace(/_/g, ' ')} in ${selectedCity}. Can you help?`}
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#C46210] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-orange-100"
-              >
-                Contact Main Concierge <ArrowRight size={18} />
-              </a>
-            </div>
+            ) : (
+              // Case: Just no specialized vendor for this city logic
+              <div className="text-center py-20 bg-white rounded-[40px] border border-dashed border-gray-200">
+                <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Info size={32} className="text-gray-300" />
+                </div>
+                <h3 className="text-xl font-black text-gray-900 mb-2">No specialized vendor in {selectedCity}</h3>
+                <p className="text-gray-400 font-medium mb-8">But don't worry, our main concierge can handle this for you.</p>
+                <a
+                  href={`https://wa.me/${appData.meta.whatsapp_main_number}?text=Hello, I need ${selectedServiceType.replace(/_/g, ' ')} in ${selectedCity}. Can you help?`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#C46210] text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-orange-100"
+                >
+                  Contact Main Concierge <ArrowRight size={18} />
+                </a>
+              </div>
+            )
           )}
         </div>
 
@@ -231,33 +294,33 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {vehicles.map((v) => (
-                <div 
-                  key={v.vehicle_id} 
-                  className={`group bg-white rounded-[40px] overflow-hidden border shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col ${
-                    v.category.toLowerCase().includes('jet') 
-                    ? 'border-yellow-200 ring-1 ring-yellow-100/50' 
+              {vehicles.map((v, index) => (
+                <div
+                  key={v.vehicle_id}
+                  className={`group bg-white rounded-[40px] overflow-hidden border shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col ${v.category.toLowerCase().includes('jet')
+                    ? 'border-yellow-200 ring-1 ring-yellow-100/50'
                     : 'border-gray-100'
-                  }`}
+                    }`}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                    <VehicleImageGallery images={splitVehicleImages(v.image_url)} alt={v.make_model} />
-                    <div className={`absolute top-4 left-4 px-4 py-2 rounded-2xl backdrop-blur-md shadow-xl border text-[10px] font-black uppercase tracking-widest ${
-                      v.category.toLowerCase().includes('jet')
+                    <VehicleImageGallery
+                      images={splitVehicleImages(v.image_url)}
+                      alt={v.make_model}
+                      priority={index < 3}
+                    />
+                    <div className={`absolute top-4 left-4 px-4 py-2 rounded-2xl backdrop-blur-md shadow-xl border text-[10px] font-black uppercase tracking-widest ${v.category.toLowerCase().includes('jet')
                       ? 'bg-yellow-50/90 border-yellow-200 text-yellow-700'
                       : 'bg-white/95 border-white/20 text-gray-900'
-                    }`}>
+                      }`}>
                       {v.category}
                     </div>
                     {/* Price Tag Overlay */}
-                    <div className={`absolute bottom-4 right-4 px-4 py-2 backdrop-blur-md rounded-xl shadow-lg border ${
-                      v.category.toLowerCase().includes('jet')
+                    <div className={`absolute bottom-4 right-4 px-4 py-2 backdrop-blur-md rounded-xl shadow-lg border ${v.category.toLowerCase().includes('jet')
                       ? 'bg-yellow-900/80 border-yellow-500/30 text-yellow-100'
                       : 'bg-black/80 border-white/10 text-white'
-                    }`}>
-                      <span className={`text-[8px] font-black uppercase tracking-widest block -mb-0.5 ${
-                        v.category.toLowerCase().includes('jet') ? 'text-yellow-400' : 'text-gray-400'
-                      }`}>Rate</span>
+                      }`}>
+                      <span className={`text-[8px] font-black uppercase tracking-widest block -mb-0.5 ${v.category.toLowerCase().includes('jet') ? 'text-yellow-400' : 'text-gray-400'
+                        }`}>Rate</span>
                       <span className="text-sm font-black">{extractVehiclePrice(v.daily_rate_ngn)}</span>
                     </div>
                   </div>
@@ -265,9 +328,8 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex justify-between items-start mb-6">
                       <div>
-                        <h4 className={`text-xl font-black transition-colors ${
-                          v.category.toLowerCase().includes('jet') ? 'text-yellow-900 group-hover:text-yellow-700' : 'text-gray-900 group-hover:text-[#C46210]'
-                        }`}>{v.make_model}</h4>
+                        <h4 className={`text-xl font-black transition-colors ${v.category.toLowerCase().includes('jet') ? 'text-yellow-900 group-hover:text-yellow-700' : 'text-gray-900 group-hover:text-[#C46210]'
+                          }`}>{v.make_model}</h4>
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">ID: {v.vehicle_id}</p>
                       </div>
                       <div className="flex items-center gap-1.5 text-gray-400 font-black text-xs">
@@ -284,14 +346,14 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-gray-50 grid grid-cols-2 gap-3">
-                      <a 
-                        href={bestVendor ? buildVehicleWhatsAppUrl(bestVendor, v, selectedCity) : '#'}
+                      <a
+                        href={`https://wa.me/2347048033575?text=${encodeURIComponent(`Hello Umunna Rides, I'm interested in ${v.make_model} (${v.vehicle_type} - ID: ${v.vehicle_id}) in ${selectedCity}. Please provide details.`)}`}
                         target="_blank" rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 bg-gray-900 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg"
+                        className="flex items-center justify-center gap-2 bg-gray-900 text-white py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#C46210] transition-all shadow-lg"
                       >
                         <MessageCircle size={16} /> WhatsApp
                       </a>
-                      <button 
+                      <button
                         onClick={() => handleVehicleSelect(v)}
                         className="bg-[#C46210] text-white px-6 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-lg shadow-orange-100"
                       >
@@ -332,7 +394,7 @@ const Transport: React.FC<TransportProps> = ({ appData }) => {
       </div>
 
       {isLeadFormOpen && (
-        <TransportLeadForm 
+        <TransportLeadForm
           appData={appData}
           selectedService={activeService}
           selectedVendor={bestVendor}

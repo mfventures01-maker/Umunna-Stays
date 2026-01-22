@@ -1,16 +1,77 @@
 import { AppData, TransportService, TransportVendor, FoodVendor, Dish, TransportVehicle, Property, Photo, TransportLead } from './types';
+import { supabase } from './src/lib/supabaseClient';
+
+// --- CACHE CONFIGURATION ---
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+let lastCacheTime: number | null = null;
+let cachedTransportData: {
+  services: TransportService[];
+  vendors: TransportVendor[];
+  vehicles: TransportVehicle[];
+} | null = null;
 
 let appData: AppData | null = null;
 
+// --- UTILITIES ---
+const isDevelopment = (): boolean => {
+  return import.meta.env.DEV || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+};
+
+const isCacheValid = (): boolean => {
+  if (!lastCacheTime) return false;
+  return Date.now() - lastCacheTime < CACHE_DURATION;
+};
+
+export const clearCache = () => {
+  cachedTransportData = null;
+  appData = null;
+  lastCacheTime = null;
+  if (isDevelopment()) console.log('📦 Cache cleared');
+};
+
+// --- CORE DATA LOADING ---
 export const loadAppData = async (): Promise<AppData> => {
   if (appData) return appData;
   try {
-    const response = await fetch('./umunna_properties_20.json');
-    if (!response.ok) throw new Error('Failed to load data');
-    appData = await response.json();
-    return appData!;
+    const [
+      { data: properties },
+      { data: images },
+      { data: fVendors }, // Food
+      { data: fItems }    // Food
+    ] = await Promise.all([
+      supabase.from('properties').select('*'),
+      supabase.from('property_images').select('*'),
+      supabase.from('food_vendors').select('*'),
+      supabase.from('food_items').select('*')
+    ]);
+
+    appData = {
+      meta: { brand_name: "Umunna Stays", whatsapp_main_number: "2347048033575", default_city: "Asaba", currency_symbol: "₦" },
+      properties: (properties || []) as Property[],
+      photo_gallery: { photos: (images || []) as Photo[] },
+      transport_services: [], // Lazy loaded
+      transport_vendors: [],  // Lazy loaded
+      transport_vehicles: [], // Lazy loaded
+      city_summary: [],
+      services_catalog: [],
+      policies_global: {
+        check_in: "2:00 PM",
+        check_out: "12:00 PM",
+        self_check_in: "Contact concierge for access",
+        children: "Allowed",
+        beds: "Per listing",
+        pets: "Not allowed",
+        service_animals: "Allowed"
+      }
+    } as unknown as AppData;
+
+    (appData as any).food_vendors = fVendors || [];
+    (appData as any).food_items = fItems || [];
+
+    if (isDevelopment()) console.log('✅ AppData loaded', appData);
+    return appData;
   } catch (error) {
-    console.error('Error loading Umunna data:', error);
+    console.error('❌ Error loading Supabase data:', error);
     return {
       meta: { brand_name: "Umunna Stays", whatsapp_main_number: "2347048033575", default_city: "Asaba", currency_symbol: "₦" },
       properties: [],
@@ -25,23 +86,68 @@ export const loadAppData = async (): Promise<AppData> => {
   }
 };
 
+export const loadTransportData = async (): Promise<{
+  services: TransportService[];
+  vendors: TransportVendor[];
+  vehicles: TransportVehicle[];
+}> => {
+  if (cachedTransportData && isCacheValid()) {
+    if (isDevelopment()) console.log('⚡ Using cached transport data');
+    return cachedTransportData;
+  }
+
+  try {
+    const [
+      { data: tServices },
+      { data: tVendors },
+      { data: tVehicles }
+    ] = await Promise.all([
+      supabase.from('transport_services').select('*'),
+      supabase.from('transport_vendors').select('*'),
+      supabase.from('transport_vehicles').select('*')
+    ]);
+
+    cachedTransportData = {
+      services: (tServices || []) as TransportService[],
+      vendors: (tVendors || []) as TransportVendor[],
+      vehicles: (tVehicles || []) as TransportVehicle[]
+    };
+    lastCacheTime = Date.now();
+
+    // Backfill main appData so legacy getters still work
+    if (appData) {
+      appData.transport_services = cachedTransportData.services;
+      appData.transport_vendors = cachedTransportData.vendors;
+      appData.transport_vehicles = cachedTransportData.vehicles;
+    }
+
+    if (isDevelopment()) console.log('🚚 Transport data loaded', cachedTransportData);
+    return cachedTransportData;
+  } catch (error) {
+    console.error('❌ Error loading transport data:', error);
+    // Return empty structure so UI doesn't crash or hang
+    return {
+      services: [],
+      vendors: [],
+      vehicles: []
+    };
+  }
+};
+
+// --- GETTERS & HELPERS ---
+
 export const getPropertyById = (data: AppData, id: string): Property | undefined => {
   return data.properties.find(p => p.property_id === id);
 };
 
 export const getPhotosByPropertyId = (data: AppData, propertyId: string): Photo[] => {
   const property = getPropertyById(data, propertyId);
-  // Filter photos explicitly for the given propertyId
   const galleryPhotos = (data.photo_gallery?.photos || [])
     .filter(p => p.property_id === propertyId)
     .sort((a, b) => a.sequence_order - b.sequence_order);
-  
-  // Return gallery photos if they exist
-  if (galleryPhotos.length > 0) {
-    return galleryPhotos;
-  }
-  
-  // Fallback to the hero image if no gallery photos found
+
+  if (galleryPhotos.length > 0) return galleryPhotos;
+
   if (property) {
     return [{
       photo_id: `hero_${propertyId}`,
@@ -53,7 +159,7 @@ export const getPhotosByPropertyId = (data: AppData, propertyId: string): Photo[
       room_category: "Hero View"
     }];
   }
-  
+
   return [];
 };
 
@@ -76,68 +182,7 @@ export const getPropertiesByCity = (data: AppData, city: string): Property[] => 
 };
 
 export const getTransportServices = (data: AppData): TransportService[] => {
-  const services: TransportService[] = [
-    {
-      service_id: "TRS_001",
-      vendor_id: "UMR_001",
-      service_type: "car_hire",
-      service_title: "Car Hire (Self/Chauffeur)",
-      description: "Comfortable city rides for errands or daily movement.",
-      starting_price_ngn: "Starting from 100000",
-      pricing_unit: "per_day",
-      lead_time_hours: 4,
-      includes: "Driver|Fuel optional|AC",
-      excludes: "Tolls|Parking",
-      available_24_7: "Yes",
-      is_active: "Yes",
-      sort_order: 1
-    },
-    {
-      service_id: "TRS_002",
-      vendor_id: "UMR_001",
-      service_type: "car_hire_escort",
-      service_title: "Car Hire + Escort Service",
-      description: "Convoy support + professional escort for VIP movement.",
-      starting_price_ngn: "Starting from 500000",
-      pricing_unit: "per_day",
-      lead_time_hours: 12,
-      includes: "Lead car|Escort team|Route planning",
-      excludes: "Hotel security",
-      available_24_7: "Yes",
-      is_active: "Yes",
-      sort_order: 2
-    },
-    {
-      service_id: "TRS_003",
-      vendor_id: "UMR_001",
-      service_type: "escort_only",
-      service_title: "Escort Cars Only",
-      description: "Escort cars available for your existing vehicle or convoy.",
-      starting_price_ngn: "STARTING FROM 300000",
-      pricing_unit: "per_day",
-      lead_time_hours: 12,
-      includes: "Escort vehicles|Route planning",
-      excludes: "Fuel for client car",
-      available_24_7: "Yes",
-      is_active: "Yes",
-      sort_order: 3
-    },
-    {
-      service_id: "TRS_004",
-      vendor_id: "UMR_001",
-      service_type: "private_jet",
-      service_title: "Private Jet Itinerary",
-      description: "Jet itinerary planning + ground handling support (booking coordination).",
-      starting_price_ngn: "PREMIUM",
-      pricing_unit: "quote",
-      lead_time_hours: 24,
-      includes: "Itinerary|Coordination|Airport pickup option",
-      excludes: "Jet ticket cost",
-      available_24_7: "No",
-      is_active: "Yes",
-      sort_order: 4
-    }
-  ];
+  const services = cachedTransportData?.services || data.transport_services || [];
   return services.sort((a, b) => a.sort_order - b.sort_order);
 };
 
@@ -155,23 +200,48 @@ export const buildTransportWhatsAppClickUrl = (vendorWhatsAppNumber: string, pre
   return `https://wa.me/${digits}?text=${encodeURIComponent(prefillText)}`;
 };
 
-export const saveTransportLead = async (lead: TransportLead, endpointUrl?: string) => {
-  // 1. Local Storage save
-  const existingLeads = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
-  existingLeads.push(lead);
-  localStorage.setItem('umunna_transport_leads', JSON.stringify(existingLeads));
+export const validateTransportLead = (lead: Partial<TransportLead>): void => {
+  if (!lead.guest_name) throw new Error("Name is required");
+  if (!lead.guest_phone) throw new Error("Phone is required");
+  if (!lead.city) throw new Error("City is required");
+  if (!lead.service_type) throw new Error("Service type is required");
+};
 
-  // 2. Endpoint POST if available
-  if (endpointUrl) {
-    try {
-      await fetch(endpointUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(lead)
-      });
-    } catch (err) {
-      console.error('Failed to post lead to endpoint:', err);
-    }
+export const saveTransportLead = async (lead: TransportLead, endpointUrl?: string) => {
+  validateTransportLead(lead);
+
+  // 1. Supabase Insert (Primary)
+  try {
+    const { error } = await supabase.from('leads').insert({
+      user_id: null, // or auth user id if available
+      full_name: lead.guest_name,
+      phone: lead.guest_phone,
+      city: lead.city,
+      service_type: 'TRANSPORT',
+      status: lead.status || 'new',
+      details: {
+        email: lead.guest_email,
+        pickup: lead.pickup_location,
+        dropoff: lead.dropoff_location,
+        date: lead.date_needed,
+        time: lead.time_needed,
+        passengers: lead.passengers,
+        budget: lead.budget_ngn,
+        notes: lead.notes,
+        vehicle_id: (lead as any).vehicle_id, // Ensure TS compliance or cast
+        vendor_id: lead.vendor_id
+      }
+    });
+
+    if (error) throw error;
+    if (isDevelopment()) console.log('✅ Lead saved to Supabase');
+
+  } catch (sbError) {
+    console.warn('⚠️ Supabase insert failed, falling back to local storage', sbError);
+    // 2. Local Storage Fallback
+    const existingLeads = JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
+    existingLeads.push(lead);
+    localStorage.setItem('umunna_transport_leads', JSON.stringify(existingLeads));
   }
 };
 
@@ -180,9 +250,9 @@ export const exportLeadsToCSV = () => {
   if (leads.length === 0) return;
 
   const columns = [
-    'lead_id', 'created_at', 'guest_name', 'guest_phone', 'guest_email', 'city', 'property_id', 
-    'service_type', 'service_id', 'vendor_id', 'pickup_location', 'dropoff_location', 
-    'date_needed', 'time_needed', 'passengers', 'budget_ngn', 'notes', 'status', 
+    'lead_id', 'created_at', 'guest_name', 'guest_phone', 'guest_email', 'city', 'property_id',
+    'service_type', 'service_id', 'vendor_id', 'pickup_location', 'dropoff_location',
+    'date_needed', 'time_needed', 'passengers', 'budget_ngn', 'notes', 'status',
     'assigned_to', 'whatsapp_click_url'
   ];
 
@@ -213,111 +283,38 @@ export const buildTransportWhatsAppLink = (params: {
 }): string => {
   const whatsappNumber = (params.vendorWhatsapp || params.fallbackWhatsapp).replace(/\D/g, '');
   let message = params.template || "Hello, I'm interested in a transport service.";
-  
+
   const details = `\n\nDetails:\nName: ${params.formValues.guest_name}\nPhone: ${params.formValues.guest_phone}\nService: ${params.formValues.service_type}\nCity: ${params.formValues.city}\nPickup: ${params.formValues.pickup_location}\nDate: ${params.formValues.date_needed}\nNotes: ${params.formValues.notes}`;
-  
+
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message + details)}`;
 };
 
 export const getTransportVendors = (data: AppData): TransportVendor[] => {
-  return (data.transport_vendors || [])
+  const vendors = cachedTransportData?.vendors || data.transport_vendors || [];
+  return vendors
     .filter(v => v.is_active)
     .sort((a, b) => a.sort_order - b.sort_order);
 };
 
 export const getVehicleFleet = (data: AppData): TransportVehicle[] => {
-  return data.transport_vehicles && data.transport_vehicles.length > 0 
-    ? data.transport_vehicles.sort((a, b) => a.sort_order - b.sort_order)
-    : [
-    {
-      vehicle_id: "UMRV_001",
-      vendor_id: "UMR_001",
-      vehicle_type: "SUV",
-      make_model: "Toyota Prado",
-      category: "SUV",
-      seats: 7,
-      features: "Leather seats|AC|Airport-ready",
-      daily_rate_ngn: "From 320000",
-      image_url: "https://i.postimg.cc/FRsy8Drz/Save_Inta_com_488621108_18021914246690295_5868630574891386945_n.jpg",
-      is_available: "Yes",
-      sort_order: 1
-    },
-    {
-      vehicle_id: "UMRV_002",
-      vendor_id: "UMR_001",
-      vehicle_type: "Sedan",
-      make_model: "Toyota Camry",
-      category: "Sedan",
-      seats: 5,
-      features: "AC|Comfort ride",
-      daily_rate_ngn: "From 170000",
-      image_url: "https://i.postimg.cc/nLFLL99Z/toyota-camry-silver.jpg",
-      is_available: "Yes",
-      sort_order: 2
-    },
-    {
-      vehicle_id: "UMRV_003",
-      vendor_id: "UMR_001",
-      vehicle_type: "Bus",
-      make_model: "Hiace Bus",
-      category: "Van",
-      seats: 14,
-      features: "Group movement|AC optional",
-      daily_rate_ngn: "From 320000",
-      image_url: "https://i.postimg.cc/VNh5HL5w/haice.jpg",
-      is_available: "Yes",
-      sort_order: 3
-    },
-    {
-      vehicle_id: "UMRV_004",
-      vendor_id: "UMR_001",
-      vehicle_type: "Escort Car",
-      make_model: "Toyota Hilux",
-      category: "Escort",
-      seats: 5,
-      features: "Convoy lead/support",
-      daily_rate_ngn: "From 320000",
-      image_url: "https://i.postimg.cc/Vk1nfsq9/hilux.jpg",
-      is_available: "Yes",
-      sort_order: 4
-    },
-    {
-      vehicle_id: "UMRV_005",
-      vendor_id: "UMR_001",
-      vehicle_type: "SEINNA",
-      make_model: "Toyota Seinna",
-      category: "Van",
-      seats: 6,
-      features: "AC|Comfort ride",
-      daily_rate_ngn: "From 320000",
-      image_url: "https://i.postimg.cc/c41ZwGL4/Rob-and-Kerri-s-new-Toyota-Sienna.jpg",
-      is_available: "Check Availability",
-      sort_order: 5
-    },
-    {
-      vehicle_id: "UMRV_006",
-      vendor_id: "UMR_001",
-      vehicle_type: "Bombardier Global 8000",
-      make_model: "Bombardier Global 8000",
-      category: "private jet",
-      seats: 8,
-      features: "Premium",
-      daily_rate_ngn: "Premium",
-      image_url: "https://i.postimg.cc/hvPp51CH/PRIVATE_JET.jpg https://i.postimg.cc/y8wp89dz/CHAMGNE_PJ.jpg",
-      is_available: "Yes",
-      sort_order: 6
-    }
-  ].sort((a, b) => a.sort_order - b.sort_order);
+  const vehicles = cachedTransportData?.vehicles || data.transport_vehicles || [];
+  return vehicles.sort((a, b) => a.sort_order - b.sort_order);
 };
 
-export const extractVehiclePrice = (priceStr: string): string => {
-  if (!priceStr || priceStr.toLowerCase() === 'premium') return 'Premium';
-  const match = priceStr.match(/\d+/);
-  return match ? `₦${parseInt(match[0]).toLocaleString()}/day` : priceStr;
+export const extractVehiclePrice = (priceStr: string | number | null | undefined): string => {
+  if (priceStr === null || priceStr === undefined || priceStr === '') return 'Quote';
+  const str = String(priceStr);
+  if (str.toLowerCase() === 'premium') return 'Premium';
+
+  const match = str.match(/\d+/);
+  return match ? `₦${parseInt(match[0]).toLocaleString()}/day` : str;
 };
 
-export const splitVehicleImages = (imageUrl: string): string[] => {
-  if (!imageUrl) return [];
+export const splitVehicleImages = (imageUrl: string | null | undefined): string[] => {
+  if (!imageUrl || typeof imageUrl !== 'string') return [];
+  if (imageUrl.includes('|')) {
+    return imageUrl.split('|').map(s => s.trim()).filter(s => s.startsWith('http'));
+  }
   return imageUrl.split(/[\t\s,]+/).filter(url => url.startsWith('http'));
 };
 
@@ -332,8 +329,8 @@ export const getBestServiceForVehicle = (vehicle: TransportVehicle): string => {
 export const getBestTransportVendor = (data: AppData, city: string, serviceType: string): TransportVendor | null => {
   const normalizedCity = city.toLowerCase().trim();
   const activeVendors = getTransportVendors(data);
-  
-  const matches = activeVendors.filter(v => 
+
+  const matches = activeVendors.filter(v =>
     v.coverage_cities.some(c => c.toLowerCase().trim() === normalizedCity) &&
     v.service_types.some(s => s.toLowerCase().trim() === serviceType.toLowerCase().trim())
   );
@@ -342,13 +339,14 @@ export const getBestTransportVendor = (data: AppData, city: string, serviceType:
 };
 
 export const getVehiclesByVendor = (data: AppData, vendorId: string): TransportVehicle[] => {
-  return (data.transport_vehicles || [])
+  const vehicles = cachedTransportData?.vehicles || data.transport_vehicles || [];
+  return vehicles
     .filter(v => v.vendor_id === vendorId)
     .sort((a, b) => a.sort_order - b.sort_order);
 };
 
 export const buildVehicleWhatsAppUrl = (
-  vendor: TransportVendor, 
+  vendor: TransportVendor,
   vehicle: TransportVehicle,
   city: string
 ): string => {
@@ -367,44 +365,64 @@ export const extractPrice = (priceStr: string | number): string => {
   if (typeof priceStr === 'number') return `₦${priceStr.toLocaleString()}`;
   if (!priceStr) return "Quote";
   if (priceStr.toLowerCase() === 'premium') return "Premium";
-  
-  // Handle strings like "Starting from 100000" or "STARTING FROM 300000"
+
   const match = priceStr.match(/\d+/);
   if (match) {
     const amount = parseInt(match[0]).toLocaleString();
     return `Starting from ₦${amount}`;
   }
-  
+
   return priceStr;
 };
 
 export const getActiveTransportVendorsByCity = (data: AppData, city: string): TransportVendor[] => {
   const normalizedCity = city.toLowerCase().trim();
-  return getTransportVendors(data).filter(v => 
+  return getTransportVendors(data).filter(v =>
     v.coverage_cities.some(c => c.toLowerCase().trim() === normalizedCity)
   );
 };
 
-export const getFoodVendors = (): FoodVendor[] => [
-  {
-    vendor_id: "V_001",
-    name: "Judith Amazing Kitchen",
-    description: "Authentic local delicacies delivered to your stay across Asaba, Benin, and Awka.",
-    menu_url: "https://drive.google.com/drive/folders/1a63MYdjZ7XP1JsFqVuJfldByca18OQ0D?usp=drive_link"
+// --- FOOD HELPERS ---
+
+export const getFoodVendors = (data?: AppData): FoodVendor[] => {
+  // Use passed data, or global cache, or empty
+  const source = data || appData;
+  if (source && (source as any).food_vendors) return (source as any).food_vendors;
+  return [];
+};
+
+export const getFoodVendorById = (vendorId: string): FoodVendor | undefined => {
+  return getFoodVendors().find(v => v.vendor_id === vendorId);
+};
+
+export const getDishesByVendor = (vendorId: string): Dish[] => {
+  if (appData && (appData as any).food_items) {
+    // Assuming food_items might link to vendor? 
+    // The interface Dish in types.ts doesn't explicitly show vendor_id, 
+    // but typically it should. If not, we return basic filtering if possible or just all items (if menu is global/small)
+    // For now returning all items as 'Judith's Kitchen' implies single vendor mostly.
+    return (appData as any).food_items;
   }
-];
+  return [];
+};
 
 export const getJudithMenu = (): Dish[] => {
-  return [
-    { dish_id: "JAK_002", dish_name: "Jollof Rice & Diced Chicken", description: "Rich Jollof rice served with spicy diced chicken and plantains.", price_ngn: 7500, image_url: "https://i.postimg.cc/GmkJdbL4/Jollof-rice-chicken-and-diced-plantains-).jpg", category: "Main Course", is_available: "Yes", sort_order: 1 },
-    { dish_id: "JAK_003", dish_name: "Peppered Fish", description: "Freshly grilled fish coated with a spicy African pepper sauce.", price_ngn: 13000, image_url: "https://i.postimg.cc/SKX4nQs8/fish-pepper-tilapia.jpg", category: "Main Course", is_available: "Yes", sort_order: 2 },
-    { dish_id: "JAK_004", dish_name: "Stew Jollof (Family Tray)", description: "Large tray of special Jollof rice with premium beef stew.", price_ngn: 50000, image_url: "https://i.postimg.cc/7ZMQHFwv/stew-jollof-wholesale.jpg", category: "Platters", is_available: "Yes", sort_order: 3 },
-    { dish_id: "JAK_006", dish_name: "Rich Egusi Soup", description: "Traditional melon seed soup with assorted meat and fish.", price_ngn: 2500, image_url: "https://i.postimg.cc/257wFrMx/Egusi-soup.jpg", category: "Soups", is_available: "Yes", sort_order: 4 },
-    { dish_id: "JAK_007", dish_name: "Okra Soup", description: "Slimy okra soup with fresh seafood and traditional spices.", price_ngn: 3000, image_url: "https://i.postimg.cc/vHn5tG6f/Okra-Soup.jpg", category: "Soups", is_available: "Yes", sort_order: 5 },
-    { dish_id: "JAK_008", dish_name: "White Soup (Ofe Nsala)", description: "Spicy yam-thickened soup, a signature Igbo delicacy.", price_ngn: 10500, image_url: "https://i.postimg.cc/xCqsPqHz/White-soup.jpg", category: "Soups", is_available: "Yes", sort_order: 6 },
-    { dish_id: "JAK_012", dish_name: "Moimoi Elewe", description: "Steamed bean pudding wrapped in local leaves for extra flavor.", price_ngn: 2000, image_url: "https://i.postimg.cc/tJZWfjSL/Moi-Moi-Elewe.jpg", category: "Sides", is_available: "Yes", sort_order: 7 },
-    { dish_id: "JAK_013", dish_name: "Fried Plantain", description: "Sweet, ripened plantains fried to golden perfection.", price_ngn: 1000, image_url: "https://i.postimg.cc/JzcJSKxh/Plantain-4-ja1w7o.webp", category: "Sides", is_available: "Yes", sort_order: 8 }
-  ];
+  if (appData && (appData as any).food_items) return (appData as any).food_items;
+  return [];
 };
 
 export const RAW_DATA = { whatsapp_main_number: "2347048033575" };
+
+export const getStoredLeads = () => {
+  return JSON.parse(localStorage.getItem('umunna_transport_leads') || '[]');
+};
+
+// --- DEBUG / VERIFICATION HELPERS ---
+if (typeof window !== 'undefined') {
+  (window as any).__dataStore = {
+    clearCache: clearCache,
+    getStoredLeads: getStoredLeads,
+    getTransportCache: () => cachedTransportData,
+    isCacheValid: isCacheValid
+  };
+}

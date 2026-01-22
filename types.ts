@@ -10,6 +10,21 @@ export interface Photo {
   video_url?: string | null;
 }
 
+export interface Amenity {
+  id: string;
+  name: string;
+  category: string;
+  sort_rank: number;
+  icon_name: string;
+}
+
+export interface PropertyAmenity {
+  property_id: string;
+  amenity_id: string;
+  is_verified: boolean;
+  amenity: Amenity;
+}
+
 export interface Property {
   property_id: string;
   name: string;
@@ -44,10 +59,10 @@ export interface TransportService {
   starting_price_ngn: string | number;
   pricing_unit: string;
   lead_time_hours: number;
-  includes: string; 
-  excludes: string; 
-  available_24_7: string; 
-  is_active: string; 
+  includes: string;
+  excludes: string;
+  available_24_7: string;
+  is_active: string;
   sort_order: number;
 }
 
@@ -96,7 +111,7 @@ export interface Dish {
   description: string;
   image_url: string;
   price_ngn: number;
-  is_available: string; 
+  is_available: string;
   category: string;
   sort_order: number;
 }
@@ -141,7 +156,10 @@ export interface AppData {
   transport_services: TransportService[];
   transport_vendors: TransportVendor[];
   transport_vehicles: TransportVehicle[];
+  food_vendors?: FoodVendor[];
+  food_items?: Dish[];
+  amenities_master?: Amenity[];
   policies_global: any;
 }
 
-export type View = 'home' | 'stays' | 'services' | 'host' | 'property-detail' | 'food' | 'transport';
+export type View = 'home' | 'stays' | 'services' | 'host' | 'property-detail' | 'food' | 'transport' | 'profile' | 'favorites';

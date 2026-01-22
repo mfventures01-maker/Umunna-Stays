@@ -25,12 +25,26 @@
       "bedrooms": 4,
       "nightly_rate": 500000,
       "hero_image_url": "https://i.postimg.cc/FRLmJ1Fc/4_bed_living_space.jpg",
-      "badges": ["Smart Home", "Cinema", "PS5", "Jacuzzi", "24/7 Power", "Safe Neighborhood"],
+      "badges": [
+        "Smart Home",
+        "Cinema",
+        "PS5",
+        "Jacuzzi",
+        "24/7 Power",
+        "Safe Neighborhood"
+      ],
       "about_this_space": "Our property offers one of the best in its class, not only at a price point that maximizes value but also in terms of location, design and amenities. Strategically located in one of the few upscale neighborhood behind Wellspring university on Ihriri, you are assured of a safe, private, comfortable yet enjoyable stay when you book with us.\n\nOur home is a four (4) bedroom duplex with 4.5 baths. All 4 bedrooms are ensuite with private bathrooms. Rooms also come standard with Smart TVs, Bose soundbar 700 and bass module 700 premium sound systems, Yamaha TSR receiver 5.1.2 capable systems. They also come with Amazon Alexa voice control devices for voice automation, wifi smoke detectors, smart switches, wardrobes, artistic wall arts and the best cozy feeling you've ever experienced.\n\nRegarding other spaces, our home comes with a Sport's lounge with a snooker board, smart tv and Yamaha RX V481 5.1 channel receiver. Our living room comes equipped with a 85 inch smart tv paired with dolby atmos enabled Bose Soundbar 900. Our kitchen comes standard with all appliances and we have an in house LG washer/dryer. Home is also backed with a 12kva SRNE hybrid inverter, 32KWH batteries and a generator. We also have a cinema room which comes standard with the latest UST (Ultra Short Throw) projector from Hisense. Finally our home comes with a private game room with a wall mounted Sony Playstation 5 with two (2) controllers.",
       "is_featured": true,
       "display_order": 1,
-      "host": { "host_name": "RAPHAEL", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nate Signature Stays in Benin City for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "RAPHAEL",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nate Signature Stays in Benin City for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_002",
@@ -42,12 +56,24 @@
       "bedrooms": 12,
       "nightly_rate": 150000,
       "hero_image_url": "https://i.postimg.cc/8cbhpkCN/enclave_apartments.jpg",
-      "badges": ["Private Entrance", "Secure", "Modern Living", "Concierge"],
+      "badges": [
+        "Private Entrance",
+        "Secure",
+        "Modern Living",
+        "Concierge"
+      ],
       "about_this_space": "Private short-stay apartments in Asaba with easy city access and a calm, comfortable setup. Curated short-let stay offering privacy, comfort, and easy access to the city. Sitting room is a modern living space for luxury short-stay guests and business travel. Secure and private apartment accommodation with night views.",
       "is_featured": true,
       "display_order": 2,
-      "host": { "host_name": "Umunna", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Enclave 02 in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Enclave 02 in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_003",
@@ -59,12 +85,24 @@
       "bedrooms": 2,
       "nightly_rate": 260000,
       "hero_image_url": "https://i.postimg.cc/c1gYGKYj/AZRRAAOUTT.jpg",
-      "badges": ["Modern", "Business Stay", "24/7 Power", "Anambra Stays"],
+      "badges": [
+        "Modern",
+        "Business Stay",
+        "24/7 Power",
+        "Anambra Stays"
+      ],
       "about_this_space": "Modern short-stay apartment in Awka designed for comfort, privacy, and convenience. Ideal for business trips and weekend getaways. Clean, stylish living space for a private short-let apartment stay. Cozy short-stay bedroom with hotel-style comfort and guest privacy.",
       "is_featured": true,
       "display_order": 3,
-      "host": { "host_name": "Umunna", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Azraa 2 in Awka for [dates].", "minimum_stay": 2 }
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Azraa 2 in Awka for [dates].",
+        "minimum_stay": 2
+      }
     },
     {
       "property_id": "UMUNNA_004",
@@ -76,12 +114,24 @@
       "bedrooms": 4,
       "nightly_rate": 160000,
       "hero_image_url": "https://i.postimg.cc/7Zwy0WkM/9a_apt_exterior.avif",
-      "badges": ["Secure", "Private", "Guest Ready", "Bright Space"],
+      "badges": [
+        "Secure",
+        "Private",
+        "Guest Ready",
+        "Bright Space"
+      ],
       "about_this_space": "Nine A Apartment in Asaba offers private short-stay accommodation with secure surroundings. Modern short-let stay designed for comfort and privacy. Bright living space for a curated short-stay apartment experience and comfortable short-stay bedrooms with restful setups for guests.",
       "is_featured": false,
       "display_order": 4,
-      "host": { "host_name": "Umunna", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nine A Apartment in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nine A Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_005",
@@ -93,12 +143,24 @@
       "bedrooms": 3,
       "nightly_rate": 200000,
       "hero_image_url": "https://i.postimg.cc/0Q3tnbKd/elk_exterior.jpg",
-      "badges": ["PS5", "Family Friendly", "Free Wi-Fi", "Outdoor Space"],
+      "badges": [
+        "PS5",
+        "Family Friendly",
+        "Free Wi-Fi",
+        "Outdoor Space"
+      ],
       "about_this_space": "Step into this charming 3-bedroom getaway, where comfort meets style. Ideal for families, friends, or business travelers, this home boasts a bright and airy living space, a fully stocked kitchen, and cozy bedrooms for restful nights. Enjoy some fun downtime with the PS5 gaming console or relax in the outdoor space. Conveniently located near attractions, restaurants, and shops, this home offers modern amenities, free Wi-Fi, and thoughtful touches throughout.",
       "is_featured": false,
       "display_order": 5,
-      "host": { "host_name": "Oluchukwu J", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Elkridge Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Oluchukwu J",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Elkridge Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_006",
@@ -110,12 +172,24 @@
       "bedrooms": 3,
       "nightly_rate": 220000,
       "hero_image_url": "https://i.postimg.cc/ryrdYB2M/hamaboi_living_room_1.avif",
-      "badges": ["Presidential", "Executive", "Refined Living", "Spacious"],
+      "badges": [
+        "Presidential",
+        "Executive",
+        "Refined Living",
+        "Spacious"
+      ],
       "about_this_space": "Step into elegance at the Presidential Apartment. This expansive 3-bedroom apartment is designed for guests who appreciate space, comfort, and refined living. Perfect for families, executives, or long stays, the Presidential offers beautifully furnished rooms, a spacious living area, and a serene ambiance that feels like home—only better. Whether you’re visiting for business or leisure, this apartment delivers a truly presidential experience in the heart of Asaba.",
       "is_featured": true,
       "display_order": 6,
-      "host": { "host_name": "Henry", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Hamaboi Presidential for [dates].", "minimum_stay": 3 }
+      "host": {
+        "host_name": "Henry",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Hamaboi Presidential for [dates].",
+        "minimum_stay": 3
+      }
     },
     {
       "property_id": "UMUNNA_007",
@@ -127,12 +201,24 @@
       "bedrooms": 4,
       "nightly_rate": 450000,
       "hero_image_url": "https://i.postimg.cc/bNyVqcHZ/beach_front_exterior.avif",
-      "badges": ["Waterfront", "Pool Side", "Solar Power", "Pool Table"],
+      "badges": [
+        "Waterfront",
+        "Pool Side",
+        "Solar Power",
+        "Pool Table"
+      ],
       "about_this_space": "Relax with the whole family at this peaceful place to stay. Private waterfront short-stay villa for families and group trips. Features a serene riverside outdoor space for a private short-stay villa experience. Eco-friendly setup with solar power backup. Pool table and games area available for leisure during your stay.",
       "is_featured": false,
       "display_order": 7,
-      "host": { "host_name": "luxury.ng", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in 4‑Bedroom Waterfront Villa in Asaba for [dates].", "minimum_stay": 3 }
+      "host": {
+        "host_name": "luxury.ng",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in 4‑Bedroom Waterfront Villa in Asaba for [dates].",
+        "minimum_stay": 3
+      }
     },
     {
       "property_id": "UMUNNA_008",
@@ -144,12 +230,24 @@
       "bedrooms": 4,
       "nightly_rate": 500000,
       "hero_image_url": "https://i.postimg.cc/Dyfn1jsr/aniyah_exterior.avif",
-      "badges": ["Poolside", "GRA Location", "Waterfront Garden", "Executive"],
+      "badges": [
+        "Poolside",
+        "GRA Location",
+        "Waterfront Garden",
+        "Executive"
+      ],
       "about_this_space": "Aniyah’s Home is rightly situated in one of the highbrow area of Asaba and is within 7 minutes drive from Asaba International Airport, 4 minutes to ShopRite Asaba Mall. Features a beautiful poolside, waterfront garden, and spacious living rooms designed for elite comfort and luxury short-stay experiences.",
       "is_featured": true,
       "display_order": 8,
-      "host": { "host_name": "Fidelis", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Aniyah’s Home (GRA) in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Fidelis",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Aniyah’s Home (GRA) in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_009",
@@ -161,12 +259,24 @@
       "bedrooms": 12,
       "nightly_rate": 200000,
       "hero_image_url": "https://i.postimg.cc/v8qHvMm2/olive_branch_exterior22.avif",
-      "badges": ["Highbrow Area", "Near Airport", "Modern", "Group Stay"],
+      "badges": [
+        "Highbrow Area",
+        "Near Airport",
+        "Modern",
+        "Group Stay"
+      ],
       "about_this_space": "Olive Branch Apartment is in a highbrow area of Asaba—about 7 minutes to Asaba International Airport, 4 minutes to ShopRite Asaba Mall, and near Asaba Specialist Hospital. Features a bright living room, guest-ready kitchen, and comfortable bedrooms for large group short-stays.",
       "is_featured": false,
       "display_order": 9,
-      "host": { "host_name": "Olive", "host_whatsapp": "2347036095489", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Olive Branch Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Olive",
+        "host_whatsapp": "2347036095489",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Olive Branch Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_010",
@@ -178,12 +288,24 @@
       "bedrooms": 25,
       "nightly_rate": 100000,
       "hero_image_url": "https://i.postimg.cc/nhj4sVcN/fobbs_apartments_and_suites_ng_asaba_ep_49006928_0.jpg",
-      "badges": ["Hotel Suite", "Poolside Bar", "Breakfast", "Concierge"],
+      "badges": [
+        "Hotel Suite",
+        "Poolside Bar",
+        "Breakfast",
+        "Concierge"
+      ],
       "about_this_space": "Fobbs Apartments and Suites offers premium hotel-style living with suite amenities. Relax in a hotel suite or executive living area. Features a poolside bar and complimentary breakfast services for all guests.",
       "is_featured": true,
       "display_order": 10,
-      "host": { "host_name": "Fobbs Stays", "host_whatsapp": "2349077917808", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Fobbs Apartments and Suites in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Fobbs Stays",
+        "host_whatsapp": "2349077917808",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Fobbs Apartments and Suites in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_011",
@@ -195,12 +317,24 @@
       "bedrooms": 10,
       "nightly_rate": 100000,
       "hero_image_url": "https://i.postimg.cc/PxLqzgHm/LIVINMG_ROOM.jpg",
-      "badges": ["Duplex", "Jacuzzi", "Premium Furniture", "Modern"],
+      "badges": [
+        "Duplex",
+        "Jacuzzi",
+        "Premium Furniture",
+        "Modern"
+      ],
       "about_this_space": "Lexaren Apartments offers duplex living with premium finishes. Features include a spacious living room, duplex stairs leading to upstairs suites, a relaxing jacuzzi, and well-furnished bedrooms for comfortable short-stays in Asaba.",
       "is_featured": false,
       "display_order": 11,
-      "host": { "host_name": "Umunna", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Lexaren Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Lexaren Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_012",
@@ -212,12 +346,24 @@
       "bedrooms": 1,
       "nightly_rate": 180000,
       "hero_image_url": "https://i.postimg.cc/MTjWj10N/SUTTING_ROOM.jpg",
-      "badges": ["Private Balcony", "Terrace", "Quiet", "City Access"],
+      "badges": [
+        "Private Balcony",
+        "Terrace",
+        "Quiet",
+        "City Access"
+      ],
       "about_this_space": "Dejudex Apartment is a private apartment in Asaba, ideal for guests seeking comfort and quiet. Features include a cozy sitting room, private balcony, terrace outdoor space, and well-appointed bedrooms.",
       "is_featured": false,
       "display_order": 12,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Dejudex Apartment in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Dejudex Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_014",
@@ -229,12 +375,24 @@
       "bedrooms": 2,
       "nightly_rate": 90000,
       "hero_image_url": "https://i.postimg.cc/YSWV6RVW/SITTING_RROM_2.jpg",
-      "badges": ["Clean Basics", "Affordable", "Secure", "Convenient"],
+      "badges": [
+        "Clean Basics",
+        "Affordable",
+        "Secure",
+        "Convenient"
+      ],
       "about_this_space": "Abijudex is a private apartment in Asaba designed for simple, comfortable short stays. Clean basics for guests who want value without stress. Features multiple sitting rooms and cozy bedrooms.",
       "is_featured": false,
       "display_order": 14,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Abijudex in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Abijudex in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_015",
@@ -246,12 +404,24 @@
       "bedrooms": 2,
       "nightly_rate": 90000,
       "hero_image_url": "https://i.postimg.cc/7PfQz7sF/OUTDOOR.jpg",
-      "badges": ["Outdoor Patio", "Dining Area", "Family Friendly", "Secure"],
+      "badges": [
+        "Outdoor Patio",
+        "Dining Area",
+        "Family Friendly",
+        "Secure"
+      ],
       "about_this_space": "Judexia Apartment in Asaba features a private outdoor area and comfortable lounge space for premium short-stays. Ideal for families, couples, and business travelers. Includes a guest-ready cooking space and dining area.",
       "is_featured": false,
       "display_order": 15,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Judexia Apartment in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Judexia Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_016",
@@ -263,12 +433,24 @@
       "bedrooms": 2,
       "nightly_rate": 110000,
       "hero_image_url": "https://i.postimg.cc/BnGDq9Ph/3_BED_DUPLEX_STAIR.jpg",
-      "badges": ["Loft Style", "Dining Area", "Modern", "Serviced"],
+      "badges": [
+        "Loft Style",
+        "Dining Area",
+        "Modern",
+        "Serviced"
+      ],
       "about_this_space": "Modern serviced short-stay apartment in Asaba for comfortable stays. Features loft-style duplex stairs, an inviting sitting room, dining area, and multiple bedrooms designed for the modern guest.",
       "is_featured": false,
       "display_order": 16,
-      "host": { "host_name": "Umunna", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Umunna Loft in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Umunna",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Umunna Loft in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_017",
@@ -280,12 +462,24 @@
       "bedrooms": 4,
       "nightly_rate": 300000,
       "hero_image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg",
-      "badges": ["Games Lounge", "Snooker", "City Stay", "Spacious"],
+      "badges": [
+        "Games Lounge",
+        "Snooker",
+        "City Stay",
+        "Spacious"
+      ],
       "about_this_space": "Ulo City Apartments in Asaba features modern serviced short-stay suites. Includes a dedicated games lounge with a snooker board for entertainment, a bright sitting room, and multiple bedrooms.",
       "is_featured": false,
       "display_order": 17,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Ulo City Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Ulo City Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_018",
@@ -297,12 +491,24 @@
       "bedrooms": 4,
       "nightly_rate": 340000,
       "hero_image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg",
-      "badges": ["Poolside", "Games Lounge", "Corridor", "Premium"],
+      "badges": [
+        "Poolside",
+        "Games Lounge",
+        "Corridor",
+        "Premium"
+      ],
       "about_this_space": "Gudjud Apartments in Asaba offers a premium lifestyle experience. Features include a beautiful poolside area, a games lounge, spacious corridors, and beautifully appointed suites for a luxury short-let stay.",
       "is_featured": false,
       "display_order": 18,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Gudjud Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Gudjud Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_019",
@@ -314,12 +520,24 @@
       "bedrooms": 3,
       "nightly_rate": 282000,
       "hero_image_url": "https://i.postimg.cc/sxw9N3cV/BEDROOM22.jpg",
-      "badges": ["Outdoor Pool", "Art Decor", "Dining", "Luxury"],
+      "badges": [
+        "Outdoor Pool",
+        "Art Decor",
+        "Dining",
+        "Luxury"
+      ],
       "about_this_space": "Pearl City Apartment in Asaba is a modern serviced short-stay residence. Features include a beautiful outdoor pool, elegant art decor throughout the sitting room, and a designated dining area for family or group meals.",
       "is_featured": false,
       "display_order": 19,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Pearl City Apartment in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Pearl City Apartment in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     },
     {
       "property_id": "UMUNNA_020",
@@ -331,191 +549,1509 @@
       "bedrooms": 1,
       "nightly_rate": 195000,
       "hero_image_url": "https://i.postimg.cc/2jGJ1KbX/LIVING_ROOM.jpg",
-      "badges": ["Gym", "Full Sitting Room", "Indoor Lounge", "Modern"],
+      "badges": [
+        "Gym",
+        "Full Sitting Room",
+        "Indoor Lounge",
+        "Modern"
+      ],
       "about_this_space": "Selina Spice Apartments in Asaba features a private gym for health-conscious guests. Offers a full sitting room, indoor lounge areas, and modern bedroom suites for a comfortable and active short-stay experience.",
       "is_featured": false,
       "display_order": 20,
-      "host": { "host_name": "Judith", "host_whatsapp": "2347048033575", "host_photo_url": "" },
-      "booking": { "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Selina Spice Apartments in Asaba for [dates].", "minimum_stay": 1 }
+      "host": {
+        "host_name": "Judith",
+        "host_whatsapp": "2347048033575",
+        "host_photo_url": ""
+      },
+      "booking": {
+        "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Selina Spice Apartments in Asaba for [dates].",
+        "minimum_stay": 1
+      }
     }
   ],
   "photo_gallery": {
     "photos": [
-      { "photo_id": "UM1_P1", "property_id": "UMUNNA_001", "sequence_order": 1, "image_url": "https://i.postimg.cc/3xz3br6K/Gemini_Generated_Image_f20z6if20z6if20z.png", "caption": "Living Space", "alt_text": "Living room at Nate Signature Stays", "room_category": "Living Room" },
-      { "photo_id": "UM1_P2", "property_id": "UMUNNA_001", "sequence_order": 2, "image_url": "https://i.postimg.cc/2yFvzcnD/2_bedliving_space.jpg", "caption": "Bedroom", "alt_text": "Master bedroom at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P3", "property_id": "UMUNNA_001", "sequence_order": 3, "image_url": "https://i.postimg.cc/h4JY1HqN/sound_bar_bedroom.jpg", "caption": "2nd Bedroom", "alt_text": "Second bedroom with soundbar at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P4", "property_id": "UMUNNA_001", "sequence_order": 4, "image_url": "https://i.postimg.cc/sXRksfFQ/big_bed.jpg", "caption": "3rd Bedroom", "alt_text": "Third bedroom at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P5", "property_id": "UMUNNA_001", "sequence_order": 5, "image_url": "https://i.postimg.cc/RF5BhQt3/another_room.jpg", "caption": "4th Bedroom", "alt_text": "Fourth bedroom at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P6", "property_id": "UMUNNA_001", "sequence_order": 6, "image_url": "https://i.postimg.cc/R0FdVHSj/jacuzzi.jpg", "caption": "Jacuzzi", "alt_text": "Jacuzzi at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P7", "property_id": "UMUNNA_001", "sequence_order": 7, "image_url": "https://i.postimg.cc/V6mVZjLj/snooker_space.avif", "caption": "Snooker Lounge", "alt_text": "Snooker space at Nate Signature Stays", "room_category": "Bedroom" },
-      { "photo_id": "UM1_P8", "property_id": "UMUNNA_001", "sequence_order": 8, "image_url": "https://i.postimg.cc/8kqnqQC3/game_room_airbnb.avif", "caption": "Game Room", "alt_text": "PS4/PS5 game room at Nate Signature Stays", "room_category": "Kitchen" },
-      { "photo_id": "UM1_P9", "property_id": "UMUNNA_001", "sequence_order": 9, "image_url": "https://i.postimg.cc/P5p9DvTC/cinema_projector.jpg", "caption": "Cinema", "alt_text": "Indoor cinema at Nate Signature Stays", "room_category": "Kitchen" },
-      { "photo_id": "UM1_P10", "property_id": "UMUNNA_001", "sequence_order": 10, "image_url": "https://i.postimg.cc/VNGC2wz4/kitchen_fittings.jpg", "caption": "Kitchen Fittings", "alt_text": "Premium kitchen fittings at Nate Signature Stays", "room_category": "Kitchen" },
-      { "photo_id": "UM1_P12", "property_id": "UMUNNA_001", "sequence_order": 12, "image_url": "https://i.postimg.cc/J7gQGNV0/board_games22.avif", "caption": "Board Games", "alt_text": "Board games lounge at Nate Signature Stays", "room_category": "Entertainment" },
-      { "photo_id": "UM1_P15", "property_id": "UMUNNA_001", "sequence_order": 15, "image_url": "https://i.postimg.cc/FRc9fGh4/board_game.jpg", "caption": "Dining", "alt_text": "Dining area at Nate Signature Stays", "room_category": "Dining" },
-      { "photo_id": "UM1_P18", "property_id": "UMUNNA_001", "sequence_order": 18, "image_url": "https://i.postimg.cc/638MzGFL/mirrors.jpg", "caption": "Restroom", "alt_text": "Mirror area at Nate Signature Stays", "room_category": "Bathroom" },
-      { "photo_id": "UM2_P1", "property_id": "UMUNNA_002", "sequence_order": 1, "image_url": "https://i.postimg.cc/8cbhpkCN/enclave_apartments.jpg", "caption": "Outdoor", "alt_text": "Enclave outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM2_P2", "property_id": "UMUNNA_002", "sequence_order": 2, "image_url": "https://i.postimg.cc/1RvWq61D/enclave_outdoor.jpg", "caption": "Outside view", "alt_text": "Enclave exterior view", "room_category": "Exterior" },
-      { "photo_id": "UM2_P3", "property_id": "UMUNNA_002", "sequence_order": 3, "image_url": "https://i.postimg.cc/CLKQP7sn/enclave_indoors.jpg", "caption": "Sitting room", "alt_text": "Enclave sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM2_P4", "property_id": "UMUNNA_002", "sequence_order": 4, "image_url": "https://i.postimg.cc/kgnCrpDB/enclave_exterior.jpg", "caption": "Night view", "alt_text": "Enclave night view", "room_category": "Exterior" },
-      { "photo_id": "UM2_P5", "property_id": "UMUNNA_002", "sequence_order": 5, "image_url": "https://i.postimg.cc/FKzQzkyJ/enclave_sitting_room.jpg", "caption": "Lounge", "alt_text": "Enclave lounge", "room_category": "Living Room" },
-      { "photo_id": "UM2_P6", "property_id": "UMUNNA_002", "sequence_order": 6, "image_url": "https://i.postimg.cc/x8Dr6sWR/enclave_bedroom.jpg", "caption": "Bedroom", "alt_text": "Enclave bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM2_P7", "property_id": "UMUNNA_002", "sequence_order": 7, "image_url": "https://i.postimg.cc/xjMVX2zK/enclave_kitchen.jpg", "caption": "Kitchen", "alt_text": "Enclave kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM2_P8", "property_id": "UMUNNA_002", "sequence_order": 8, "image_url": "https://i.postimg.cc/NjNW3GWW/enclave_living_room.jpg", "caption": "Living room", "alt_text": "Enclave living room", "room_category": "Living Room" },
-      { "photo_id": "UM2_P9", "property_id": "UMUNNA_002", "sequence_order": 9, "image_url": "https://i.postimg.cc/yNkws4Kv/enclae_bathroom.jpg", "caption": "Bathroom", "alt_text": "Enclave bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM3_P1", "property_id": "UMUNNA_003", "sequence_order": 1, "image_url": "https://i.postimg.cc/c1gYGKYj/AZRRAAOUTT.jpg", "caption": "Outdoor", "alt_text": "Azraa outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM3_P2", "property_id": "UMUNNA_003", "sequence_order": 2, "image_url": "https://i.postimg.cc/MZbPRr31/azraa1.jpg", "caption": "Outside View", "alt_text": "Azraa exterior", "room_category": "Exterior" },
-      { "photo_id": "UM3_P3", "property_id": "UMUNNA_003", "sequence_order": 3, "image_url": "https://i.postimg.cc/g0sj3ph7/sittin_room_azraa.jpg", "caption": "Sitting Room", "alt_text": "Azraa sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM3_P4", "property_id": "UMUNNA_003", "sequence_order": 4, "image_url": "https://i.postimg.cc/gcShfVnH/azraa_living_room.jpg", "caption": "Lounge", "alt_text": "Azraa living room", "room_category": "Living Room" },
-      { "photo_id": "UM3_P5", "property_id": "UMUNNA_003", "sequence_order": 5, "image_url": "https://i.postimg.cc/BZM5JWwC/azraa2.jpg", "caption": "Bedroom", "alt_text": "Azraa bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM3_P6", "property_id": "UMUNNA_003", "sequence_order": 6, "image_url": "https://i.postimg.cc/ryPdhqP9/azraa_palour.jpg", "caption": "Suite", "alt_text": "Azraa suite", "room_category": "Bedroom" },
-      { "photo_id": "UM3_P7", "property_id": "UMUNNA_003", "sequence_order": 7, "image_url": "https://i.postimg.cc/QdWcgFNf/azraa_bathroom.jpg", "caption": "Bathroom", "alt_text": "Azraa bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM3_P8", "property_id": "UMUNNA_003", "sequence_order": 8, "image_url": "https://i.postimg.cc/KzsYs5JK/mirror_azraa_mirror.jpg", "caption": "Interior Detail", "alt_text": "Azraa interior detail", "room_category": "Interior Detail" },
-      { "photo_id": "UM3_P9", "property_id": "UMUNNA_003", "sequence_order": 9, "image_url": "https://i.postimg.cc/xTLzqW63/AZRAA_PLANT.jpg", "caption": "Decor", "alt_text": "Azraa decor", "room_category": "Interior Detail" },
-      { "photo_id": "UM3_P10", "property_id": "UMUNNA_003", "sequence_order": 10, "image_url": "https://i.postimg.cc/ZKNqVp39/AZRRAA_STAIRS.jpg", "caption": "Stairs", "alt_text": "Azraa stairway", "room_category": "Interior" },
-      { "photo_id": "UM4_P1", "property_id": "UMUNNA_004", "sequence_order": 1, "image_url": "https://i.postimg.cc/7Zwy0WkM/9a_apt_exterior.avif", "caption": "Exterior", "alt_text": "9A exterior", "room_category": "Exterior" },
-      { "photo_id": "UM4_P2", "property_id": "UMUNNA_004", "sequence_order": 2, "image_url": "https://i.postimg.cc/Kc3F2Tfn/9apt_exterior.avif", "caption": "Outside", "alt_text": "9A outside view", "room_category": "Exterior" },
-      { "photo_id": "UM4_P3", "property_id": "UMUNNA_004", "sequence_order": 3, "image_url": "https://i.postimg.cc/kGmS7mkL/nine_apartmentgs_living_room.avif", "caption": "Sitting Room", "alt_text": "9A sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM4_P4", "property_id": "UMUNNA_004", "sequence_order": 4, "image_url": "https://i.postimg.cc/m2T9qT3v/9apt_living_room2.avif", "caption": "Lounge", "alt_text": "9A lounge", "room_category": "Living Room" },
-      { "photo_id": "UM4_P6", "property_id": "UMUNNA_004", "sequence_order": 6, "image_url": "https://i.postimg.cc/pVJhKgNs/9apt_livin_rm3.avif", "caption": "Bedroom", "alt_text": "9A bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM4_P7", "property_id": "UMUNNA_004", "sequence_order": 7, "image_url": "https://i.postimg.cc/fRtRqPP6/9apt_living_rm4.avif", "caption": "Suite", "alt_text": "9A suite", "room_category": "Bedroom" },
-      { "photo_id": "UM4_P9", "property_id": "UMUNNA_004", "sequence_order": 9, "image_url": "https://i.postimg.cc/6pftPN0c/toilet_sittin.avif", "caption": "Bathroom", "alt_text": "9A bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM4_P10", "property_id": "UMUNNA_004", "sequence_order": 10, "image_url": "https://i.postimg.cc/26zmY9HD/9apt_kitchen.avif", "caption": "Kitchen", "alt_text": "9A kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM5_P1", "property_id": "UMUNNA_005", "sequence_order": 1, "image_url": "https://i.postimg.cc/0Q3tnbKd/elk_exterior.jpg", "caption": "Exterior", "alt_text": "Elkridge exterior", "room_category": "Exterior" },
-      { "photo_id": "UM5_P2", "property_id": "UMUNNA_005", "sequence_order": 2, "image_url": "https://i.postimg.cc/J4SpWVG9/elkridge_living_room.avif", "caption": "Living Room", "alt_text": "Elkridge living room", "room_category": "Living Room" },
-      { "photo_id": "UM5_P3", "property_id": "UMUNNA_005", "sequence_order": 3, "image_url": "https://i.postimg.cc/TYnkj2dV/elk_room_1.avif", "caption": "Lounge", "alt_text": "Elkridge lounge", "room_category": "Living Room" },
-      { "photo_id": "UM5_P4", "property_id": "UMUNNA_005", "sequence_order": 4, "image_url": "https://i.postimg.cc/CKxmVjj3/elk_rrooom_4.avif", "caption": "Seating Area", "alt_text": "Elkridge seating area", "room_category": "Living Room" },
-      { "photo_id": "UM5_P6", "property_id": "UMUNNA_005", "sequence_order": 6, "image_url": "https://i.postimg.cc/sx7JJKrv/elk_roommm_4.jpg", "caption": "Bedroom", "alt_text": "Elkridge bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM5_P7", "property_id": "UMUNNA_005", "sequence_order": 7, "image_url": "https://i.postimg.cc/FKVpcYD9/elkridge_full_kitchen.avif", "caption": "Full Kitchen", "alt_text": "Elkridge kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM5_P8", "property_id": "UMUNNA_005", "sequence_order": 8, "image_url": "https://i.postimg.cc/Xqmk3d7r/elkridge_bedroom_1.avif", "caption": "Primary Suite", "alt_text": "Elkridge suite", "room_category": "Bedroom" },
-      { "photo_id": "UM5_P9", "property_id": "UMUNNA_005", "sequence_order": 9, "image_url": "https://i.postimg.cc/SxpvH2TH/elk_bath3.jpg", "caption": "Bathroom", "alt_text": "Elkridge bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM5_P11", "property_id": "UMUNNA_005", "sequence_order": 11, "image_url": "https://i.postimg.cc/XvLKqTYN/elkridge_bedroom_2.avif", "caption": "2nd Bedroom", "alt_text": "Elkridge 2nd bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM5_P13", "property_id": "UMUNNA_005", "sequence_order": 13, "image_url": "https://i.postimg.cc/rsBx7TQZ/elk_rm3.jpg", "caption": "3rd Bedroom", "alt_text": "Elkridge 3rd bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM6_P1", "property_id": "UMUNNA_006", "sequence_order": 1, "image_url": "https://i.postimg.cc/ryrdYB2M/hamaboi_living_room_1.avif", "caption": "Main Lounge", "alt_text": "Hamaboi living room", "room_category": "Living Room" },
-      { "photo_id": "UM6_P2", "property_id": "UMUNNA_006", "sequence_order": 2, "image_url": "https://i.postimg.cc/t427xyWW/hamaboi_living_2.avif", "caption": "Living area", "alt_text": "Hamaboi living area", "room_category": "Living Room" },
-      { "photo_id": "UM6_P3", "property_id": "UMUNNA_006", "sequence_order": 3, "image_url": "https://i.postimg.cc/vmKB0zP2/hamaboi_bed_room.avif", "caption": "Bedroom", "alt_text": "Hamaboi bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM6_P4", "property_id": "UMUNNA_006", "sequence_order": 4, "image_url": "https://i.postimg.cc/bNRw78Cw/hamaboi_toilet.avif", "caption": "Bathroom", "alt_text": "Hamaboi bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM6_P5", "property_id": "UMUNNA_006", "sequence_order": 5, "image_url": "https://i.postimg.cc/N0Zs60MN/hamaboi_kitchen.avif", "caption": "Kitchen", "alt_text": "Hamaboi kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM6_P6", "property_id": "UMUNNA_006", "sequence_order": 6, "image_url": "https://i.postimg.cc/bNqzHWyw/hamaboi_bedroom.avif", "caption": "Suite", "alt_text": "Hamaboi suite", "room_category": "Bedroom" },
-      { "photo_id": "UM6_P7", "property_id": "UMUNNA_006", "sequence_order": 7, "image_url": "https://i.postimg.cc/zGc8NfT4/hamaboi_closet.avif", "caption": "Closet", "alt_text": "Hamaboi closet", "room_category": "Closet" },
-      { "photo_id": "UM6_P8", "property_id": "UMUNNA_006", "sequence_order": 8, "image_url": "https://i.postimg.cc/SRdbvQyf/hamaboi_222.avif", "caption": "Lounge view", "alt_text": "Hamaboi lounge", "room_category": "Living Room" },
-      { "photo_id": "UM7_P1", "property_id": "UMUNNA_007", "sequence_order": 1, "image_url": "https://i.postimg.cc/bNyVqcHZ/beach_front_exterior.avif", "caption": "Beachfront", "alt_text": "Villa exterior", "room_category": "Exterior" },
-      { "photo_id": "UM7_P2", "property_id": "UMUNNA_007", "sequence_order": 2, "image_url": "https://i.postimg.cc/mrCyQ8N0/bc_sitting_room.avif", "caption": "Sitting room", "alt_text": "Villa sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM7_P3", "property_id": "UMUNNA_007", "sequence_order": 3, "image_url": "https://i.postimg.cc/nrcWR63m/living_room_beach_front_44.avif", "caption": "Lounge", "alt_text": "Villa living room", "room_category": "Living Room" },
-      { "photo_id": "UM7_P4", "property_id": "UMUNNA_007", "sequence_order": 4, "image_url": "https://i.postimg.cc/rpx7KGdt/beach_side_riverfront.avif", "caption": "Waterfront", "alt_text": "Villa waterfront", "room_category": "Outdoor" },
-      { "photo_id": "UM7_P5", "property_id": "UMUNNA_007", "sequence_order": 5, "image_url": "https://i.postimg.cc/P5ZS4XdB/beach_out_door_solar_power.avif", "caption": "Eco Solar", "alt_text": "Villa solar", "room_category": "Exterior" },
-      { "photo_id": "UM7_P6", "property_id": "UMUNNA_007", "sequence_order": 6, "image_url": "https://i.postimg.cc/L5XyBjsP/beach_front_passage.avif", "caption": "Passage", "alt_text": "Villa passage", "room_category": "Interior" },
-      { "photo_id": "UM7_P7", "property_id": "UMUNNA_007", "sequence_order": 7, "image_url": "https://i.postimg.cc/ZnCcyZf5/beach_room.avif", "caption": "Bedroom", "alt_text": "Villa bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM7_P8", "property_id": "UMUNNA_007", "sequence_order": 8, "image_url": "https://i.postimg.cc/SQD77XCS/bchised_kitchen.avif", "caption": "Kitchen", "alt_text": "Villa kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM7_P9", "property_id": "UMUNNA_007", "sequence_order": 9, "image_url": "https://i.postimg.cc/c6Gn4NPS/beach_bathroom_22.avif", "caption": "Bathroom", "alt_text": "Villa bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM7_P10", "property_id": "UMUNNA_007", "sequence_order": 10, "image_url": "https://i.postimg.cc/8CNmmLKS/beach_pool_table.avif", "caption": "Pool Table", "alt_text": "Villa pool table", "room_category": "Entertainment" },
-      { "photo_id": "UM8_P1", "property_id": "UMUNNA_008", "sequence_order": 1, "image_url": "https://i.postimg.cc/Dyfn1jsr/aniyah_exterior.avif", "caption": "Exterior", "alt_text": "Aniyah exterior", "room_category": "Exterior" },
-      { "photo_id": "UM8_P2", "property_id": "UMUNNA_008", "sequence_order": 2, "image_url": "https://i.postimg.cc/xdN0cXHN/aniyah_poolside.avif", "caption": "Poolside", "alt_text": "Aniyah poolside", "room_category": "Outdoor" },
-      { "photo_id": "UM8_P3", "property_id": "UMUNNA_008", "sequence_order": 3, "image_url": "https://i.postimg.cc/B63d4bBd/aniyah_living_3.avif", "caption": "Living room", "alt_text": "Aniyah living room", "room_category": "Living Room" },
-      { "photo_id": "UM8_P4", "property_id": "UMUNNA_008", "sequence_order": 4, "image_url": "https://i.postimg.cc/B6JwRyJ7/aniyah_living_2.avif", "caption": "Garden", "alt_text": "Aniyah garden", "room_category": "Outdoor" },
-      { "photo_id": "UM8_P5", "property_id": "UMUNNA_008", "sequence_order": 5, "image_url": "https://i.postimg.cc/RZ6rTj0X/aniyah_bb2.avif", "caption": "Bedroom", "alt_text": "Aniyah bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM8_P6", "property_id": "UMUNNA_008", "sequence_order": 6, "image_url": "https://i.postimg.cc/3NtMLhpZ/aniyah_bb333.avif", "caption": "Suite", "alt_text": "Aniyah suite", "room_category": "Bedroom" },
-      { "photo_id": "UM8_P7", "property_id": "UMUNNA_008", "sequence_order": 7, "image_url": "https://i.postimg.cc/FH2MCDdR/aniyah_kitchen2.avif", "caption": "Kitchen", "alt_text": "Aniyah kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM8_P8", "property_id": "UMUNNA_008", "sequence_order": 8, "image_url": "https://i.postimg.cc/5yR7Y2LZ/aniyah_bedroom_5.avif", "caption": "Master Suite", "alt_text": "Aniyah master suite", "room_category": "Bedroom" },
-      { "photo_id": "UM8_P9", "property_id": "UMUNNA_008", "sequence_order": 9, "image_url": "https://i.postimg.cc/SKfgLrcP/aniyah_bedroom_1.avif", "caption": "Bedroom view", "alt_text": "Aniyah bedroom 1", "room_category": "Bedroom" },
-      { "photo_id": "UM8_P11", "property_id": "UMUNNA_008", "sequence_order": 11, "image_url": "https://i.postimg.cc/XNHDDQtn/aniyah_bedroom_3.avif", "caption": "Guest Room", "alt_text": "Aniyah guest room", "room_category": "Bedroom" },
-      { "photo_id": "UM9_P1", "property_id": "UMUNNA_009", "sequence_order": 1, "image_url": "https://i.postimg.cc/RhsF6x3q/olive_branch_living_room.avif", "caption": "Living room", "alt_text": "Olive living room", "room_category": "Living Room" },
-      { "photo_id": "UM9_P2", "property_id": "UMUNNA_009", "sequence_order": 2, "image_url": "https://i.postimg.cc/8PYcTDQh/olive_branch_kitchen.avif", "caption": "Kitchen", "alt_text": "Olive kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM9_P3", "property_id": "UMUNNA_009", "sequence_order": 3, "image_url": "https://i.postimg.cc/q7svc3tK/olive_branch_bedroom.avif", "caption": "Bedroom", "alt_text": "Olive bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM9_P4", "property_id": "UMUNNA_009", "sequence_order": 4, "image_url": "https://i.postimg.cc/DZ5fH3PJ/olive_branch_exterior.avif", "caption": "Exterior", "alt_text": "Olive exterior", "room_category": "Exterior" },
-      { "photo_id": "UM9_P5", "property_id": "UMUNNA_009", "sequence_order": 5, "image_url": "https://i.postimg.cc/v8qHvMm2/olive_branch_exterior22.avif", "caption": "Outdoor", "alt_text": "Olive outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM10_P1", "property_id": "UMUNNA_010", "sequence_order": 1, "image_url": "https://i.postimg.cc/pTYY20XF/fobbs_apartments_and_suites_ng_asaba_ep_49006928_4.jpg", "caption": "Suite", "alt_text": "Fobbs suite", "room_category": "Living Room" },
-      { "photo_id": "UM10_P2", "property_id": "UMUNNA_010", "sequence_order": 2, "image_url": "https://i.postimg.cc/4yW6cmcC/fobbs_apartments_and_suites_ng_asaba_ep_49006928_2.jpg", "caption": "Bedroom", "alt_text": "Fobbs bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM10_P3", "property_id": "UMUNNA_010", "sequence_order": 3, "image_url": "https://i.postimg.cc/pVCY41SH/fobbs_apartments_and_suites_ng_asaba_ep_49006928_1.jpg", "caption": "Interior", "alt_text": "Fobbs interior", "room_category": "Interior" },
-      { "photo_id": "UM10_P4", "property_id": "UMUNNA_010", "sequence_order": 4, "image_url": "https://i.postimg.cc/nhj4sVcN/fobbs_apartments_and_suites_ng_asaba_ep_49006928_0.jpg", "caption": "Exterior", "alt_text": "Fobbs exterior", "room_category": "Exterior" },
-      { "photo_id": "UM11_P1", "property_id": "UMUNNA_011", "sequence_order": 1, "image_url": "https://i.postimg.cc/PxLqzgHm/LIVINMG_ROOM.jpg", "caption": "Living room", "alt_text": "Lexaren living room", "room_category": "Living Room" },
-      { "photo_id": "UM11_P2", "property_id": "UMUNNA_011", "sequence_order": 2, "image_url": "https://i.postimg.cc/VsC6SPDk/UPSTAIRS_DUPLEX.jpg", "caption": "Stairs", "alt_text": "Lexaren stairs", "room_category": "Interior" },
-      { "photo_id": "UM11_P3", "property_id": "UMUNNA_011", "sequence_order": 3, "image_url": "https://i.postimg.cc/FKzFNM78/DUPLEX_TV_SITTING_RPOOM.jpg", "caption": "Lounge", "alt_text": "Lexaren lounge", "room_category": "Living Room" },
-      { "photo_id": "UM11_P4", "property_id": "UMUNNA_011", "sequence_order": 4, "image_url": "https://i.postimg.cc/0yfr8GZz/BATHROOM.jpg", "caption": "Bathroom", "alt_text": "Lexaren bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM11_P5", "property_id": "UMUNNA_011", "sequence_order": 5, "image_url": "https://i.postimg.cc/m27tnWHK/ROOM2.jpg", "caption": "Bedroom", "alt_text": "Lexaren bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM11_P6", "property_id": "UMUNNA_011", "sequence_order": 6, "image_url": "https://i.postimg.cc/GhvHfnyD/JACUZZI.jpg", "caption": "Jacuzzi", "alt_text": "Lexaren jacuzzi", "room_category": "Wellness" },
-      { "photo_id": "UM11_P7", "property_id": "UMUNNA_011", "sequence_order": 7, "image_url": "https://i.postimg.cc/h4kXMtfn/BEDROOM2.jpg", "caption": "Guest Suite", "alt_text": "Lexaren suite", "room_category": "Bedroom" },
-      { "photo_id": "UM12_P1", "property_id": "UMUNNA_012", "sequence_order": 1, "image_url": "https://i.postimg.cc/MTjWj10N/SUTTING_ROOM.jpg", "caption": "Sitting room", "alt_text": "Dejudex sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM12_P2", "property_id": "UMUNNA_012", "sequence_order": 2, "image_url": "https://i.postimg.cc/nr4p3ZPc/OUTDOOR.jpg", "caption": "Outdoor", "alt_text": "Dejudex outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM12_P3", "property_id": "UMUNNA_012", "sequence_order": 3, "image_url": "https://i.postimg.cc/zXNJVbyj/BALCONY.jpg", "caption": "Balcony", "alt_text": "Dejudex balcony", "room_category": "Balcony" },
-      { "photo_id": "UM12_P4", "property_id": "UMUNNA_012", "sequence_order": 4, "image_url": "https://i.postimg.cc/tCz9PqPq/BEDROOM.jpg", "caption": "Bedroom", "alt_text": "Dejudex bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM12_P5", "property_id": "UMUNNA_012", "sequence_order": 5, "image_url": "https://i.postimg.cc/rp7TcK6K/TERRACE_OUTDOOR.jpg", "caption": "Terrace", "alt_text": "Dejudex terrace", "room_category": "Outdoor" },
-      { "photo_id": "UM12_P6", "property_id": "UMUNNA_012", "sequence_order": 6, "image_url": "https://i.postimg.cc/rmWkpMMk/BEDROOM2.jpg", "caption": "Suite", "alt_text": "Dejudex suite", "room_category": "Bedroom" },
-      { "photo_id": "UM12_P7", "property_id": "UMUNNA_012", "sequence_order": 7, "image_url": "https://i.postimg.cc/vTtwWh4c/SITTING_ROOM.jpg", "caption": "Sitting area", "alt_text": "Dejudex sitting area", "room_category": "Living Room" },
-      { "photo_id": "UM12_P8", "property_id": "UMUNNA_012", "sequence_order": 8, "image_url": "https://i.postimg.cc/BZT39Sm4/BEDROOM3.jpg", "caption": "3rd Bedroom", "alt_text": "Dejudex bedroom 3", "room_category": "Bedroom" },
-      { "photo_id": "UM14_P1", "property_id": "UMUNNA_014", "sequence_order": 1, "image_url": "https://i.postimg.cc/YSWV6RVW/SITTING_RROM_2.jpg", "caption": "Sitting room", "alt_text": "Abijudex sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM14_P2", "property_id": "UMUNNA_014", "sequence_order": 2, "image_url": "https://i.postimg.cc/rwb3R3hc/BEDROOM_1.jpg", "caption": "Bedroom", "alt_text": "Abijudex bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM14_P3", "property_id": "UMUNNA_014", "sequence_order": 3, "image_url": "https://i.postimg.cc/XYXtJ4k2/BEDROOM2.jpg", "caption": "Suite", "alt_text": "Abijudex suite", "room_category": "Bedroom" },
-      { "photo_id": "UM14_P4", "property_id": "UMUNNA_014", "sequence_order": 4, "image_url": "https://i.postimg.cc/wTwSg7Lp/SITITNG_RRROM.jpg", "caption": "Lounge", "alt_text": "Abijudex lounge", "room_category": "Living Room" },
-      { "photo_id": "UM14_P5", "property_id": "UMUNNA_014", "sequence_order": 5, "image_url": "https://i.postimg.cc/QNk2Y6MF/SITTING_ROOM.jpg", "caption": "Lounge view", "alt_text": "Abijudex sitting view", "room_category": "Living Room" },
-      { "photo_id": "UM14_P6", "property_id": "UMUNNA_014", "sequence_order": 6, "image_url": "https://i.postimg.cc/90VvF9L4/BEDROOM.jpg", "caption": "Bedroom 3", "alt_text": "Abijudex bedroom 3", "room_category": "Bedroom" },
-      { "photo_id": "UM14_P7", "property_id": "UMUNNA_014", "sequence_order": 7, "image_url": "https://i.postimg.cc/rFgLshXF/BATHROOM.jpg", "caption": "Bathroom", "alt_text": "Abijudex bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM15_P1", "property_id": "UMUNNA_015", "sequence_order": 1, "image_url": "https://i.postimg.cc/7PfQz7sF/OUTDOOR.jpg", "caption": "Exterior", "alt_text": "Judexia outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM15_P2", "property_id": "UMUNNA_015", "sequence_order": 2, "image_url": "https://i.postimg.cc/d054kt8k/LIVING_ROOM.jpg", "caption": "Living Room", "alt_text": "Judexia living room", "room_category": "Living Room" },
-      { "photo_id": "UM15_P3", "property_id": "UMUNNA_015", "sequence_order": 3, "image_url": "https://i.postimg.cc/yN1L8S3X/BEDROOOM.jpg", "caption": "Bedroom 1", "alt_text": "Judexia bedroom 1", "room_category": "Bedroom" },
-      { "photo_id": "UM15_P4", "property_id": "UMUNNA_015", "sequence_order": 4, "image_url": "https://i.postimg.cc/28WccYfJ/BEDROOOM_(2).jpg", "caption": "Bedroom 2", "alt_text": "Judexia bedroom 2", "room_category": "Bedroom" },
-      { "photo_id": "UM15_P5", "property_id": "UMUNNA_015", "sequence_order": 5, "image_url": "https://i.postimg.cc/KcwpDzCk/KITCHEN.jpg", "caption": "Kitchen", "alt_text": "Judexia kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM15_P6", "property_id": "UMUNNA_015", "sequence_order": 6, "image_url": "https://i.postimg.cc/3R611SfQ/BEDROOM.jpg", "caption": "Bedroom 3", "alt_text": "Judexia bedroom 3", "room_category": "Bedroom" },
-      { "photo_id": "UM15_P7", "property_id": "UMUNNA_015", "sequence_order": 7, "image_url": "https://i.postimg.cc/3WQdtYCq/BEDROOM_22.jpg", "caption": "Bedroom 4", "alt_text": "Judexia bedroom 4", "room_category": "Bedroom" },
-      { "photo_id": "UM15_P8", "property_id": "UMUNNA_015", "sequence_order": 8, "image_url": "https://i.postimg.cc/TwhLwkPM/DININGG_RM2.jpg", "caption": "Dining", "alt_text": "Judexia dining", "room_category": "Dining" },
-      { "photo_id": "UM16_P1", "property_id": "UMUNNA_016", "sequence_order": 1, "image_url": "https://i.postimg.cc/BnGDq9Ph/3_BED_DUPLEX_STAIR.jpg", "caption": "Stairs", "alt_text": "Loft stairs", "room_category": "Interior" },
-      { "photo_id": "UM16_P2", "property_id": "UMUNNA_016", "sequence_order": 2, "image_url": "https://i.postimg.cc/mrmFNPXv/SITTING_ROOM.jpg", "caption": "Sitting room", "alt_text": "Loft sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM16_P3", "property_id": "UMUNNA_016", "sequence_order": 3, "image_url": "https://i.postimg.cc/fLkSHM1d/BEDROOM_1.jpg", "caption": "Bedroom 1", "alt_text": "Loft bedroom 1", "room_category": "Bedroom" },
-      { "photo_id": "UM16_P4", "property_id": "UMUNNA_016", "sequence_order": 4, "image_url": "https://i.postimg.cc/XJhGmT0h/BEDROOM_2.jpg", "caption": "Bedroom 2", "alt_text": "Loft bedroom 2", "room_category": "Bedroom" },
-      { "photo_id": "UM16_P5", "property_id": "UMUNNA_016", "sequence_order": 5, "image_url": "https://i.postimg.cc/K4hKvBjj/BEDROOM_3.jpg", "caption": "Bedroom 3", "alt_text": "Loft bedroom 3", "room_category": "Bedroom" },
-      { "photo_id": "UM16_P6", "property_id": "UMUNNA_016", "sequence_order": 6, "image_url": "https://i.postimg.cc/jqmFKX63/DINING.jpg", "caption": "Dining", "alt_text": "Loft dining", "room_category": "Dining" },
-      { "photo_id": "UM16_P7", "property_id": "UMUNNA_016", "sequence_order": 7, "image_url": "https://i.postimg.cc/65Z1QvY5/KITCHEN.jpg", "caption": "Kitchen", "alt_text": "Loft kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM16_P8", "property_id": "UMUNNA_016", "sequence_order": 8, "image_url": "https://i.postimg.cc/25tK67RV/BEDROOM_22.jpg", "caption": "Bedroom 4", "alt_text": "Loft bedroom 4", "room_category": "Bedroom" },
-      { "photo_id": "UM17_P1", "property_id": "UMUNNA_017", "sequence_order": 1, "image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg", "caption": "Bedroom", "alt_text": "Ulo bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM17_P2", "property_id": "UMUNNA_017", "sequence_order": 2, "image_url": "https://i.postimg.cc/bwC6C9vS/BEDROOM.jpg", "caption": "2nd Bedroom", "alt_text": "Ulo suite", "room_category": "Bedroom" },
-      { "photo_id": "UM17_P3", "property_id": "UMUNNA_017", "sequence_order": 3, "image_url": "https://i.postimg.cc/9MTJf3Y8/GAMES_LOUNGE.jpg", "caption": "Games lounge", "alt_text": "Ulo games lounge", "room_category": "Entertainment" },
-      { "photo_id": "UM17_P4", "property_id": "UMUNNA_017", "sequence_order": 4, "image_url": "https://i.postimg.cc/XNfsSbJJ/SITTING_ROOM.jpg", "caption": "Sitting room", "alt_text": "Ulo sitting room", "room_category": "Living Room" },
-      { "photo_id": "UM17_P5", "property_id": "UMUNNA_017", "sequence_order": 5, "image_url": "https://i.postimg.cc/jdvv24yD/SNOOKER_BOARD.jpg", "caption": "Snooker", "alt_text": "Ulo snooker", "room_category": "Entertainment" },
-      { "photo_id": "UM17_P6", "property_id": "UMUNNA_017", "sequence_order": 6, "image_url": "https://i.postimg.cc/tgzmdGx5/CENTA_BEDROOM.jpg", "caption": "3rd Bedroom", "alt_text": "Ulo bedroom 3", "room_category": "Bedroom" },
-      { "photo_id": "UM18_P1", "property_id": "UMUNNA_018", "sequence_order": 1, "image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg", "caption": "Sitting room", "alt_text": "Gudjud sitting", "room_category": "Living Room" },
-      { "photo_id": "UM18_P2", "property_id": "UMUNNA_018", "sequence_order": 2, "image_url": "https://i.postimg.cc/xdgtJGwk/POOL_SIDE.jpg", "caption": "Poolside", "alt_text": "Gudjud pool", "room_category": "Outdoor" },
-      { "photo_id": "UM18_P3", "property_id": "UMUNNA_018", "sequence_order": 3, "image_url": "https://i.postimg.cc/7LqKZtWr/BEDROOM_3.jpg", "caption": "Bedroom", "alt_text": "Gudjud bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM18_P4", "property_id": "UMUNNA_018", "sequence_order": 4, "image_url": "https://i.postimg.cc/GmFMrnzv/BEDROOM_2.jpg", "caption": "2nd Bedroom", "alt_text": "Gudjud suite", "room_category": "Bedroom" },
-      { "photo_id": "UM18_P5", "property_id": "UMUNNA_018", "sequence_order": 5, "image_url": "https://i.postimg.cc/L8Kyr8k9/BEDROOM_1.jpg", "caption": "3rd Bedroom", "alt_text": "Gudjud suite view", "room_category": "Bedroom" },
-      { "photo_id": "UM18_P6", "property_id": "UMUNNA_018", "sequence_order": 6, "image_url": "https://i.postimg.cc/L4WQ3TnB/KITCHEN.jpg", "caption": "Kitchen", "alt_text": "Gudjud kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM18_P7", "property_id": "UMUNNA_018", "sequence_order": 7, "image_url": "https://i.postimg.cc/d3hHK7ST/CORRIDOR.jpg", "caption": "Corridor", "alt_text": "Gudjud corridor", "room_category": "Interior" },
-      { "photo_id": "UM18_P8", "property_id": "UMUNNA_018", "sequence_order": 8, "image_url": "https://i.postimg.cc/tgzmdGx5/CENTA_BEDROOM.jpg", "caption": "4th Bedroom", "alt_text": "Gudjud bedroom 4", "room_category": "Bedroom" },
-      { "photo_id": "UM18_P9", "property_id": "UMUNNA_018", "sequence_order": 9, "image_url": "https://i.postimg.cc/9MTJf3Y8/GAMES_LOUNGE.jpg", "caption": "Games Lounge", "alt_text": "Gudjud games", "room_category": "Entertainment" },
-      { "photo_id": "UM19_P1", "property_id": "UMUNNA_019", "sequence_order": 1, "image_url": "https://i.postimg.cc/sxw9N3cV/BEDROOM22.jpg", "caption": "Bedroom", "alt_text": "Pearl bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM19_P2", "property_id": "UMUNNA_019", "sequence_order": 2, "image_url": "https://i.postimg.cc/50W3H7yd/OUT_DOOR.jpg", "caption": "Outdoor", "alt_text": "Pearl outdoor", "room_category": "Exterior" },
-      { "photo_id": "UM19_P3", "property_id": "UMUNNA_019", "sequence_order": 3, "image_url": "https://i.postimg.cc/DwD5hyK0/SITTING_ROOM_W.jpg", "caption": "Sitting room", "alt_text": "Pearl sitting", "room_category": "Living Room" },
-      { "photo_id": "UM19_P4", "property_id": "UMUNNA_019", "sequence_order": 4, "image_url": "https://i.postimg.cc/gJpVcxSC/DINING_RROM.jpg", "caption": "Dining", "alt_text": "Pearl dining", "room_category": "Dining" },
-      { "photo_id": "UM19_P5", "property_id": "UMUNNA_019", "sequence_order": 5, "image_url": "https://i.postimg.cc/TPgjXV9h/KITCHEN.jpg", "caption": "Kitchen", "alt_text": "Pearl kitchen", "room_category": "Kitchen" },
-      { "photo_id": "UM19_P6", "property_id": "UMUNNA_019", "sequence_order": 6, "image_url": "https://i.postimg.cc/Bnd5yY2w/POOL.jpg", "caption": "Poolside", "alt_text": "Pearl pool", "room_category": "Outdoor" },
-      { "photo_id": "UM19_P7", "property_id": "UMUNNA_019", "sequence_order": 7, "image_url": "https://i.postimg.cc/50W3H7yd/OUT_DOOR.jpg", "caption": "Outdoor (2)", "alt_text": "Pearl outdoor view", "room_category": "Exterior" },
-      { "photo_id": "UM19_P8", "property_id": "UMUNNA_019", "sequence_order": 8, "image_url": "https://i.postimg.cc/DwD5hyK0/SITTING_ROOM_W.jpg", "caption": "Sitting room (2)", "alt_text": "Pearl lounge", "room_category": "Living Room" },
-      { "photo_id": "UM19_P9", "property_id": "UMUNNA_019", "sequence_order": 9, "image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg", "caption": "2nd Bedroom", "alt_text": "Pearl bedroom 2", "room_category": "Bedroom" },
-      { "photo_id": "UM19_P10", "property_id": "UMUNNA_019", "sequence_order": 10, "image_url": "https://i.postimg.cc/Kv0J9Dq1/ART_DECOR.jpg", "caption": "Art decor", "alt_text": "Pearl art", "room_category": "Interior" },
-      { "photo_id": "UM20_P2", "property_id": "UMUNNA_020", "sequence_order": 2, "image_url": "https://i.postimg.cc/vHj09FQv/FULL_SITTING_ROOM.jpg", "caption": "Sitting room", "alt_text": "Selina sitting", "room_category": "Living Room" },
-      { "photo_id": "UM20_P3", "property_id": "UMUNNA_020", "sequence_order": 3, "image_url": "https://i.postimg.cc/L6hyn6MS/LOUNGE_INDOOR.jpg", "caption": "Lounge", "alt_text": "Selina lounge", "room_category": "Living Room" },
-      { "photo_id": "UM20_P5", "property_id": "UMUNNA_020", "sequence_order": 5, "image_url": "https://i.postimg.cc/ZnsVVXps/BATHROOM.jpg", "caption": "Bathroom", "alt_text": "Selina bathroom", "room_category": "Bathroom" },
-      { "photo_id": "UM20_P6", "property_id": "UMUNNA_020", "sequence_order": 6, "image_url": "https://i.postimg.cc/0N7XPW1W/BEDROOM.jpg", "caption": "Bedroom", "alt_text": "Selina bedroom", "room_category": "Bedroom" },
-      { "photo_id": "UM20_P7", "property_id": "UMUNNA_020", "sequence_order": 7, "image_url": "https://i.postimg.cc/DwJYYfj3/REST_ROOM.jpg", "caption": "Restroom", "alt_text": "Selina rest room", "room_category": "Bathroom" },
-      { "photo_id": "UM20_P8", "property_id": "UMUNNA_020", "sequence_order": 8, "image_url": "https://i.postimg.cc/2jGJ1KbX/LIVING_ROOM.jpg", "caption": "Living room", "alt_text": "Selina living", "room_category": "Living Room" },
-      { "photo_id": "UM20_P10", "property_id": "UMUNNA_020", "sequence_order": 10, "image_url": "https://i.postimg.cc/X7vPdk90/GYM.jpg", "caption": "Gym", "alt_text": "Selina gym", "room_category": "Wellness" }
+      {
+        "photo_id": "UM1_P1",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/3xz3br6K/Gemini_Generated_Image_f20z6if20z6if20z.png",
+        "caption": "Living Space",
+        "alt_text": "Living room at Nate Signature Stays",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM1_P2",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/2yFvzcnD/2_bedliving_space.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Master bedroom at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P3",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/h4JY1HqN/sound_bar_bedroom.jpg",
+        "caption": "2nd Bedroom",
+        "alt_text": "Second bedroom with soundbar at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P4",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/sXRksfFQ/big_bed.jpg",
+        "caption": "3rd Bedroom",
+        "alt_text": "Third bedroom at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P5",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/RF5BhQt3/another_room.jpg",
+        "caption": "4th Bedroom",
+        "alt_text": "Fourth bedroom at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P6",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/R0FdVHSj/jacuzzi.jpg",
+        "caption": "Jacuzzi",
+        "alt_text": "Jacuzzi at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P7",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/V6mVZjLj/snooker_space.avif",
+        "caption": "Snooker Lounge",
+        "alt_text": "Snooker space at Nate Signature Stays",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM1_P8",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/8kqnqQC3/game_room_airbnb.avif",
+        "caption": "Game Room",
+        "alt_text": "PS4/PS5 game room at Nate Signature Stays",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM1_P9",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/P5p9DvTC/cinema_projector.jpg",
+        "caption": "Cinema",
+        "alt_text": "Indoor cinema at Nate Signature Stays",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM1_P10",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/VNGC2wz4/kitchen_fittings.jpg",
+        "caption": "Kitchen Fittings",
+        "alt_text": "Premium kitchen fittings at Nate Signature Stays",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM1_P12",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 12,
+        "image_url": "https://i.postimg.cc/J7gQGNV0/board_games22.avif",
+        "caption": "Board Games",
+        "alt_text": "Board games lounge at Nate Signature Stays",
+        "room_category": "Entertainment"
+      },
+      {
+        "photo_id": "UM1_P15",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 15,
+        "image_url": "https://i.postimg.cc/FRc9fGh4/board_game.jpg",
+        "caption": "Dining",
+        "alt_text": "Dining area at Nate Signature Stays",
+        "room_category": "Dining"
+      },
+      {
+        "photo_id": "UM1_P18",
+        "property_id": "UMUNNA_001",
+        "sequence_order": 18,
+        "image_url": "https://i.postimg.cc/638MzGFL/mirrors.jpg",
+        "caption": "Restroom",
+        "alt_text": "Mirror area at Nate Signature Stays",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM2_P1",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/8cbhpkCN/enclave_apartments.jpg",
+        "caption": "Outdoor",
+        "alt_text": "Enclave outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM2_P2",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/1RvWq61D/enclave_outdoor.jpg",
+        "caption": "Outside view",
+        "alt_text": "Enclave exterior view",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM2_P3",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/CLKQP7sn/enclave_indoors.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Enclave sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM2_P4",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/kgnCrpDB/enclave_exterior.jpg",
+        "caption": "Night view",
+        "alt_text": "Enclave night view",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM2_P5",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/FKzQzkyJ/enclave_sitting_room.jpg",
+        "caption": "Lounge",
+        "alt_text": "Enclave lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM2_P6",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/x8Dr6sWR/enclave_bedroom.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Enclave bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM2_P7",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/xjMVX2zK/enclave_kitchen.jpg",
+        "caption": "Kitchen",
+        "alt_text": "Enclave kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM2_P8",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/NjNW3GWW/enclave_living_room.jpg",
+        "caption": "Living room",
+        "alt_text": "Enclave living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM2_P9",
+        "property_id": "UMUNNA_002",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/yNkws4Kv/enclae_bathroom.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Enclave bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM3_P1",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/c1gYGKYj/AZRRAAOUTT.jpg",
+        "caption": "Outdoor",
+        "alt_text": "Azraa outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM3_P2",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/MZbPRr31/azraa1.jpg",
+        "caption": "Outside View",
+        "alt_text": "Azraa exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM3_P3",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/g0sj3ph7/sittin_room_azraa.jpg",
+        "caption": "Sitting Room",
+        "alt_text": "Azraa sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM3_P4",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/gcShfVnH/azraa_living_room.jpg",
+        "caption": "Lounge",
+        "alt_text": "Azraa living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM3_P5",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/BZM5JWwC/azraa2.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Azraa bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM3_P6",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/ryPdhqP9/azraa_palour.jpg",
+        "caption": "Suite",
+        "alt_text": "Azraa suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM3_P7",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/QdWcgFNf/azraa_bathroom.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Azraa bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM3_P8",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/KzsYs5JK/mirror_azraa_mirror.jpg",
+        "caption": "Interior Detail",
+        "alt_text": "Azraa interior detail",
+        "room_category": "Interior Detail"
+      },
+      {
+        "photo_id": "UM3_P9",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/xTLzqW63/AZRAA_PLANT.jpg",
+        "caption": "Decor",
+        "alt_text": "Azraa decor",
+        "room_category": "Interior Detail"
+      },
+      {
+        "photo_id": "UM3_P10",
+        "property_id": "UMUNNA_003",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/ZKNqVp39/AZRRAA_STAIRS.jpg",
+        "caption": "Stairs",
+        "alt_text": "Azraa stairway",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM4_P1",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/7Zwy0WkM/9a_apt_exterior.avif",
+        "caption": "Exterior",
+        "alt_text": "9A exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM4_P2",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/Kc3F2Tfn/9apt_exterior.avif",
+        "caption": "Outside",
+        "alt_text": "9A outside view",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM4_P3",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/kGmS7mkL/nine_apartmentgs_living_room.avif",
+        "caption": "Sitting Room",
+        "alt_text": "9A sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM4_P4",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/m2T9qT3v/9apt_living_room2.avif",
+        "caption": "Lounge",
+        "alt_text": "9A lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM4_P6",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/pVJhKgNs/9apt_livin_rm3.avif",
+        "caption": "Bedroom",
+        "alt_text": "9A bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM4_P7",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/fRtRqPP6/9apt_living_rm4.avif",
+        "caption": "Suite",
+        "alt_text": "9A suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM4_P9",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/6pftPN0c/toilet_sittin.avif",
+        "caption": "Bathroom",
+        "alt_text": "9A bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM4_P10",
+        "property_id": "UMUNNA_004",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/26zmY9HD/9apt_kitchen.avif",
+        "caption": "Kitchen",
+        "alt_text": "9A kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM5_P1",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/0Q3tnbKd/elk_exterior.jpg",
+        "caption": "Exterior",
+        "alt_text": "Elkridge exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM5_P2",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/J4SpWVG9/elkridge_living_room.avif",
+        "caption": "Living Room",
+        "alt_text": "Elkridge living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM5_P3",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/TYnkj2dV/elk_room_1.avif",
+        "caption": "Lounge",
+        "alt_text": "Elkridge lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM5_P4",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/CKxmVjj3/elk_rrooom_4.avif",
+        "caption": "Seating Area",
+        "alt_text": "Elkridge seating area",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM5_P6",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/sx7JJKrv/elk_roommm_4.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Elkridge bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM5_P7",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/FKVpcYD9/elkridge_full_kitchen.avif",
+        "caption": "Full Kitchen",
+        "alt_text": "Elkridge kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM5_P8",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/Xqmk3d7r/elkridge_bedroom_1.avif",
+        "caption": "Primary Suite",
+        "alt_text": "Elkridge suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM5_P9",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/SxpvH2TH/elk_bath3.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Elkridge bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM5_P11",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 11,
+        "image_url": "https://i.postimg.cc/XvLKqTYN/elkridge_bedroom_2.avif",
+        "caption": "2nd Bedroom",
+        "alt_text": "Elkridge 2nd bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM5_P13",
+        "property_id": "UMUNNA_005",
+        "sequence_order": 13,
+        "image_url": "https://i.postimg.cc/rsBx7TQZ/elk_rm3.jpg",
+        "caption": "3rd Bedroom",
+        "alt_text": "Elkridge 3rd bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM6_P1",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/ryrdYB2M/hamaboi_living_room_1.avif",
+        "caption": "Main Lounge",
+        "alt_text": "Hamaboi living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM6_P2",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/t427xyWW/hamaboi_living_2.avif",
+        "caption": "Living area",
+        "alt_text": "Hamaboi living area",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM6_P3",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/vmKB0zP2/hamaboi_bed_room.avif",
+        "caption": "Bedroom",
+        "alt_text": "Hamaboi bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM6_P4",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/bNRw78Cw/hamaboi_toilet.avif",
+        "caption": "Bathroom",
+        "alt_text": "Hamaboi bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM6_P5",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/N0Zs60MN/hamaboi_kitchen.avif",
+        "caption": "Kitchen",
+        "alt_text": "Hamaboi kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM6_P6",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/bNqzHWyw/hamaboi_bedroom.avif",
+        "caption": "Suite",
+        "alt_text": "Hamaboi suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM6_P7",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/zGc8NfT4/hamaboi_closet.avif",
+        "caption": "Closet",
+        "alt_text": "Hamaboi closet",
+        "room_category": "Closet"
+      },
+      {
+        "photo_id": "UM6_P8",
+        "property_id": "UMUNNA_006",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/SRdbvQyf/hamaboi_222.avif",
+        "caption": "Lounge view",
+        "alt_text": "Hamaboi lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM7_P1",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/bNyVqcHZ/beach_front_exterior.avif",
+        "caption": "Beachfront",
+        "alt_text": "Villa exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM7_P2",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/mrCyQ8N0/bc_sitting_room.avif",
+        "caption": "Sitting room",
+        "alt_text": "Villa sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM7_P3",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/nrcWR63m/living_room_beach_front_44.avif",
+        "caption": "Lounge",
+        "alt_text": "Villa living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM7_P4",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/rpx7KGdt/beach_side_riverfront.avif",
+        "caption": "Waterfront",
+        "alt_text": "Villa waterfront",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM7_P5",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/P5ZS4XdB/beach_out_door_solar_power.avif",
+        "caption": "Eco Solar",
+        "alt_text": "Villa solar",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM7_P6",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/L5XyBjsP/beach_front_passage.avif",
+        "caption": "Passage",
+        "alt_text": "Villa passage",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM7_P7",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/ZnCcyZf5/beach_room.avif",
+        "caption": "Bedroom",
+        "alt_text": "Villa bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM7_P8",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/SQD77XCS/bchised_kitchen.avif",
+        "caption": "Kitchen",
+        "alt_text": "Villa kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM7_P9",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/c6Gn4NPS/beach_bathroom_22.avif",
+        "caption": "Bathroom",
+        "alt_text": "Villa bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM7_P10",
+        "property_id": "UMUNNA_007",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/8CNmmLKS/beach_pool_table.avif",
+        "caption": "Pool Table",
+        "alt_text": "Villa pool table",
+        "room_category": "Entertainment"
+      },
+      {
+        "photo_id": "UM8_P1",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/Dyfn1jsr/aniyah_exterior.avif",
+        "caption": "Exterior",
+        "alt_text": "Aniyah exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM8_P2",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/xdN0cXHN/aniyah_poolside.avif",
+        "caption": "Poolside",
+        "alt_text": "Aniyah poolside",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM8_P3",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/B63d4bBd/aniyah_living_3.avif",
+        "caption": "Living room",
+        "alt_text": "Aniyah living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM8_P4",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/B6JwRyJ7/aniyah_living_2.avif",
+        "caption": "Garden",
+        "alt_text": "Aniyah garden",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM8_P5",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/RZ6rTj0X/aniyah_bb2.avif",
+        "caption": "Bedroom",
+        "alt_text": "Aniyah bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM8_P6",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/3NtMLhpZ/aniyah_bb333.avif",
+        "caption": "Suite",
+        "alt_text": "Aniyah suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM8_P7",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/FH2MCDdR/aniyah_kitchen2.avif",
+        "caption": "Kitchen",
+        "alt_text": "Aniyah kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM8_P8",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/5yR7Y2LZ/aniyah_bedroom_5.avif",
+        "caption": "Master Suite",
+        "alt_text": "Aniyah master suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM8_P9",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/SKfgLrcP/aniyah_bedroom_1.avif",
+        "caption": "Bedroom view",
+        "alt_text": "Aniyah bedroom 1",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM8_P11",
+        "property_id": "UMUNNA_008",
+        "sequence_order": 11,
+        "image_url": "https://i.postimg.cc/XNHDDQtn/aniyah_bedroom_3.avif",
+        "caption": "Guest Room",
+        "alt_text": "Aniyah guest room",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM9_P1",
+        "property_id": "UMUNNA_009",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/RhsF6x3q/olive_branch_living_room.avif",
+        "caption": "Living room",
+        "alt_text": "Olive living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM9_P2",
+        "property_id": "UMUNNA_009",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/8PYcTDQh/olive_branch_kitchen.avif",
+        "caption": "Kitchen",
+        "alt_text": "Olive kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM9_P3",
+        "property_id": "UMUNNA_009",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/q7svc3tK/olive_branch_bedroom.avif",
+        "caption": "Bedroom",
+        "alt_text": "Olive bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM9_P4",
+        "property_id": "UMUNNA_009",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/DZ5fH3PJ/olive_branch_exterior.avif",
+        "caption": "Exterior",
+        "alt_text": "Olive exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM9_P5",
+        "property_id": "UMUNNA_009",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/v8qHvMm2/olive_branch_exterior22.avif",
+        "caption": "Outdoor",
+        "alt_text": "Olive outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM10_P1",
+        "property_id": "UMUNNA_010",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/pTYY20XF/fobbs_apartments_and_suites_ng_asaba_ep_49006928_4.jpg",
+        "caption": "Suite",
+        "alt_text": "Fobbs suite",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM10_P2",
+        "property_id": "UMUNNA_010",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/4yW6cmcC/fobbs_apartments_and_suites_ng_asaba_ep_49006928_2.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Fobbs bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM10_P3",
+        "property_id": "UMUNNA_010",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/pVCY41SH/fobbs_apartments_and_suites_ng_asaba_ep_49006928_1.jpg",
+        "caption": "Interior",
+        "alt_text": "Fobbs interior",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM10_P4",
+        "property_id": "UMUNNA_010",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/nhj4sVcN/fobbs_apartments_and_suites_ng_asaba_ep_49006928_0.jpg",
+        "caption": "Exterior",
+        "alt_text": "Fobbs exterior",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM11_P1",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/PxLqzgHm/LIVINMG_ROOM.jpg",
+        "caption": "Living room",
+        "alt_text": "Lexaren living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM11_P2",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/VsC6SPDk/UPSTAIRS_DUPLEX.jpg",
+        "caption": "Stairs",
+        "alt_text": "Lexaren stairs",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM11_P3",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/FKzFNM78/DUPLEX_TV_SITTING_RPOOM.jpg",
+        "caption": "Lounge",
+        "alt_text": "Lexaren lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM11_P4",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/0yfr8GZz/BATHROOM.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Lexaren bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM11_P5",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/m27tnWHK/ROOM2.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Lexaren bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM11_P6",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/GhvHfnyD/JACUZZI.jpg",
+        "caption": "Jacuzzi",
+        "alt_text": "Lexaren jacuzzi",
+        "room_category": "Wellness"
+      },
+      {
+        "photo_id": "UM11_P7",
+        "property_id": "UMUNNA_011",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/h4kXMtfn/BEDROOM2.jpg",
+        "caption": "Guest Suite",
+        "alt_text": "Lexaren suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM12_P1",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/MTjWj10N/SUTTING_ROOM.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Dejudex sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM12_P2",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/nr4p3ZPc/OUTDOOR.jpg",
+        "caption": "Outdoor",
+        "alt_text": "Dejudex outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM12_P3",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/zXNJVbyj/BALCONY.jpg",
+        "caption": "Balcony",
+        "alt_text": "Dejudex balcony",
+        "room_category": "Balcony"
+      },
+      {
+        "photo_id": "UM12_P4",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/tCz9PqPq/BEDROOM.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Dejudex bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM12_P5",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/rp7TcK6K/TERRACE_OUTDOOR.jpg",
+        "caption": "Terrace",
+        "alt_text": "Dejudex terrace",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM12_P6",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/rmWkpMMk/BEDROOM2.jpg",
+        "caption": "Suite",
+        "alt_text": "Dejudex suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM12_P7",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/vTtwWh4c/SITTING_ROOM.jpg",
+        "caption": "Sitting area",
+        "alt_text": "Dejudex sitting area",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM12_P8",
+        "property_id": "UMUNNA_012",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/BZT39Sm4/BEDROOM3.jpg",
+        "caption": "3rd Bedroom",
+        "alt_text": "Dejudex bedroom 3",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM14_P1",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/YSWV6RVW/SITTING_RROM_2.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Abijudex sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM14_P2",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/rwb3R3hc/BEDROOM_1.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Abijudex bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM14_P3",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/XYXtJ4k2/BEDROOM2.jpg",
+        "caption": "Suite",
+        "alt_text": "Abijudex suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM14_P4",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/wTwSg7Lp/SITITNG_RRROM.jpg",
+        "caption": "Lounge",
+        "alt_text": "Abijudex lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM14_P5",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/QNk2Y6MF/SITTING_ROOM.jpg",
+        "caption": "Lounge view",
+        "alt_text": "Abijudex sitting view",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM14_P6",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/90VvF9L4/BEDROOM.jpg",
+        "caption": "Bedroom 3",
+        "alt_text": "Abijudex bedroom 3",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM14_P7",
+        "property_id": "UMUNNA_014",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/rFgLshXF/BATHROOM.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Abijudex bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM15_P1",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/7PfQz7sF/OUTDOOR.jpg",
+        "caption": "Exterior",
+        "alt_text": "Judexia outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM15_P2",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/d054kt8k/LIVING_ROOM.jpg",
+        "caption": "Living Room",
+        "alt_text": "Judexia living room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM15_P3",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/yN1L8S3X/BEDROOOM.jpg",
+        "caption": "Bedroom 1",
+        "alt_text": "Judexia bedroom 1",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM15_P4",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/28WccYfJ/BEDROOOM_(2).jpg",
+        "caption": "Bedroom 2",
+        "alt_text": "Judexia bedroom 2",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM15_P5",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/KcwpDzCk/KITCHEN.jpg",
+        "caption": "Kitchen",
+        "alt_text": "Judexia kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM15_P6",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/3R611SfQ/BEDROOM.jpg",
+        "caption": "Bedroom 3",
+        "alt_text": "Judexia bedroom 3",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM15_P7",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/3WQdtYCq/BEDROOM_22.jpg",
+        "caption": "Bedroom 4",
+        "alt_text": "Judexia bedroom 4",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM15_P8",
+        "property_id": "UMUNNA_015",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/TwhLwkPM/DININGG_RM2.jpg",
+        "caption": "Dining",
+        "alt_text": "Judexia dining",
+        "room_category": "Dining"
+      },
+      {
+        "photo_id": "UM16_P1",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/BnGDq9Ph/3_BED_DUPLEX_STAIR.jpg",
+        "caption": "Stairs",
+        "alt_text": "Loft stairs",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM16_P2",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/mrmFNPXv/SITTING_ROOM.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Loft sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM16_P3",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/fLkSHM1d/BEDROOM_1.jpg",
+        "caption": "Bedroom 1",
+        "alt_text": "Loft bedroom 1",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM16_P4",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/XJhGmT0h/BEDROOM_2.jpg",
+        "caption": "Bedroom 2",
+        "alt_text": "Loft bedroom 2",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM16_P5",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/K4hKvBjj/BEDROOM_3.jpg",
+        "caption": "Bedroom 3",
+        "alt_text": "Loft bedroom 3",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM16_P6",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/jqmFKX63/DINING.jpg",
+        "caption": "Dining",
+        "alt_text": "Loft dining",
+        "room_category": "Dining"
+      },
+      {
+        "photo_id": "UM16_P7",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/65Z1QvY5/KITCHEN.jpg",
+        "caption": "Kitchen",
+        "alt_text": "Loft kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM16_P8",
+        "property_id": "UMUNNA_016",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/25tK67RV/BEDROOM_22.jpg",
+        "caption": "Bedroom 4",
+        "alt_text": "Loft bedroom 4",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM17_P1",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Ulo bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM17_P2",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/bwC6C9vS/BEDROOM.jpg",
+        "caption": "2nd Bedroom",
+        "alt_text": "Ulo suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM17_P3",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/9MTJf3Y8/GAMES_LOUNGE.jpg",
+        "caption": "Games lounge",
+        "alt_text": "Ulo games lounge",
+        "room_category": "Entertainment"
+      },
+      {
+        "photo_id": "UM17_P4",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/XNfsSbJJ/SITTING_ROOM.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Ulo sitting room",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM17_P5",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/jdvv24yD/SNOOKER_BOARD.jpg",
+        "caption": "Snooker",
+        "alt_text": "Ulo snooker",
+        "room_category": "Entertainment"
+      },
+      {
+        "photo_id": "UM17_P6",
+        "property_id": "UMUNNA_017",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/tgzmdGx5/CENTA_BEDROOM.jpg",
+        "caption": "3rd Bedroom",
+        "alt_text": "Ulo bedroom 3",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM18_P1",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Gudjud sitting",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM18_P2",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/xdgtJGwk/POOL_SIDE.jpg",
+        "caption": "Poolside",
+        "alt_text": "Gudjud pool",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM18_P3",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/7LqKZtWr/BEDROOM_3.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Gudjud bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM18_P4",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/GmFMrnzv/BEDROOM_2.jpg",
+        "caption": "2nd Bedroom",
+        "alt_text": "Gudjud suite",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM18_P5",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/L8Kyr8k9/BEDROOM_1.jpg",
+        "caption": "3rd Bedroom",
+        "alt_text": "Gudjud suite view",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM18_P6",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/L4WQ3TnB/KITCHEN.jpg",
+        "caption": "Kitchen",
+        "alt_text": "Gudjud kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM18_P7",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/d3hHK7ST/CORRIDOR.jpg",
+        "caption": "Corridor",
+        "alt_text": "Gudjud corridor",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM18_P8",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/tgzmdGx5/CENTA_BEDROOM.jpg",
+        "caption": "4th Bedroom",
+        "alt_text": "Gudjud bedroom 4",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM18_P9",
+        "property_id": "UMUNNA_018",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/9MTJf3Y8/GAMES_LOUNGE.jpg",
+        "caption": "Games Lounge",
+        "alt_text": "Gudjud games",
+        "room_category": "Entertainment"
+      },
+      {
+        "photo_id": "UM19_P1",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 1,
+        "image_url": "https://i.postimg.cc/sxw9N3cV/BEDROOM22.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Pearl bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM19_P2",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/50W3H7yd/OUT_DOOR.jpg",
+        "caption": "Outdoor",
+        "alt_text": "Pearl outdoor",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM19_P3",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/DwD5hyK0/SITTING_ROOM_W.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Pearl sitting",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM19_P4",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 4,
+        "image_url": "https://i.postimg.cc/gJpVcxSC/DINING_RROM.jpg",
+        "caption": "Dining",
+        "alt_text": "Pearl dining",
+        "room_category": "Dining"
+      },
+      {
+        "photo_id": "UM19_P5",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/TPgjXV9h/KITCHEN.jpg",
+        "caption": "Kitchen",
+        "alt_text": "Pearl kitchen",
+        "room_category": "Kitchen"
+      },
+      {
+        "photo_id": "UM19_P6",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/Bnd5yY2w/POOL.jpg",
+        "caption": "Poolside",
+        "alt_text": "Pearl pool",
+        "room_category": "Outdoor"
+      },
+      {
+        "photo_id": "UM19_P7",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/50W3H7yd/OUT_DOOR.jpg",
+        "caption": "Outdoor (2)",
+        "alt_text": "Pearl outdoor view",
+        "room_category": "Exterior"
+      },
+      {
+        "photo_id": "UM19_P8",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/DwD5hyK0/SITTING_ROOM_W.jpg",
+        "caption": "Sitting room (2)",
+        "alt_text": "Pearl lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM19_P9",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 9,
+        "image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg",
+        "caption": "2nd Bedroom",
+        "alt_text": "Pearl bedroom 2",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM19_P10",
+        "property_id": "UMUNNA_019",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/Kv0J9Dq1/ART_DECOR.jpg",
+        "caption": "Art decor",
+        "alt_text": "Pearl art",
+        "room_category": "Interior"
+      },
+      {
+        "photo_id": "UM20_P2",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 2,
+        "image_url": "https://i.postimg.cc/vHj09FQv/FULL_SITTING_ROOM.jpg",
+        "caption": "Sitting room",
+        "alt_text": "Selina sitting",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM20_P3",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 3,
+        "image_url": "https://i.postimg.cc/L6hyn6MS/LOUNGE_INDOOR.jpg",
+        "caption": "Lounge",
+        "alt_text": "Selina lounge",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM20_P5",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 5,
+        "image_url": "https://i.postimg.cc/ZnsVVXps/BATHROOM.jpg",
+        "caption": "Bathroom",
+        "alt_text": "Selina bathroom",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM20_P6",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 6,
+        "image_url": "https://i.postimg.cc/0N7XPW1W/BEDROOM.jpg",
+        "caption": "Bedroom",
+        "alt_text": "Selina bedroom",
+        "room_category": "Bedroom"
+      },
+      {
+        "photo_id": "UM20_P7",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 7,
+        "image_url": "https://i.postimg.cc/DwJYYfj3/REST_ROOM.jpg",
+        "caption": "Restroom",
+        "alt_text": "Selina rest room",
+        "room_category": "Bathroom"
+      },
+      {
+        "photo_id": "UM20_P8",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 8,
+        "image_url": "https://i.postimg.cc/2jGJ1KbX/LIVING_ROOM.jpg",
+        "caption": "Living room",
+        "alt_text": "Selina living",
+        "room_category": "Living Room"
+      },
+      {
+        "photo_id": "UM20_P10",
+        "property_id": "UMUNNA_020",
+        "sequence_order": 10,
+        "image_url": "https://i.postimg.cc/X7vPdk90/GYM.jpg",
+        "caption": "Gym",
+        "alt_text": "Selina gym",
+        "room_category": "Wellness"
+      }
     ]
   },
   "city_summary": [
-    { "city": "Asaba", "state": "Delta", "total_properties": 17 },
-    { "city": "Benin City", "state": "Edo", "total_properties": 1 },
-    { "city": "Awka", "state": "Anambra", "total_properties": 1 },
-    { "city": "Lagos", "state": "Lagos", "total_properties": 0 }
+    {
+      "city": "Asaba",
+      "state": "Delta",
+      "total_properties": 17
+    },
+    {
+      "city": "Benin City",
+      "state": "Edo",
+      "total_properties": 1
+    },
+    {
+      "city": "Awka",
+      "state": "Anambra",
+      "total_properties": 1
+    },
+    {
+      "city": "Lagos",
+      "state": "Lagos",
+      "total_properties": 0
+    }
   ],
   "services_catalog": [
-    { "service_id": "SVC_001", "type": "Ride", "name": "Airport Pickup", "description": "Premium transfer services.", "coverage_cities": ["Asaba", "Lagos"], "whatsapp_prefill": "Hi, I need airport pickup.", "status": "Active" },
-    { "service_id": "SVC_002", "type": "Food", "name": "Private Chef", "description": "Curated dining experience.", "coverage_cities": ["Asaba", "Benin"], "whatsapp_prefill": "Hi, I'd like a private chef.", "status": "Active" }
+    {
+      "service_id": "SVC_001",
+      "type": "Ride",
+      "name": "Airport Pickup",
+      "description": "Premium transfer services.",
+      "coverage_cities": [
+        "Asaba",
+        "Lagos"
+      ],
+      "whatsapp_prefill": "Hi, I need airport pickup.",
+      "status": "Active"
+    },
+    {
+      "service_id": "SVC_002",
+      "type": "Food",
+      "name": "Private Chef",
+      "description": "Curated dining experience.",
+      "coverage_cities": [
+        "Asaba",
+        "Benin"
+      ],
+      "whatsapp_prefill": "Hi, I'd like a private chef.",
+      "status": "Active"
+    }
   ],
   "transport_vendors": [
     {
       "vendor_id": "UMR_001",
       "vendor_name": "Umunna Rides",
-      "service_types": ["car_hire", "car_hire_escort", "escort_only", "private_jet"],
-      "coverage_cities": ["Asaba", "Benin", "Lagos", "Portharcourt", "Uyo", "Abuja"],
+      "service_types": [
+        "car_hire",
+        "car_hire_escort",
+        "escort_only",
+        "private_jet"
+      ],
+      "coverage_cities": [
+        "Asaba",
+        "Benin",
+        "Lagos",
+        "Portharcourt",
+        "Uyo",
+        "Abuja"
+      ],
       "whatsapp_number": "+2347048033575",
       "whatsapp_prefill": "Hello Umunna Stays, I need transport service: [service_type] in [city] on [date]. Pickup: [pickup_location].",
       "logo_url": "https://i.postimg.cc/gk40BMZB/umunna-logo.png",
@@ -584,6 +2120,62 @@
       "image_url": "https://i.postimg.cc/FRsy8Drz/Save_Inta_com_488621108_18021914246690295_5868630574891386945_n.jpg",
       "is_available": "Yes",
       "sort_order": 1
+    },
+    {
+      "vehicle_id": "UMRV_002",
+      "vendor_id": "UMR_001",
+      "vehicle_type": "SEDAN",
+      "make_model": "Toyota Camry",
+      "category": "Sedan",
+      "seats": 4,
+      "features": "Comfortable|AC|City-ready",
+      "daily_rate_ngn": "From 150000",
+      "image_url": "https://res.cloudinary.com/dgxsq0kjh/image/upload/v1738377554/luxury_suv.jpg",
+      "description": "Comfortable sedan for city runs, airport pickup, and executive transport.",
+      "is_available": "Yes",
+      "sort_order": 2
+    },
+    {
+      "vehicle_id": "UMRV_003",
+      "vendor_id": "UMR_001",
+      "vehicle_type": "BUS",
+      "make_model": "Hiace Bus",
+      "category": "Bus",
+      "seats": 14,
+      "features": "Group transport|AC|Events",
+      "daily_rate_ngn": "From 250000",
+      "image_url": "https://res.cloudinary.com/dgxsq0kjh/image/upload/v1738377554/luxury_suv.jpg",
+      "description": "Group transport for events, tours, and multi-guest movement.",
+      "is_available": "Yes",
+      "sort_order": 3
+    },
+    {
+      "vehicle_id": "UMRV_004",
+      "vendor_id": "UMR_001",
+      "vehicle_type": "SIENNA",
+      "make_model": "Toyota Sienna",
+      "category": "Van",
+      "seats": 6,
+      "features": "Family-friendly|Luggage space|AC",
+      "daily_rate_ngn": "From 200000",
+      "image_url": "https://res.cloudinary.com/dgxsq0kjh/image/upload/v1738377554/luxury_suv.jpg",
+      "description": "Spacious family van for comfort, luggage, and longer city trips.",
+      "is_available": "Yes",
+      "sort_order": 4
+    },
+    {
+      "vehicle_id": "UMRV_006",
+      "vendor_id": "UMR_001",
+      "vehicle_type": "PRIVATE_JET",
+      "make_model": "Bombardier Global 8000",
+      "category": "Private Jet",
+      "seats": 8,
+      "features": "Luxury|Privacy|Global range",
+      "daily_rate_ngn": "Price on Request",
+      "image_url": "https://res.cloudinary.com/dgxsq0kjh/image/upload/v1738600871/PRIVATE_JET.jpg",
+      "description": "Private jet itinerary service. Price on request. Concierge handles routing and availability.",
+      "is_available": "Yes",
+      "sort_order": 5
     }
   ]
 }

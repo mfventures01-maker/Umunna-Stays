@@ -5,9 +5,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 interface VehicleImageGalleryProps {
   images: string[];
   alt: string;
+  priority?: boolean;
 }
 
-const VehicleImageGallery: React.FC<VehicleImageGalleryProps> = ({ images, alt }) => {
+const VehicleImageGallery: React.FC<VehicleImageGalleryProps> = ({ images, alt, priority = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!images || images.length === 0) {
@@ -30,33 +31,33 @@ const VehicleImageGallery: React.FC<VehicleImageGalleryProps> = ({ images, alt }
 
   return (
     <div className="relative w-full h-full group/gallery overflow-hidden">
-      <img 
-        src={images[currentIndex]} 
+      <img
+        src={images[currentIndex]}
         alt={`${alt} view ${currentIndex + 1}`}
         className="w-full h-full object-cover transition-transform duration-700 group-hover/gallery:scale-110"
-        loading="lazy"
-        decoding="async"
+        loading={priority ? "eager" : "lazy"}
+        decoding={priority ? "sync" : "async"}
       />
-      
+
       {images.length > 1 && (
         <>
-          <button 
+          <button
             onClick={prev}
             className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 opacity-0 group-hover/gallery:opacity-100 transition-all hover:bg-white/40"
           >
             <ChevronLeft size={16} strokeWidth={3} />
           </button>
-          <button 
+          <button
             onClick={next}
             className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 opacity-0 group-hover/gallery:opacity-100 transition-all hover:bg-white/40"
           >
             <ChevronRight size={16} strokeWidth={3} />
           </button>
-          
+
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
             {images.map((_, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className={`h-1 rounded-full transition-all duration-300 ${currentIndex === i ? 'w-4 bg-white' : 'w-1 bg-white/40'}`}
               />
             ))}

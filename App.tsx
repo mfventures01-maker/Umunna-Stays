@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { HashRouter } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -10,20 +10,54 @@ import Services from './pages/Services';
 import Food from './pages/Food';
 import Transport from './pages/Transport';
 import Host from './pages/Host';
+import Profile from './pages/Profile';
 import { View, Property, AppData } from './types';
 import { loadAppData, getPropertyById } from './dataStore';
+import { AuthProvider } from './src/contexts/AuthContext';
+import ErrorBoundary from './src/components/ErrorBoundary';
 
 const App: React.FC = () => {
+  return (
+    <HashRouter>
+      <AuthProvider>
+        <ErrorBoundary>
+          <AppContent />
+        </ErrorBoundary>
+      </AuthProvider>
+    </HashRouter>
+  );
+};
+
+const AppContent: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [appData, setAppData] = useState<AppData | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Transport Data State
+  const [transportData, setTransportData] = useState<{
+    services: any[];
+    vendors: any[];
+    vehicles: any[];
+  } | null>(null);
+  const [transportLoading, setTransportLoading] = useState(true);
+
   useEffect(() => {
     const init = async () => {
+      // Load main AppData
       const data = await loadAppData();
       setAppData(data);
       setLoading(false);
+
+      // Load Transport Data immediately to ensure it's available
+      // or we could do it lazily when the user navigates. 
+      // Given the user flow, loading it now ensures smoothness.
+      setTransportLoading(true);
+      import('./dataStore').then(async (ds) => {
+        const tData = await ds.loadTransportData();
+        setTransportData(tData);
+        setTransportLoading(false);
+      });
     };
     init();
   }, []);
@@ -32,8 +66,13 @@ const App: React.FC = () => {
     if (!appData) return;
 
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      
+      let hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('/')) hash = hash.substring(1); // Handle /stays vs stays
+
+      // Map conversion-optimized routes to internal views
+      if (hash === 'properties') hash = 'stays';
+      if (hash === 'security') hash = 'services';
+
       if (hash.startsWith('stays/')) {
         const identifier = hash.replace('stays/', '');
         const prop = getPropertyById(appData, identifier);
@@ -43,7 +82,7 @@ const App: React.FC = () => {
         } else {
           setCurrentView('stays');
         }
-      } else if (['stays', 'services', 'host', 'food', 'transport'].includes(hash)) {
+      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites'].includes(hash)) {
         setCurrentView(hash as View);
       } else {
         setCurrentView('home');
@@ -79,7 +118,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header currentView={currentView} onNavigate={navigateTo} appData={appData} />
-      
+
       <main className="flex-grow">
         {currentView === 'home' && <Home onNavigate={navigateTo} appData={appData} />}
         {currentView === 'stays' && <Stays onNavigate={navigateTo} appData={appData} />}
@@ -88,8 +127,17 @@ const App: React.FC = () => {
         )}
         {currentView === 'services' && <Services appData={appData} />}
         {currentView === 'food' && <Food appData={appData} />}
-        {currentView === 'transport' && <Transport appData={appData} />}
+        {currentView === 'transport' && (
+          <Transport
+            appData={appData}
+            transportData={transportData}
+            isLoading={transportLoading}
+          />
+        )}
         {currentView === 'host' && <Host appData={appData} />}
+        {(currentView === 'profile' || currentView === 'favorites') && (
+          <Profile appData={appData} onNavigate={navigateTo} />
+        )}
       </main>
 
       <Footer onNavigate={navigateTo} appData={appData} />

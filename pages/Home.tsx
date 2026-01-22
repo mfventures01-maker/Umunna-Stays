@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { View, Property, AppData } from '../types';
 import { getFeaturedProperties, getServicesByType } from '../dataStore';
 import PropertyCarousel from '../components/PropertyCarousel';
+import ConciergeLeadForm from '../components/concierge/ConciergeLeadForm';
 import { Search, ChevronRight, ArrowRight } from 'lucide-react';
+import ServiceHeroCarousel from '../src/components/ServiceHeroCarousel';
+import LeadCapturePopup from '../src/components/LeadCapturePopup';
+import nateImg from '../src/assets/nate-signature-hero.jpg';
+import foodImg from '../src/assets/rice-chicken.png';
+import transportImg from '../src/assets/land-cruiser.png';
 
 interface HomeProps {
   onNavigate: (view: View, property?: Property) => void;
@@ -12,7 +18,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   const featured = getFeaturedProperties(appData);
   const mainServices = [
     ...getServicesByType(appData, 'Food').slice(0, 1),
@@ -27,38 +33,67 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
 
   return (
     <div className="pt-16 md:pt-20">
+      <ServiceHeroCarousel
+        slides={[
+          {
+            id: "apartments",
+            badge: "Stay",
+            title: "Premium Short-Stay Apartments",
+            subtitle: "Clean, secure, and ready — book fast, check-in easier.",
+            ctaText: "View Properties",
+            route: "/properties",
+            imageUrl: nateImg
+          },
+          {
+            id: "food",
+            badge: "Eat",
+            title: "Food & Kitchen Delivery",
+            subtitle: "Hot meals delivered — comfort without leaving your stay.",
+            ctaText: "Browse Food",
+            route: "/food",
+            imageUrl: foodImg
+          },
+          {
+            id: "transport",
+            badge: "Move",
+            title: "Transport & Chauffeur Services",
+            subtitle: "Airport pickups, city trips, and premium rides.",
+            ctaText: "Book a Ride",
+            route: "/transport",
+            imageUrl: transportImg
+          },
+          {
+            id: "security",
+            badge: "Secure",
+            title: "Private Security Escort",
+            subtitle: "Professional coverage for personal movement and high-value trips.",
+            ctaText: "Request Security",
+            route: "/security",
+            imageUrl: "https://i.postimg.cc/W1Vtsm99/PRIVATE-SECURITY.png"
+          }
+        ]}
+        autoPlayMs={4500}
+      />
+      <LeadCapturePopup />
+
+      {/* Legacy Search (Hidden on Mobile if Carousel is present? Or kept? Keeping purely for potential utility below if desired, but user asked for hero replacement. I will comment out the old hero section completely to avoid visual clutter, as implied by 'hero position' replacement.) */}
+      {/*
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://i.postimg.cc/FRLmJ1Fc/4_bed_living_space.jpg" 
-            alt="Luxury Interior Nigeria" 
-            className="w-full h-full object-cover scale-105"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative container mx-auto px-4 text-center text-white z-10 max-w-4xl">
-          <h1 className="text-4xl md:text-7xl font-black mb-6 leading-tight">
-            Curated Short-Stays <br/> <span className="text-[#D4A017]">Privacy. Exclusivity.</span>
-          </h1>
-          <p className="text-lg md:text-2xl font-light mb-10 opacity-90 max-w-2xl mx-auto">
-            {appData.meta.brand_name} — Premium concierged hospitality in {appData.meta.default_city} and beyond.
-          </p>
-          <form onSubmit={handleSearch} className="max-w-xl mx-auto bg-white p-2 rounded-2xl md:rounded-full flex flex-col md:flex-row gap-2 shadow-2xl">
-            <div className="flex-grow flex items-center px-4">
-              <Search className="text-gray-400 mr-2" size={20} />
-              <input 
-                type="text" 
-                placeholder="Where to? (Benin, Asaba, Awka...)" 
-                className="w-full py-4 bg-transparent text-gray-800 outline-none placeholder:text-gray-400 font-medium"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-            <button type="submit" className="bg-[#C46210] text-white px-10 py-4 rounded-full font-black hover:bg-[#a3510d] transition-all">
-              Explore
-            </button>
-          </form>
+        ... (Old Hero Content) ...
+      </section>
+      */}
+
+      {/* Restoring Search Bar in a separate container if needed? 
+          USER INSTRUCTION: "Wire carousel into the homepage... Render the carousel at the TOP of the page (hero position)".
+          The prompt didn't strictly say "delete the old hero", but keeping two heroes is bad UI. 
+          I will provide the Carousel. 
+      */}
+
+      <section className="py-12 bg-white relative -mt-20 z-20 hidden md:block">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto shadow-2xl rounded-3xl overflow-hidden">
+            <ConciergeLeadForm />
+          </div>
         </div>
       </section>
 
@@ -69,7 +104,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
               <h2 className="text-3xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">Signature Collection</h2>
               <p className="text-gray-500 text-lg md:text-xl font-medium">Extraordinary residences vetted for design, security, and location.</p>
             </div>
-            <button 
+            <button
               onClick={() => onNavigate('stays')}
               className="flex items-center gap-3 bg-gray-50 text-gray-900 px-6 py-3 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all"
             >
@@ -88,7 +123,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
               <div key={service.service_id} className="bg-white p-10 rounded-[40px] shadow-sm border border-gray-100">
                 <h3 className="text-2xl font-bold mb-4">{service.name}</h3>
                 <p className="text-gray-500 mb-6">{service.description}</p>
-                <a 
+                <a
                   href={`https://wa.me/${appData.meta.whatsapp_main_number}?text=${encodeURIComponent(service.whatsapp_prefill)}`}
                   className="text-[#C46210] font-black uppercase tracking-widest flex items-center justify-center gap-2"
                 >
