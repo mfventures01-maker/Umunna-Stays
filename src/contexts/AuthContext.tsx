@@ -44,6 +44,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Fetch profile helper
     const fetchProfile = async (userId: string) => {
+        if (!supabase) return;
         try {
             const { data, error } = await supabase
                 .from('profiles')
@@ -59,6 +60,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Fetch favorites helper
     const fetchFavorites = async (userId: string) => {
+        if (!supabase) return;
         try {
             const { data } = await supabase
                 .from('favorites')
@@ -74,6 +76,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     useEffect(() => {
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
+
         // Check active session
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
@@ -104,11 +111,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, []);
 
     const signIn = async (email: string, password: string) => {
+        if (!supabase) return { error: { message: 'Auth not configured' } };
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         return { error };
     };
 
     const signUp = async (email: string, password: string, fullName?: string, phone?: string) => {
+        if (!supabase) return { error: { message: 'Auth not configured' } };
         const { data, error } = await supabase.auth.signUp({
             email,
             password,
@@ -132,6 +141,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const signOut = async () => {
+        if (!supabase) {
+            setProfile(null);
+            setUser(null);
+            setSession(null);
+            setFavorites([]);
+            return;
+        }
         await supabase.auth.signOut();
         setProfile(null);
         setUser(null);
@@ -142,6 +158,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const toggleFavorite = async (propertyId: string) => {
         if (!user) {
             openAuthModal('login');
+            return;
+        }
+
+        if (!supabase) {
+            alert("Favorites require backend configuration.");
             return;
         }
 
