@@ -66,12 +66,19 @@ const AppContent: React.FC = () => {
     if (!appData) return;
 
     const handleHashChange = () => {
+      // Redirect clean paths to hash paths if necessary (for Vercel rewrites)
+      if (window.location.pathname === '/rides') {
+        window.location.href = '/#/transport';
+        return;
+      }
+
       let hash = window.location.hash.replace('#', '');
       if (hash.startsWith('/')) hash = hash.substring(1); // Handle /stays vs stays
 
       // Map conversion-optimized routes to internal views
       if (hash === 'properties') hash = 'stays';
       if (hash === 'security') hash = 'services';
+      if (hash === 'rides') hash = 'transport'; // Alias for Rides
 
       if (hash.startsWith('stays/')) {
         const identifier = hash.replace('stays/', '');

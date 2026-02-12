@@ -43,9 +43,22 @@ const Transport: React.FC<TransportProps> = ({ appData, transportData, isLoading
 
   // Memo hooks
   // Combine prop data with fallback helpers for robust data availability
-  const services = useMemo(() => transportData?.services || getTransportServices(appData), [transportData, appData]);
-  const allVendors = useMemo(() => transportData?.vendors || getTransportVendors(appData), [transportData, appData]);
-  const allVehicles = useMemo(() => transportData?.vehicles || getVehicleFleet(appData), [transportData, appData]);
+  // Memo hooks
+  // Combine prop data with fallback helpers for robust data availability
+  const services = useMemo(() => {
+    const raw = transportData?.services || getTransportServices(appData);
+    return raw.filter(s => s && typeof s === 'object');
+  }, [transportData, appData]);
+
+  const allVendors = useMemo(() => {
+    const raw = transportData?.vendors || getTransportVendors(appData);
+    return raw.filter(v => v && typeof v === 'object');
+  }, [transportData, appData]);
+
+  const allVehicles = useMemo(() => {
+    const raw = transportData?.vehicles || getVehicleFleet(appData);
+    return raw.filter(v => v && typeof v === 'object');
+  }, [transportData, appData]);
 
   const availableCities = useMemo(() =>
     ['Asaba', 'Benin', 'Lagos', 'Port Harcourt', 'Uyo', 'Abuja'],
@@ -58,20 +71,22 @@ const Transport: React.FC<TransportProps> = ({ appData, transportData, isLoading
     const matches = allVendors
       .filter(v => v.is_active)
       .filter(v =>
-        v.coverage_cities.some(c => c.toLowerCase().trim() === normalizedCity) &&
-        v.service_types.some(s => s.toLowerCase().trim() === selectedServiceType.toLowerCase().trim())
+        v.coverage_cities?.some(c => c.toLowerCase().trim() === normalizedCity) &&
+        v.service_types?.some(s => s.toLowerCase().trim() === selectedServiceType.toLowerCase().trim())
       );
-    return matches.length > 0 ? matches.sort((a, b) => a.sort_order - b.sort_order)[0] : allVendors[0];
+    return matches.length > 0 ? matches.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))[0] : allVendors[0];
   }, [allVendors, selectedCity, selectedServiceType]);
 
   const filteredServices = useMemo(() => {
-    return services.filter(s => s.service_type === selectedServiceType).sort((a, b) => a.sort_order - b.sort_order);
+    return services
+      .filter(s => s.service_type === selectedServiceType)
+      .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
   }, [services, selectedServiceType]);
 
   const vehicles = useMemo(() => {
     // Return the entire fleet for all tabs to ensure maximum visibility, 
     // sorting by the defined sort_order
-    return allVehicles.sort((a, b) => a.sort_order - b.sort_order);
+    return allVehicles.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
   }, [allVehicles]);
 
   // ======================
@@ -117,10 +132,11 @@ const Transport: React.FC<TransportProps> = ({ appData, transportData, isLoading
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-[#C46210] font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Fleet & Aviation</span>
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-none">Umunna Rides</h1>
+          <span className="text-[#C46210] font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Secure Logistics</span>
+          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-none">Ghost Protocol</h1>
           <p className="text-lg text-gray-500 font-medium leading-relaxed">
-            Premium Nigerian Movement. Car Hire • Escort • Private Jet Itinerary.
+            Unmarked Assets. Vetted Drivers. No Stickers. <br className="hidden md:block" />
+            Movement without the noise.
           </p>
         </div>
 

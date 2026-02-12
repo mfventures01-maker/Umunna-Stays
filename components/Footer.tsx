@@ -51,8 +51,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, appData }) => {
             <ul className="space-y-4">
               {appData.city_summary.slice(0, 4).map((cityInfo) => (
                 <li key={cityInfo.city}>
-                  <button 
-                    onClick={() => onNavigate('stays')} 
+                  <button
+                    onClick={() => onNavigate('stays')}
                     className="text-gray-500 hover:text-[#C46210] transition-colors"
                   >
                     {cityInfo.city}
@@ -60,6 +60,28 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, appData }) => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="md:col-span-2 lg:col-span-4 border-t border-gray-100 pt-8 mt-4">
+            <h4 className="font-bold text-sm uppercase tracking-widest text-[#C46210] mb-6">Corporate & Institutional Trust</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-xs font-bold text-gray-700">VAT Compliant Invoicing</span>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-xs font-bold text-gray-700">Corporate Accounts Accepted</span>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-xs font-bold text-gray-700">NGO / Oil & Gas Vetted</span>
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-xs font-bold text-gray-700">24/7 Logistics Support</span>
+              </div>
+            </div>
           </div>
         </div>
 

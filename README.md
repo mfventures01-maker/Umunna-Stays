@@ -54,3 +54,29 @@ This is a **Static Site**. You can deploy the `dist/` folder to any static host:
 - AWS S3 / CloudFront
 
 Ensure your build script runs `npm install && npm run build`.
+
+## Maintenance
+
+### Updating Icons
+If you update `src/assets/brand-logo.png`, regenerate all app icons and favicons:
+```bash
+npm run generate:icons
+```
+
+## How to Push to GitHub
+
+1. Initialize git (if not already done):
+   ```bash
+   git init
+   ```
+2. Add your remote repository:
+   ```bash
+   git remote add origin https://github.com/<YOUR-USERNAME>/umunna-stays.git
+   ```
+3. Commit and push:
+   ```bash
+   git add .
+   git commit -m "Ready for production"
+   git branch -M main
+   git push -u origin main
+   ```
