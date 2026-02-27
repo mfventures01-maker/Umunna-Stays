@@ -32,3 +32,5 @@ test-results/
 playwright-report/
 output*.txt
 *.zip
+
+.vercel

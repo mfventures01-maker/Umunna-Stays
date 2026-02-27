@@ -4,13 +4,13 @@ import { View, Property, AppData } from '../types';
 import { getFeaturedProperties, getServicesByType } from '../dataStore';
 import PropertyCarousel from '../components/PropertyCarousel';
 import ConciergeLeadForm from '../components/concierge/ConciergeLeadForm';
-import { Search, ChevronRight, ArrowRight, ShieldCheck, Zap, Wifi, Droplets, AlertTriangle } from 'lucide-react';
+import { Search, ChevronRight, ArrowRight, ShieldCheck, Zap, Wifi, Droplets, AlertTriangle, Star, MapPin } from 'lucide-react';
 import ServiceHeroCarousel from '../src/components/ServiceHeroCarousel';
 import LeadCapturePopup from '../src/components/LeadCapturePopup';
 import nateImg from '../src/assets/nate-signature-hero.jpg';
 import foodImg from '../src/assets/rice-chicken.png';
 import transportImg from '../src/assets/land-cruiser.png';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface HomeProps {
   onNavigate: (view: View, property?: Property) => void;
@@ -119,6 +119,20 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Authority / Partner Badges */}
+      <section className="py-12 bg-white border-y border-gray-100">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Trusted by Executives From</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            <h4 className="text-xl font-black font-heading tracking-tighter">CHEVRON</h4>
+            <h4 className="text-xl font-black font-heading tracking-widest text-[#C46210]">SHELL</h4>
+            <h4 className="text-xl font-black font-heading font-serif italic">NNPC</h4>
+            <h4 className="text-xl font-bold font-heading">ZENITH BANK</h4>
+            <h4 className="text-xl font-black font-heading tracking-tight">MTN</h4>
+          </div>
         </div>
       </section>
 
@@ -235,6 +249,34 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
         </div>
       </section>
 
+      {/* Featured Reviews / Brand Authority */}
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-[#C46210] font-black uppercase tracking-[0.3em] text-xs mb-4 block">Reputation</span>
+            <h2 className="text-4xl md:text-5xl font-black font-heading text-gray-900 tracking-tight">Don't Take Our Word For It</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              { text: "The first shortlet in Asaba where the WiFi actually supported my Zoom calls seamlessly. The 24/7 power claim is not a gimmick. Excellent.", author: "Dr. K. Obi", role: "Diaspora Investor" },
+              { text: "Secure, discreet, and exceptionally clean. The concierge even organized our local transport. The only place my firm uses in Delta State.", author: "Sarah M.", role: "Corporate Executive" },
+              { text: "Finally, luxury that matches international standards here in Asaba. Arrived late, but check-in was smooth and food was ready.", author: "Chief E. Nnamdi", role: "Business Owner" }
+            ].map((review, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={16} fill="currentColor" />)}
+                </div>
+                <p className="text-gray-700 italic mb-6">"{review.text}"</p>
+                <div>
+                  <h5 className="font-bold text-gray-900">{review.author}</h5>
+                  <span className="text-xs text-brand font-medium tracking-wider uppercase">{review.role}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Logistics / Concierge */}
       <section className="py-24 bg-gray-900 text-white rounded-t-[3rem] mt-12 relative overflow-hidden">
         {/* Subtle pattern or gradient */}
@@ -274,6 +316,51 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
           </div>
         </div>
       </section>
+
+      {/* Google Maps Embed & Book Now CTA */}
+      <section className="bg-white py-12 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+            <div className="w-full md:w-1/2 h-[400px]">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126839.1179040004!2d6.6212163!3d6.2341257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043f16dc448bc55%3A0xeab50d4fdbcbbf!2sAsaba%2C%20Delta!5e0!3m2!1sen!2sng!4v1714150000000!5m2!1sen!2sng" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Umunna Stays Location"
+              ></iframe>
+            </div>
+            <div className="w-full md:w-1/2 p-8 md:p-12 text-center md:text-left">
+              <h3 className="text-3xl font-black font-heading text-gray-900 mb-4">Command Your Stay</h3>
+              <p className="text-gray-600 mb-8 max-w-md">Our properties are strategically located in Asaba's most secure estates. Minutes from the airport, secluded from the noise.</p>
+              <button 
+                onClick={() => onNavigate('stays')}
+                className="inline-flex flex-col items-center justify-center md:items-start bg-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-[#A3520D] transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto"
+              >
+                <span>Book Now</span>
+                <span className="text-xs font-normal opacity-80 mt-1">3 Units Available This Week</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky Book Now Mobile */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-[60] flex items-center justify-between shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div>
+          <p className="font-bold text-gray-900">Need a Stay?</p>
+          <p className="text-xs text-brand font-medium">Fast action recommended</p>
+        </div>
+        <button 
+          onClick={() => onNavigate('stays')}
+          className="bg-brand text-white px-6 py-3 rounded-lg font-bold shadow-md active:scale-95 transition-transform"
+        >
+          Book Now
+        </button>
+      </div>
     </div>
   );
 };

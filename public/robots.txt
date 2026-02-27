@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /secure-admin-login
+Disallow: /admin-dashboard
+
+Sitemap: https://www.umunnastays.com.ng/sitemap.xml

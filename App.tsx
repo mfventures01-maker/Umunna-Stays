@@ -16,6 +16,14 @@ import { loadAppData, getPropertyById } from './dataStore';
 import { AuthProvider } from './src/contexts/AuthContext';
 import ErrorBoundary from './src/components/ErrorBoundary';
 
+// New Pages & Components
+import SecureAdminLogin from './pages/SecureAdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import AdminShield from './components/AdminShield';
+import ExitIntentPopup from './components/ExitIntentPopup';
+
 const App: React.FC = () => {
   return (
     <HashRouter>
@@ -89,7 +97,9 @@ const AppContent: React.FC = () => {
         } else {
           setCurrentView('stays');
         }
-      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites'].includes(hash)) {
+      } else if (hash.startsWith('blog/')) {
+        setCurrentView('blog-post');
+      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'blog'].includes(hash)) {
         setCurrentView(hash as View);
       } else {
         setCurrentView('home');
@@ -145,10 +155,16 @@ const AppContent: React.FC = () => {
         {(currentView === 'profile' || currentView === 'favorites') && (
           <Profile appData={appData} onNavigate={navigateTo} />
         )}
+        {currentView === 'secure-admin-login' && <SecureAdminLogin />}
+        {currentView === 'admin-dashboard' && <AdminDashboard />}
+        {currentView === 'blog' && <Blog />}
+        {currentView === 'blog-post' && <BlogPost />}
       </main>
 
       <Footer onNavigate={navigateTo} appData={appData} />
       <WhatsAppButton />
+      <AdminShield />
+      <ExitIntentPopup />
     </div>
   );
 };

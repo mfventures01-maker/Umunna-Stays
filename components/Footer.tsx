@@ -16,8 +16,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, appData }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">
             <img src={LOGO_URL} alt={appData.meta.brand_name} className="h-10 mb-6" />
-            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              {appData.meta.brand_name} is Nigeria's premium concierge-driven hospitality marketplace. Curating the finest stays and private experiences for the modern African lifestyle.
+            <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
+              Umunna Stays is not a generic shortlet. It is an exclusive concierge-backed hospitality brand in Asaba designed for executives, diaspora visitors, and premium travelers.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-gray-400 hover:text-[#C46210] transition-colors"><Instagram size={20} /></a>
@@ -30,19 +30,19 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, appData }) => {
             <h4 className="font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
               <li><button onClick={() => onNavigate('home')} className="text-gray-500 hover:text-[#C46210] transition-colors">About Us</button></li>
+              <li><button onClick={() => window.location.hash = 'blog'} className="text-gray-500 hover:text-[#C46210] transition-colors">Executive Travel Blog</button></li>
               <li><button onClick={() => onNavigate('host')} className="text-gray-500 hover:text-[#C46210] transition-colors">Become a Host</button></li>
               <li><button className="text-gray-500 hover:text-[#C46210] transition-colors">Trust & Safety</button></li>
-              <li><button className="text-gray-500 hover:text-[#C46210] transition-colors">Support</button></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-lg mb-6">Explore</h4>
             <ul className="space-y-4">
-              <li><button onClick={() => onNavigate('stays')} className="text-gray-500 hover:text-[#C46210] transition-colors">All Stays</button></li>
-              <li><button onClick={() => onNavigate('food')} className="text-gray-500 hover:text-[#C46210] transition-colors">Food & Services</button></li>
-              <li><button onClick={() => onNavigate('transport')} className="text-gray-500 hover:text-[#C46210] transition-colors">Transport</button></li>
-              <li><button className="text-gray-500 hover:text-[#C46210] transition-colors">Private Experiences</button></li>
+              <li><button onClick={() => onNavigate('stays')} className="text-gray-500 hover:text-[#C46210] transition-colors">Luxury Shortlets Asaba</button></li>
+              <li><button onClick={() => onNavigate('food')} className="text-gray-500 hover:text-[#C46210] transition-colors">Private Chef & Food</button></li>
+              <li><button onClick={() => onNavigate('transport')} className="text-gray-500 hover:text-[#C46210] transition-colors">Executive Transport</button></li>
+              <li><button className="text-gray-500 hover:text-[#C46210] transition-colors">Concierge Services</button></li>
             </ul>
           </div>
 
