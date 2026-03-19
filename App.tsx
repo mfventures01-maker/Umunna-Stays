@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { BLOG_POSTS } from './blogData'; // Assuming blogData is in the same directory or adjust path
 import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -19,6 +21,7 @@ import ErrorBoundary from './src/components/ErrorBoundary';
 // New Pages & Components
 import SecureAdminLogin from './pages/SecureAdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminBlogCMS from './pages/AdminBlogCMS';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import AdminShield from './components/AdminShield';
@@ -99,7 +102,7 @@ const AppContent: React.FC = () => {
         }
       } else if (hash.startsWith('blog/')) {
         setCurrentView('blog-post');
-      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'blog'].includes(hash)) {
+      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'admin-blog-cms', 'blog'].includes(hash)) {
         setCurrentView(hash as View);
       } else {
         setCurrentView('home');
@@ -157,8 +160,9 @@ const AppContent: React.FC = () => {
         )}
         {currentView === 'secure-admin-login' && <SecureAdminLogin />}
         {currentView === 'admin-dashboard' && <AdminDashboard />}
+        {currentView === 'admin-blog-cms' && <AdminBlogCMS />}
         {currentView === 'blog' && <Blog />}
-        {currentView === 'blog-post' && <BlogPost />}
+        {currentView === 'blog-post' && <BlogPost slug={window.location.hash.split('/').pop()} />}
       </main>
 
       <Footer onNavigate={navigateTo} appData={appData} />

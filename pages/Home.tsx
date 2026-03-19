@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Property, AppData } from '../types';
 import { getFeaturedProperties, getServicesByType } from '../dataStore';
 import PropertyCarousel from '../components/PropertyCarousel';
@@ -11,6 +11,8 @@ import nateImg from '../src/assets/nate-signature-hero.jpg';
 import foodImg from '../src/assets/rice-chicken.png';
 import transportImg from '../src/assets/land-cruiser.png';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { BlogPostData } from '../blogData';
+import { fetchBlogPosts } from '../src/services/blogService';
 
 interface HomeProps {
   onNavigate: (view: View, property?: Property) => void;
@@ -19,6 +21,11 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [blogPosts, setBlogPosts] = useState<BlogPostData[]>([]);
+
+  useEffect(() => {
+    fetchBlogPosts().then(data => setBlogPosts(data));
+  }, []);
 
   const featured = getFeaturedProperties(appData);
   const mainServices = [
@@ -317,18 +324,69 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
         </div>
       </section>
 
+      {/* Latest from the Blog */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-[#C46210] font-black uppercase tracking-[0.3em] text-xs mb-4 block">Executive Intel</span>
+              <h2 className="text-4xl md:text-5xl font-black font-heading text-gray-900 tracking-tight">Latest from the Blog</h2>
+              <p className="text-gray-500 text-lg md:text-xl font-medium mt-4">Insights, guides, and infrastructure audits for the premium traveler.</p>
+            </div>
+            <button
+              onClick={() => onNavigate('blog')}
+              className="group flex items-center gap-3 bg-white border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-2xl font-bold text-sm hover:bg-gray-900 hover:text-white transition-all shadow-md"
+            >
+              View All Posts <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {blogPosts.slice(0, 2).map((post, i) => (
+              <motion.div
+                key={post.slug}
+                className="group relative bg-gray-50 rounded-[2.5rem] overflow-hidden border border-gray-100 cursor-pointer hover:shadow-2xl transition-all duration-500"
+                onClick={() => window.location.hash = `blog/${post.slug}`}
+                {...fadeInUp}
+                transition={{ delay: i * 0.2 }}
+              >
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute top-6 left-6">
+                    <span className="bg-[#C46210] text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8 md:p-10">
+                  <h3 className="text-2xl md:text-3xl font-bold font-heading text-gray-900 mb-4 line-clamp-2 group-hover:text-[#C46210] transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-500 font-medium mb-8 line-clamp-2 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center gap-2 text-gray-900 font-bold text-sm">
+                    Read Intelligence <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform text-[#C46210]" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Google Maps Embed & Book Now CTA */}
       <section className="bg-white py-12 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
             <div className="w-full md:w-1/2 h-[400px]">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126839.1179040004!2d6.6212163!3d6.2341257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043f16dc448bc55%3A0xeab50d4fdbcbbf!2sAsaba%2C%20Delta!5e0!3m2!1sen!2sng!4v1714150000000!5m2!1sen!2sng" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126839.1179040004!2d6.6212163!3d6.2341257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043f16dc448bc55%3A0xeab50d4fdbcbbf!2sAsaba%2C%20Delta!5e0!3m2!1sen!2sng!4v1714150000000!5m2!1sen!2sng"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Umunna Stays Location"
               ></iframe>
@@ -336,7 +394,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
             <div className="w-full md:w-1/2 p-8 md:p-12 text-center md:text-left">
               <h3 className="text-3xl font-black font-heading text-gray-900 mb-4">Command Your Stay</h3>
               <p className="text-gray-600 mb-8 max-w-md">Our properties are strategically located in Asaba's most secure estates. Minutes from the airport, secluded from the noise.</p>
-              <button 
+              <button
                 onClick={() => onNavigate('stays')}
                 className="inline-flex flex-col items-center justify-center md:items-start bg-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-[#A3520D] transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto"
               >
@@ -354,7 +412,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
           <p className="font-bold text-gray-900">Need a Stay?</p>
           <p className="text-xs text-brand font-medium">Fast action recommended</p>
         </div>
-        <button 
+        <button
           onClick={() => onNavigate('stays')}
           className="bg-brand text-white px-6 py-3 rounded-lg font-bold shadow-md active:scale-95 transition-transform"
         >

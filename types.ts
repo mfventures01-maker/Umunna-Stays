@@ -162,4 +162,4 @@ export interface AppData {
   policies_global: any;
 }
 
-export type View = 'home' | 'stays' | 'services' | 'host' | 'property-detail' | 'food' | 'transport' | 'profile' | 'favorites' | 'secure-admin-login' | 'admin-dashboard' | 'blog' | 'blog-post';
+export type View = 'home' | 'stays' | 'services' | 'host' | 'property-detail' | 'food' | 'transport' | 'profile' | 'favorites' | 'secure-admin-login' | 'admin-dashboard' | 'admin-blog-cms' | 'blog' | 'blog-post';

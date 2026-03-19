@@ -20,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onNavigate, appData }) => 
     { label: 'Transport', view: 'transport' },
     { label: 'Food & Services', view: 'food' },
     { label: 'Become a Host', view: 'host' },
+    { label: 'Blog', view: 'blog' },
   ];
 
   const handleNav = (view: View) => {

@@ -1,20 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BlogPostData } from '../blogData';
+import { fetchBlogPosts } from '../src/services/blogService';
 
 const Blog: React.FC = () => {
-    const posts = [
-        {
-            title: 'Luxury Shortlet in Asaba (2026 Guide) | Umunna Stays',
-            slug: 'luxury-shortlet-asaba-2026-guide',
-            excerpt: 'Stay in premium serviced apartments in Asaba with concierge, 24/7 power, airport pickup & executive comfort. Book Umunna Stays today.',
-            category: 'Luxury Apartments Asaba'
-        },
-        {
-            title: 'Best Shortlet in Asaba for Executives',
-            slug: 'best-shortlet-in-asaba-for-executives',
-            excerpt: 'Discover why top executives, diaspora, and business travelers choose Umunna Stays over traditional hotels in Asaba.',
-            category: 'Asaba Business Travel Guide'
-        }
-    ];
+    const [posts, setPosts] = useState<BlogPostData[]>([]);
+
+    useEffect(() => {
+        fetchBlogPosts().then(data => setPosts(data));
+    }, []);
 
     return (
         <div className="pt-24 pb-16 bg-gray-50 min-h-screen">
