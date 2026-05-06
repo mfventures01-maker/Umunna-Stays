@@ -52,7 +52,7 @@ const BlogPost: React.FC<{ slug?: string }> = ({ slug }) => {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://www.umunnastays.com.ng/#blog"
+            "item": "https://www.umunnastays.com.ng/blog"
           },{
             "@type": "ListItem",
             "position": 3,
@@ -105,7 +105,7 @@ const BlogPost: React.FC<{ slug?: string }> = ({ slug }) => {
 
                             <h2 className="text-2xl font-bold text-charcoal mt-10 mb-5">Why Choose a Serviced Apartment in Asaba?</h2>
                             <p>
-                                For diaspora visitors and premium travelers, a serviced apartment offers unparalleled privacy, space, and a home-away-from-home feel. At <a href="#home" className="text-brand hover:underline">Umunna Stays</a>, we provide exclusive concierge-backed hospitality designed specifically for you. We guarantee 24/7 power, high-speed Starlink internet, and premium amenities.
+                                For diaspora visitors and premium travelers, a serviced apartment offers unparalleled privacy, space, and a home-away-from-home feel. At <a href="/" className="text-brand hover:underline">Umunna Stays</a>, we provide exclusive concierge-backed hospitality designed specifically for you. We guarantee 24/7 power, high-speed Starlink internet, and premium amenities.
                             </p>
 
                             <h3 className="text-xl font-bold text-charcoal mt-8 mb-4">Unmatched Executive Comfort</h3>
@@ -114,7 +114,7 @@ const BlogPost: React.FC<{ slug?: string }> = ({ slug }) => {
                             </p>
 
                             <p>
-                                Explore our curated <a href="#stays" className="text-brand hover:underline">Stays page</a> to view our catalog of premium estates.
+                                Explore our curated <a href="/stays" className="text-brand hover:underline">Stays page</a> to view our catalog of premium estates.
                             </p>
 
                             <h2 className="text-2xl font-bold text-charcoal mt-10 mb-5">Top Things to Do in Asaba</h2>
@@ -124,7 +124,7 @@ const BlogPost: React.FC<{ slug?: string }> = ({ slug }) => {
 
                             <h3 className="text-xl font-bold text-charcoal mt-8 mb-4">The Ultimate Asaba Business Travel Guide</h3>
                             <ul>
-                                <li><strong>Airport Access:</strong> Choose accommodations close to the airport to minimize commute times. At Umunna Stays, we offer secure unmarked transport options. Check out our <a href="#transport" className="text-brand hover:underline">Executive Transport</a> services.</li>
+                                <li><strong>Airport Access:</strong> Choose accommodations close to the airport to minimize commute times. At Umunna Stays, we offer secure unmarked transport options. Check out our <a href="/transport" className="text-brand hover:underline">Executive Transport</a> services.</li>
                                 <li><strong>Connectivity:</strong> Reliable internet is non-negotiable for executives. Ensure your shortlet in Asaba provides Starlink or fiber optic coverage.</li>
                             </ul>
 
@@ -145,7 +145,7 @@ const BlogPost: React.FC<{ slug?: string }> = ({ slug }) => {
                     <div className="mt-12 p-8 bg-brand/5 border border-brand/20 rounded-xl text-center">
                         <h3 className="text-2xl font-bold text-charcoal mb-4">Book Your Luxury Shortlet in Asaba Today</h3>
                         <p className="mb-6 text-gray-600">Experience exclusive concierge-backed hospitality in Asaba.</p>
-                        <a href="#stays" className="inline-block px-8 py-3 bg-brand text-white font-bold rounded-lg hover:bg-[#A3520D] transition-colors">
+                        <a href="/stays" className="inline-block px-8 py-3 bg-brand text-white font-bold rounded-lg hover:bg-[#A3520D] transition-colors">
                             View Available Properties
                         </a>
                     </div>

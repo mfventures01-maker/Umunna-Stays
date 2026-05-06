@@ -17,7 +17,8 @@ export const fetchBlogPosts = async (): Promise<BlogPostData[]> => {
                 published_at,
                 meta_title,
                 meta_description,
-                categories ( name )
+                focus_keyword,
+                status
             `)
             .eq('status', 'published')
             .order('published_at', { ascending: false });
@@ -31,12 +32,14 @@ export const fetchBlogPosts = async (): Promise<BlogPostData[]> => {
             title: post.title,
             slug: post.slug,
             excerpt: post.excerpt || '',
-            category: post.categories?.name || 'Uncategorized',
+            category: 'Uncategorized',
             date: post.published_at || new Date().toISOString(),
-            imageUrl: post.featured_image_url || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
+            imageUrl: post.featured_image_url || post.featured_image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
             content: post.content,
             meta_title: post.meta_title,
-            meta_description: post.meta_description
+            meta_description: post.meta_description,
+            focus_keyword: post.focus_keyword,
+            status: post.status
         }));
     } catch (e) {
         console.error('Exception fetching blog posts:', e);
@@ -61,7 +64,8 @@ export const fetchBlogPostBySlug = async (slug: string): Promise<BlogPostData | 
                 published_at,
                 meta_title,
                 meta_description,
-                categories ( name )
+                focus_keyword,
+                status
             `)
             .eq('slug', slug)
             .eq('status', 'published')
@@ -76,12 +80,14 @@ export const fetchBlogPostBySlug = async (slug: string): Promise<BlogPostData | 
             title: data.title,
             slug: data.slug,
             excerpt: data.excerpt || '',
-            category: data.categories?.name || 'Uncategorized',
+            category: 'Uncategorized',
             date: data.published_at || new Date().toISOString(),
-            imageUrl: data.featured_image_url || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
+            imageUrl: data.featured_image_url || data.featured_image || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
             content: data.content,
             meta_title: data.meta_title,
-            meta_description: data.meta_description
+            meta_description: data.meta_description,
+            focus_keyword: data.focus_keyword,
+            status: data.status
         };
     } catch (e) {
         console.error('Exception fetching single blog post:', e);

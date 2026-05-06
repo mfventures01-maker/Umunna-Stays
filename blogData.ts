@@ -9,6 +9,9 @@ export interface BlogPostData {
     content?: string;
     meta_title?: string;
     meta_description?: string;
+    tags?: string[];
+    focus_keyword?: string;
+    status?: string;
 }
 
 export const BLOG_POSTS: BlogPostData[] = [

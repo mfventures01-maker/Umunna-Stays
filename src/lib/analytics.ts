@@ -40,7 +40,7 @@ export const trackEvent = async (name: EventName, payload?: any) => {
         id: crypto.randomUUID(),
         name,
         payload,
-        path: window.location.hash || window.location.pathname,
+        path: window.location.pathname || window.location.hash,
         created_at: new Date().toISOString(),
         session_id: getSessionId(),
     };

@@ -30,7 +30,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, appData }) => {
             <h4 className="font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
               <li><button onClick={() => onNavigate('home')} className="text-gray-500 hover:text-[#C46210] transition-colors">About Us</button></li>
-              <li><button onClick={() => window.location.hash = 'blog'} className="text-gray-500 hover:text-[#C46210] transition-colors">Executive Travel Blog</button></li>
+              <li><button onClick={() => onNavigate('blog')} className="text-gray-500 hover:text-[#C46210] transition-colors">Executive Travel Blog</button></li>
               <li><button onClick={() => onNavigate('host')} className="text-gray-500 hover:text-[#C46210] transition-colors">Become a Host</button></li>
               <li><button className="text-gray-500 hover:text-[#C46210] transition-colors">Trust & Safety</button></li>
             </ul>

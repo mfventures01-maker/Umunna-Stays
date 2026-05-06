@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BlogPostData } from '../blogData';
 import { fetchBlogPosts } from '../src/services/blogService';
 
 const Blog: React.FC = () => {
     const [posts, setPosts] = useState<BlogPostData[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchBlogPosts().then(data => setPosts(data));
@@ -23,7 +25,7 @@ const Blog: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.map((post) => (
-                        <div key={post.slug} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => window.location.hash = `blog/${post.slug}`}>
+                        <div key={post.slug} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => navigate(`/blog/${post.slug}`)}>
                             <div className="h-48 bg-gray-200 overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop" alt={post.title} className="w-full h-full object-cover" />
                             </div>

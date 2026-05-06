@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SecureAdminLogin: React.FC = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [twoFactorToken, setTwoFactorToken] = useState('');
@@ -20,7 +22,7 @@ const SecureAdminLogin: React.FC = () => {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         // In real app, make API call to get session token & check IP
-        window.location.hash = 'admin-dashboard';
+        navigate('/admin-dashboard');
     };
 
     return (

@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
             title: "Arrive. Exhale. No Stories.",
             subtitle: "The only short-let where 24/7 power is guaranteed, not prayed for.",
             ctaText: "Check Availability",
-            route: "/properties",
+            route: "/stays",
             imageUrl: nateImg
           },
           {
@@ -346,7 +346,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, appData }) => {
               <motion.div
                 key={post.slug}
                 className="group relative bg-gray-50 rounded-[2.5rem] overflow-hidden border border-gray-100 cursor-pointer hover:shadow-2xl transition-all duration-500"
-                onClick={() => window.location.hash = `blog/${post.slug}`}
+                onClick={() => onNavigate('blog-post' as View, { property_id: post.slug } as any)}
                 {...fadeInUp}
                 transition={{ delay: i * 0.2 }}
               >

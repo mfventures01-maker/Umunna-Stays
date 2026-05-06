@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const AdminDashboard: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <div className="min-h-screen bg-gray-100 p-8">
             <div className="max-w-7xl mx-auto">
@@ -11,7 +13,7 @@ const AdminDashboard: React.FC = () => {
                         <p className="text-gray-500 text-sm">Welcome back, Super Admin</p>
                     </div>
                     <button
-                        onClick={() => window.location.hash = 'home'}
+                        onClick={() => navigate('/')}
                         className="text-sm bg-red-50 text-red-600 px-4 py-2 rounded-md hover:bg-red-100 transition-colors"
                     >
                         Logout
@@ -21,7 +23,7 @@ const AdminDashboard: React.FC = () => {
                 {/* 🚀 PROMOTED: SEO Blog CMS Intelligence Layer */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div
-                        onClick={() => window.location.hash = 'admin-blog-cms'}
+                        onClick={() => navigate('/admin-blog-cms')}
                         className="bg-gray-900 text-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-800 hover:scale-[1.01] transition-all cursor-pointer group"
                     >
                         <div className="w-14 h-14 bg-orange-600 rounded-2xl mb-6 flex items-center justify-center shadow-lg shadow-orange-600/20 group-hover:rotate-6 transition-transform">
@@ -62,7 +64,7 @@ const AdminDashboard: React.FC = () => {
                 {/* Blog CMS Intelligence Layer */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div
-                        onClick={() => window.location.hash = 'admin-blog-cms'}
+                        onClick={() => navigate('/admin-blog-cms')}
                         className="bg-gray-900 text-white p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer group border border-gray-800"
                     >
                         <div className="w-12 h-12 bg-orange-600 rounded-xl mb-6 flex items-center justify-center group-hover:rotate-6 transition-transform">

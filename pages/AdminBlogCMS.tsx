@@ -23,6 +23,7 @@ import {
     Trash2,
     Edit3
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../src/lib/supabaseClient';
 import { BlogPostData, BLOG_POSTS } from '../blogData';
 
@@ -38,12 +39,14 @@ interface PostDraft {
     meta_description: string;
     search_intent: string;
     status: 'draft' | 'published';
+    tags: string[];
 }
 
 const generateSlug = (title: string): string =>
     title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const AdminBlogCMS: React.FC = () => {
+    const navigate = useNavigate();
     const [activeView, setActiveView] = useState<'list' | 'editor'>('list');
     const [posts, setPosts] = useState<any[]>([]);
     const [saving, setSaving] = useState(false);
@@ -61,6 +64,7 @@ const AdminBlogCMS: React.FC = () => {
         meta_description: '',
         search_intent: 'informational',
         status: 'draft',
+        tags: [],
     });
 
     // Load existing posts
@@ -105,18 +109,36 @@ const AdminBlogCMS: React.FC = () => {
     const calculateSEOScore = (): number => {
         let score = 0;
         const kw = draft.focus_keyword.toLowerCase();
-        if (!kw) return 0;
+        
+        if (draft.title && kw && draft.title.toLowerCase().includes(kw)) score += 15;
+        if (draft.slug && kw && draft.slug.includes(kw.replace(/\s+/g, '-'))) score += 10;
+        
+        const words = draft.content.split(/\s+/).filter(Boolean);
+        if (kw && words.length > 0) {
+            const kwCount = (draft.content.toLowerCase().match(new RegExp(kw, 'g')) || []).length;
+            const density = (kwCount / words.length) * 100;
+            if (density > 1) score += 10;
+        }
 
-        if (draft.title.toLowerCase().includes(kw)) score += 20;
-        if (draft.slug.includes(kw.replace(/\s+/g, '-'))) score += 10;
-        if (draft.content.toLowerCase().slice(0, 500).includes(kw)) score += 15;
-        if (draft.meta_title.toLowerCase().includes(kw)) score += 10;
-        if (draft.meta_description.toLowerCase().includes(kw)) score += 10;
-        if (draft.excerpt.toLowerCase().includes(kw)) score += 5;
-        if (draft.content.length > 300) score += 10;
-        if (draft.content.length > 1000) score += 10;
-        if (draft.featured_image_url) score += 5;
-        if (draft.meta_description.length >= 120 && draft.meta_description.length <= 160) score += 5;
+        if (draft.meta_description.length >= 120 && draft.meta_description.length <= 160) score += 10;
+        
+        // Image Alt Tags (Simulated since we only have one featured image URL field for now)
+        if (draft.featured_image_url) score += 10;
+        
+        if (words.length > 800) score += 10;
+        
+        if (/<h[1-3]>/.test(draft.content)) score += 10;
+        
+        if (/<a[^>]*href=["'](?:(?!http).*?)["']/.test(draft.content)) score += 5; // Internal links
+        
+        if (/<a[^>]*href=["']http/.test(draft.content)) score += 5; // External links
+        
+        // Readability (Simulated simple check: sentence length)
+        score += 5; 
+        
+        // Image Optimization (Simulated)
+        if (draft.featured_image_url) score += 10;
+
         return Math.min(score, 100);
     };
 
@@ -139,6 +161,8 @@ const AdminBlogCMS: React.FC = () => {
             search_intent: draft.search_intent,
             status: publishStatus,
             published_at: publishStatus === 'published' ? new Date().toISOString() : null,
+            tags: draft.tags,
+            category: draft.category
         };
 
         if (!supabase) {
@@ -175,8 +199,24 @@ const AdminBlogCMS: React.FC = () => {
             title: '', slug: '', excerpt: '', content: '',
             category: 'Luxury Apartments', featured_image_url: '',
             focus_keyword: '', meta_title: '', meta_description: '',
-            search_intent: 'informational', status: 'draft',
+            search_intent: 'informational', status: 'draft', tags: [],
         });
+    };
+
+    const publishToGMB = async () => {
+        const payload = {
+            summary: draft.excerpt,
+            callToAction: {
+                actionType: "LEARN_MORE",
+                url: `https://umunnastays.com.ng/blog/${draft.slug}`
+            },
+            media: [{
+                mediaFormat: "PHOTO",
+                sourceUrl: draft.featured_image_url
+            }]
+        };
+        console.log("Publishing to GMB with payload:", payload);
+        alert("Published to Google My Business successfully! (Simulated)");
     };
 
     const startNewPost = () => {
@@ -194,7 +234,7 @@ const AdminBlogCMS: React.FC = () => {
                 </div>
 
                 <nav className="flex flex-col gap-2 flex-grow">
-                    <NavItem icon={<LayoutDashboard size={18} />} label="Dashboard" active={false} onClick={() => window.location.hash = 'admin-dashboard'} />
+                    <NavItem icon={<LayoutDashboard size={18} />} label="Dashboard" active={false} onClick={() => navigate('/admin-dashboard')} />
                     <NavItem icon={<FileText size={18} />} label="Blog Engine" active={true} onClick={() => setActiveView('list')} />
                     <NavItem icon={<LinkIcon size={18} />} label="Internal Linking" active={false} />
                     <NavItem icon={<BarChart3 size={18} />} label="SEO Analytics" active={false} />
@@ -202,7 +242,7 @@ const AdminBlogCMS: React.FC = () => {
                 </nav>
 
                 <button
-                    onClick={() => window.location.hash = 'admin-dashboard'}
+                    onClick={() => navigate('/admin-dashboard')}
                     className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                     <ChevronLeft size={18} /> Exit CMS
@@ -255,7 +295,7 @@ const AdminBlogCMS: React.FC = () => {
                                             <td className="px-8 py-5">
                                                 <div className="flex gap-2">
                                                     <button
-                                                        onClick={() => window.location.hash = `blog/${post.slug}`}
+                                                        onClick={() => navigate(`/blog/${post.slug}`)}
                                                         className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
                                                         title="View"
                                                     >
@@ -292,10 +332,17 @@ const AdminBlogCMS: React.FC = () => {
                                 </button>
                                 <button
                                     onClick={() => handleSave('published')}
-                                    disabled={saving || !draft.title || seoScore < 30}
+                                    disabled={saving || !draft.title || seoScore < 60}
                                     className="flex items-center gap-2 bg-slate-900 text-white px-8 py-2.5 rounded-xl font-bold shadow-lg hover:bg-black transition-all disabled:opacity-50"
                                 >
-                                    {saving ? '⏳ Saving...' : saveStatus === 'success' ? '✅ Published!' : <><Save size={18} /> Publish</>}
+                                    {saving ? '⏳ Publishing...' : saveStatus === 'success' ? '✅ Published!' : <><Save size={18} /> Post Now 🚀</>}
+                                </button>
+                                <button
+                                    onClick={publishToGMB}
+                                    className="flex items-center gap-2 bg-[#4285F4] text-white px-4 py-2.5 rounded-xl font-bold shadow-sm hover:bg-[#3367d6] transition-all"
+                                    title="Publish to Google My Business"
+                                >
+                                    GMB Sync
                                 </button>
                             </div>
                         </header>
@@ -342,6 +389,33 @@ const AdminBlogCMS: React.FC = () => {
                                             placeholder="Write a compelling 1-2 sentence summary for Google snippets..."
                                         />
                                         <p className="text-[10px] text-slate-400 mt-1">{draft.excerpt.length}/160 characters</p>
+                                    </div>
+
+                                    {/* Category & Tags */}
+                                    <div className="grid grid-cols-2 gap-8 mb-8">
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-2">Category</label>
+                                            <select
+                                                value={draft.category}
+                                                onChange={(e) => setDraft(prev => ({ ...prev, category: e.target.value }))}
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 focus:outline-none appearance-none"
+                                            >
+                                                <option value="Luxury Apartments">Luxury Apartments</option>
+                                                <option value="Travel Tips">Travel Tips</option>
+                                                <option value="Local Guides">Local Guides</option>
+                                                <option value="Company News">Company News</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-2">Tags (Comma separated)</label>
+                                            <input
+                                                type="text"
+                                                value={draft.tags.join(', ')}
+                                                onChange={(e) => setDraft(prev => ({ ...prev, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
+                                                className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 focus:outline-none"
+                                                placeholder="e.g. Asaba, Luxury, Vacation"
+                                            />
+                                        </div>
                                     </div>
 
                                     {/* Featured Image URL */}
@@ -446,11 +520,19 @@ const AdminBlogCMS: React.FC = () => {
                                         placeholder="e.g. luxury shortlet in asaba"
                                     />
                                     <div className="mt-6 space-y-4">
-                                        <SEOCheck label="Keyword in Title" status={draft.focus_keyword && draft.title.toLowerCase().includes(draft.focus_keyword.toLowerCase()) ? 'good' : 'error'} />
-                                        <SEOCheck label="Keyword in Slug" status={draft.focus_keyword && draft.slug.includes(draft.focus_keyword.toLowerCase().replace(/\s+/g, '-')) ? 'good' : 'error'} />
-                                        <SEOCheck label="Keyword in First 100 Words" status={draft.focus_keyword && draft.content.toLowerCase().slice(0, 500).includes(draft.focus_keyword.toLowerCase()) ? 'good' : 'warning'} />
-                                        <SEOCheck label="Meta Description" status={draft.meta_description.length >= 120 ? 'good' : 'warning'} />
-                                        <SEOCheck label="Content Length (300+)" status={draft.content.length >= 300 ? 'good' : 'error'} />
+                                        <SEOCheck label="Keyword in Title" status={draft.focus_keyword && draft.title.toLowerCase().includes(draft.focus_keyword.toLowerCase()) ? 'good' : 'error'} suggestion="Add focus keyword to the title" />
+                                        <SEOCheck label="Keyword in Slug" status={draft.focus_keyword && draft.slug.includes(draft.focus_keyword.toLowerCase().replace(/\s+/g, '-')) ? 'good' : 'error'} suggestion="Add focus keyword to the slug" />
+                                        <SEOCheck label="Keyword Density (>1%)" status={(() => {
+                                            if (!draft.focus_keyword) return 'error';
+                                            const words = draft.content.split(/\s+/).filter(Boolean);
+                                            if (words.length === 0) return 'error';
+                                            const kwCount = (draft.content.toLowerCase().match(new RegExp(draft.focus_keyword.toLowerCase(), 'g')) || []).length;
+                                            return (kwCount / words.length) * 100 > 1 ? 'good' : 'warning';
+                                        })()} suggestion="Increase keyword usage in content" />
+                                        <SEOCheck label="Meta Description (120-160 chars)" status={draft.meta_description.length >= 120 && draft.meta_description.length <= 160 ? 'good' : 'warning'} suggestion="Meta description too short/long" />
+                                        <SEOCheck label="Content Length (>800 words)" status={draft.content.split(/\s+/).filter(Boolean).length > 800 ? 'good' : 'warning'} suggestion="Write more content" />
+                                        <SEOCheck label="Heading Structure (H1-H3)" status={/<h[1-3]>/.test(draft.content) ? 'good' : 'warning'} suggestion="Add headings to structure content" />
+                                        <SEOCheck label="Internal Links" status={/<a[^>]*href=["'](?:(?!http).*?)["']/.test(draft.content) ? 'good' : 'warning'} suggestion="Add internal links" />
                                     </div>
                                 </div>
 
@@ -498,12 +580,17 @@ const BlockButton: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon,
     </button>
 );
 
-const SEOCheck: React.FC<{ label: string; status: 'good' | 'warning' | 'error' }> = ({ label, status }) => (
-    <div className="flex items-center justify-between">
-        <span className="text-xs font-bold text-slate-600">{label}</span>
-        {status === 'good' && <CheckCircle2 size={16} className="text-green-500" />}
-        {status === 'warning' && <AlertCircle size={16} className="text-orange-500" />}
-        {status === 'error' && <AlertCircle size={16} className="text-red-500" />}
+const SEOCheck: React.FC<{ label: string; status: 'good' | 'warning' | 'error', suggestion?: string }> = ({ label, status, suggestion }) => (
+    <div className="flex flex-col gap-1">
+        <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-600">{label}</span>
+            {status === 'good' && <CheckCircle2 size={16} className="text-green-500" />}
+            {status === 'warning' && <AlertCircle size={16} className="text-orange-500" />}
+            {status === 'error' && <AlertCircle size={16} className="text-red-500" />}
+        </div>
+        {status !== 'good' && suggestion && (
+            <span className="text-[10px] font-medium text-slate-400 italic">Hint: {suggestion}</span>
+        )}
     </div>
 );
 

@@ -11,7 +11,7 @@ const AdminShield: React.FC = () => {
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
         // Simulate login & redirect to dashboard
-        window.location.hash = 'admin-dashboard';
+        navigate('/admin-dashboard');
         setShowModal(false);
     };
 
@@ -21,7 +21,7 @@ const AdminShield: React.FC = () => {
             <div
                 className="fixed bottom-4 right-4 z-50 group cursor-pointer"
                 onClick={() => {
-                    window.location.hash = 'secure-admin-login';
+                    navigate('/secure-admin-login');
                 }}
                 title="Admin Access"
             >

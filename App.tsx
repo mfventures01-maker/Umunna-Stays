@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { BLOG_POSTS } from './blogData'; // Assuming blogData is in the same directory or adjust path
 import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -29,19 +28,41 @@ import ExitIntentPopup from './components/ExitIntentPopup';
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AuthProvider>
         <ErrorBoundary>
           <AppContent />
         </ErrorBoundary>
       </AuthProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
+// Helper to handle legacy hash redirects
+const HashRedirector: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.hash) {
+      let path = location.hash.replace('#', '');
+      if (path.startsWith('/')) path = path.substring(1);
+      
+      // Map legacy aliases
+      if (path === 'properties') path = 'stays';
+      if (path === 'security') path = 'services';
+      if (path === 'rides') path = 'transport';
+
+      navigate('/' + path, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+};
+
 const AppContent: React.FC = () => {
-  const [currentView, setCurrentView] = useState<View>('home');
-  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [appData, setAppData] = useState<AppData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -55,14 +76,10 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
     const init = async () => {
-      // Load main AppData
       const data = await loadAppData();
       setAppData(data);
       setLoading(false);
 
-      // Load Transport Data immediately to ensure it's available
-      // or we could do it lazily when the user navigates. 
-      // Given the user flow, loading it now ensures smoothness.
       setTransportLoading(true);
       import('./dataStore').then(async (ds) => {
         const tData = await ds.loadTransportData();
@@ -73,55 +90,29 @@ const AppContent: React.FC = () => {
     init();
   }, []);
 
-  useEffect(() => {
-    if (!appData) return;
-
-    const handleHashChange = () => {
-      // Redirect clean paths to hash paths if necessary (for Vercel rewrites)
-      if (window.location.pathname === '/rides') {
-        window.location.href = '/#/transport';
-        return;
-      }
-
-      let hash = window.location.hash.replace('#', '');
-      if (hash.startsWith('/')) hash = hash.substring(1); // Handle /stays vs stays
-
-      // Map conversion-optimized routes to internal views
-      if (hash === 'properties') hash = 'stays';
-      if (hash === 'security') hash = 'services';
-      if (hash === 'rides') hash = 'transport'; // Alias for Rides
-
-      if (hash.startsWith('stays/')) {
-        const identifier = hash.replace('stays/', '');
-        const prop = getPropertyById(appData, identifier);
-        if (prop) {
-          setSelectedProperty(prop);
-          setCurrentView('property-detail');
-        } else {
-          setCurrentView('stays');
-        }
-      } else if (hash.startsWith('blog/')) {
-        setCurrentView('blog-post');
-      } else if (['stays', 'services', 'host', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'admin-blog-cms', 'blog'].includes(hash)) {
-        setCurrentView(hash as View);
-      } else {
-        setCurrentView('home');
-      }
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [appData]);
+  // Sync current view with path for Header highlight
+  const getCurrentView = (): View => {
+    const path = location.pathname.substring(1);
+    if (!path) return 'home';
+    if (path.startsWith('stays/')) return 'property-detail';
+    if (path.startsWith('blog/')) return 'blog-post';
+    
+    const validViews: View[] = ['home', 'stays', 'services', 'host', 'property-detail', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'admin-blog-cms', 'blog', 'blog-post'];
+    const baseView = path.split('/')[0] as View;
+    if (validViews.includes(baseView)) return baseView;
+    
+    return 'home';
+  };
 
   const navigateTo = (view: View, property?: Property) => {
-    if (property) {
-      window.location.hash = `stays/${property.property_id}`;
+    if (view === 'blog-post' && property) {
+      navigate(`/blog/${property.property_id}`);
+    } else if (property) {
+      navigate(`/stays/${property.property_id}`);
     } else {
-      window.location.hash = view === 'home' ? '' : view;
+      navigate(view === 'home' ? '/' : `/${view}`);
     }
+    window.scrollTo(0, 0);
   };
 
   if (loading || !appData) {
@@ -137,32 +128,40 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header currentView={currentView} onNavigate={navigateTo} appData={appData} />
+      <HashRedirector />
+      <Header currentView={getCurrentView()} onNavigate={navigateTo} appData={appData} />
 
       <main className="flex-grow">
-        {currentView === 'home' && <Home onNavigate={navigateTo} appData={appData} />}
-        {currentView === 'stays' && <Stays onNavigate={navigateTo} appData={appData} />}
-        {currentView === 'property-detail' && selectedProperty && (
-          <PropertyDetail property={selectedProperty} appData={appData} />
-        )}
-        {currentView === 'services' && <Services appData={appData} />}
-        {currentView === 'food' && <Food appData={appData} />}
-        {currentView === 'transport' && (
-          <Transport
-            appData={appData}
-            transportData={transportData}
-            isLoading={transportLoading}
-          />
-        )}
-        {currentView === 'host' && <Host appData={appData} />}
-        {(currentView === 'profile' || currentView === 'favorites') && (
-          <Profile appData={appData} onNavigate={navigateTo} />
-        )}
-        {currentView === 'secure-admin-login' && <SecureAdminLogin />}
-        {currentView === 'admin-dashboard' && <AdminDashboard />}
-        {currentView === 'admin-blog-cms' && <AdminBlogCMS />}
-        {currentView === 'blog' && <Blog />}
-        {currentView === 'blog-post' && <BlogPost slug={window.location.hash.split('/').pop()} />}
+        <Routes>
+          <Route path="/" element={<Home onNavigate={navigateTo} appData={appData} />} />
+          <Route path="/stays" element={<Stays onNavigate={navigateTo} appData={appData} />} />
+          <Route path="/stays/:id" element={<PropertyDetailWrapper appData={appData} />} />
+          <Route path="/services" element={<Services appData={appData} />} />
+          <Route path="/food" element={<Food appData={appData} />} />
+          <Route path="/transport" element={
+            <Transport
+              appData={appData}
+              transportData={transportData}
+              isLoading={transportLoading}
+            />
+          } />
+          <Route path="/host" element={<Host appData={appData} />} />
+          <Route path="/profile" element={<Profile appData={appData} onNavigate={navigateTo} />} />
+          <Route path="/favorites" element={<Profile appData={appData} onNavigate={navigateTo} />} />
+          <Route path="/secure-admin-login" element={<SecureAdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin-blog-cms" element={<AdminBlogCMS />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPostWrapper />} />
+          
+          {/* Legacy Redirects */}
+          <Route path="/rides" element={<Navigate to="/transport" replace />} />
+          <Route path="/properties" element={<Navigate to="/stays" replace />} />
+          <Route path="/security" element={<Navigate to="/services" replace />} />
+          
+          {/* 404 Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       <Footer onNavigate={navigateTo} appData={appData} />
@@ -171,6 +170,19 @@ const AppContent: React.FC = () => {
       <ExitIntentPopup />
     </div>
   );
+};
+
+const PropertyDetailWrapper: React.FC<{ appData: AppData }> = ({ appData }) => {
+  const { id } = useParams<{ id: string }>();
+  const property = id ? getPropertyById(appData, id) : null;
+  
+  if (!property) return <Navigate to="/stays" replace />;
+  return <PropertyDetail property={property} appData={appData} />;
+};
+
+const BlogPostWrapper: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  return <BlogPost slug={slug || ''} />;
 };
 
 export default App;
