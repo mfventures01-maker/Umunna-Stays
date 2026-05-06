@@ -3,6 +3,7 @@ import { Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const AdminShield: React.FC = () => {
+    const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

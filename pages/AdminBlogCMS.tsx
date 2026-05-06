@@ -225,15 +225,15 @@ const AdminBlogCMS: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] flex font-sans text-slate-900">
+        <div className="min-h-screen bg-[#F8FAFC] flex flex-col md:flex-row font-sans text-slate-900">
             {/* Sidebar Navigation */}
-            <aside className="w-64 bg-slate-900 text-slate-400 p-6 flex flex-col gap-8 flex-shrink-0">
-                <div className="flex items-center gap-3 text-white">
+            <aside className="w-full md:w-64 bg-slate-900 text-slate-400 p-6 flex flex-row md:flex-col gap-4 md:gap-8 flex-shrink-0 overflow-x-auto md:overflow-visible">
+                <div className="flex items-center gap-3 text-white flex-shrink-0">
                     <div className="w-8 h-8 bg-[#C46210] rounded-lg flex items-center justify-center font-black italic">U</div>
-                    <span className="font-black tracking-tight text-xl">Umunna <span className="text-[#C46210]">CMS</span></span>
+                    <span className="font-black tracking-tight text-xl hidden md:inline">Umunna <span className="text-[#C46210]">CMS</span></span>
                 </div>
 
-                <nav className="flex flex-col gap-2 flex-grow">
+                <nav className="flex flex-row md:flex-col gap-2 flex-grow min-w-max">
                     <NavItem icon={<LayoutDashboard size={18} />} label="Dashboard" active={false} onClick={() => navigate('/admin-dashboard')} />
                     <NavItem icon={<FileText size={18} />} label="Blog Engine" active={true} onClick={() => setActiveView('list')} />
                     <NavItem icon={<LinkIcon size={18} />} label="Internal Linking" active={false} />
@@ -243,31 +243,31 @@ const AdminBlogCMS: React.FC = () => {
 
                 <button
                     onClick={() => navigate('/admin-dashboard')}
-                    className="flex items-center gap-2 hover:text-white transition-colors"
+                    className="flex items-center gap-2 hover:text-white transition-colors flex-shrink-0 whitespace-nowrap"
                 >
-                    <ChevronLeft size={18} /> Exit CMS
+                    <ChevronLeft size={18} /> <span className="hidden md:inline">Exit CMS</span>
                 </button>
             </aside>
 
             {/* Main Content */}
-            <main className="flex-grow p-10 overflow-auto">
+            <main className="flex-grow p-4 md:p-10 overflow-auto w-full max-w-[100vw]">
                 {activeView === 'list' ? (
                     /* ======================== ALL POSTS VIEW ======================== */
                     <>
-                        <header className="flex justify-between items-center mb-10">
+                        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
                             <div>
-                                <h1 className="text-3xl font-black tracking-tight mb-2">Search Domination Engine</h1>
+                                <h1 className="text-2xl md:text-3xl font-black tracking-tight mb-2">Search Domination Engine</h1>
                                 <p className="text-slate-500 font-medium">All blog posts • {posts.length} total</p>
                             </div>
                             <button
                                 onClick={startNewPost}
-                                className="flex items-center gap-2 bg-[#C46210] text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-[#a3520d] transition-all"
+                                className="flex items-center gap-2 bg-[#C46210] text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-[#a3520d] transition-all w-full sm:w-auto justify-center"
                             >
                                 <Plus size={18} /> New Post
                             </button>
                         </header>
 
-                        <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 overflow-hidden">
+                        <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 overflow-x-auto">
                             <table className="w-full">
                                 <thead>
                                     <tr className="border-b border-slate-100">
@@ -312,17 +312,17 @@ const AdminBlogCMS: React.FC = () => {
                 ) : (
                     /* ======================== POST EDITOR VIEW ======================== */
                     <>
-                        <header className="flex justify-between items-center mb-10">
+                        <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-10">
                             <div className="flex items-center gap-4">
-                                <button onClick={() => setActiveView('list')} className="p-2 rounded-xl hover:bg-slate-100 transition-colors">
+                                <button onClick={() => setActiveView('list')} className="p-2 rounded-xl hover:bg-slate-100 transition-colors flex-shrink-0">
                                     <ArrowLeft size={20} />
                                 </button>
                                 <div>
-                                    <h1 className="text-3xl font-black tracking-tight mb-1">New Post</h1>
-                                    <p className="text-slate-500 font-medium text-sm">Fill in the fields below and publish when ready.</p>
+                                    <h1 className="text-2xl md:text-3xl font-black tracking-tight mb-1">New Post</h1>
+                                    <p className="text-slate-500 font-medium text-sm hidden sm:block">Fill in the fields below and publish when ready.</p>
                                 </div>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-2 md:gap-4 w-full lg:w-auto">
                                 <button
                                     onClick={() => handleSave('draft')}
                                     disabled={saving || !draft.title}
@@ -353,10 +353,10 @@ const AdminBlogCMS: React.FC = () => {
                             </div>
                         )}
 
-                        <div className="grid grid-cols-12 gap-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                             {/* Left Column: Editor */}
-                            <div className="col-span-8 flex flex-col gap-8">
-                                <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 p-10">
+                            <div className="col-span-1 lg:col-span-8 flex flex-col gap-8">
+                                <div className="bg-white rounded-[24px] md:rounded-[32px] shadow-sm border border-slate-100 p-6 md:p-10">
                                     {/* Title */}
                                     <input
                                         type="text"
@@ -392,7 +392,7 @@ const AdminBlogCMS: React.FC = () => {
                                     </div>
 
                                     {/* Category & Tags */}
-                                    <div className="grid grid-cols-2 gap-8 mb-8">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 mb-8">
                                         <div>
                                             <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-2">Category</label>
                                             <select
@@ -445,11 +445,11 @@ const AdminBlogCMS: React.FC = () => {
                                 </div>
 
                                 {/* Technical SEO Panel */}
-                                <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 p-10">
+                                <div className="bg-white rounded-[24px] md:rounded-[32px] shadow-sm border border-slate-100 p-6 md:p-10">
                                     <h3 className="text-xl font-black mb-6 flex items-center gap-2">
                                         <Settings size={20} className="text-[#C46210]" /> Technical SEO Modules
                                     </h3>
-                                    <div className="grid grid-cols-2 gap-8">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                                         <div className="space-y-4">
                                             <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block">Meta Title</label>
                                             <input
@@ -477,9 +477,9 @@ const AdminBlogCMS: React.FC = () => {
                             </div>
 
                             {/* Right Column: SEO Intelligence */}
-                            <div className="col-span-4 flex flex-col gap-8">
+                            <div className="col-span-1 lg:col-span-4 flex flex-col gap-8">
                                 {/* The SEO Score Gauge */}
-                                <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 p-8 text-center bg-gradient-to-b from-white to-slate-50">
+                                <div className="bg-white rounded-[24px] md:rounded-[32px] shadow-sm border border-slate-100 p-6 md:p-8 text-center bg-gradient-to-b from-white to-slate-50">
                                     <div className="mb-6 relative inline-block">
                                         <svg className="w-32 h-32 transform -rotate-90">
                                             <circle className="text-slate-100" strokeWidth="10" stroke="currentColor" fill="transparent" r="56" cx="64" cy="64" />
