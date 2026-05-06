@@ -233,12 +233,12 @@ const AdminBlogCMS: React.FC = () => {
                     <span className="font-black tracking-tight text-xl hidden md:inline">Umunna <span className="text-[#C46210]">CMS</span></span>
                 </div>
 
-                <nav className="flex flex-row md:flex-col gap-2 flex-grow min-w-max">
+                <nav className="flex flex-row md:flex-col gap-2 flex-grow min-w-max pb-2">
                     <NavItem icon={<LayoutDashboard size={18} />} label="Dashboard" active={false} onClick={() => navigate('/admin-dashboard')} />
                     <NavItem icon={<FileText size={18} />} label="Blog Engine" active={true} onClick={() => setActiveView('list')} />
-                    <NavItem icon={<LinkIcon size={18} />} label="Internal Linking" active={false} />
-                    <NavItem icon={<BarChart3 size={18} />} label="SEO Analytics" active={false} />
-                    <NavItem icon={<Settings size={18} />} label="GSC Settings" active={false} />
+                    <NavItem icon={<LinkIcon size={18} />} label="Internal Linking" active={false} onClick={() => alert("Internal Linking module coming soon!")} />
+                    <NavItem icon={<BarChart3 size={18} />} label="SEO Analytics" active={false} onClick={() => alert("SEO Analytics module coming soon!")} />
+                    <NavItem icon={<Settings size={18} />} label="GSC Settings" active={false} onClick={() => alert("GSC Settings coming soon!")} />
                 </nav>
 
                 <button
@@ -250,7 +250,7 @@ const AdminBlogCMS: React.FC = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-grow p-4 md:p-10 overflow-auto w-full max-w-[100vw]">
+            <main className="flex-1 w-full p-4 md:p-10 overflow-y-auto overflow-x-hidden relative">
                 {activeView === 'list' ? (
                     /* ======================== ALL POSTS VIEW ======================== */
                     <>
@@ -322,24 +322,24 @@ const AdminBlogCMS: React.FC = () => {
                                     <p className="text-slate-500 font-medium text-sm hidden sm:block">Fill in the fields below and publish when ready.</p>
                                 </div>
                             </div>
-                            <div className="flex flex-wrap gap-2 md:gap-4 w-full lg:w-auto">
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-3 w-full lg:w-auto mt-4 lg:mt-0">
                                 <button
                                     onClick={() => handleSave('draft')}
                                     disabled={saving || !draft.title}
-                                    className="flex items-center gap-2 bg-white border border-slate-200 px-6 py-2.5 rounded-xl font-bold shadow-sm hover:shadow-md transition-all disabled:opacity-50"
+                                    className="flex items-center justify-center gap-2 bg-white border border-slate-200 px-6 py-3 sm:py-2.5 rounded-xl font-bold shadow-sm hover:shadow-md transition-all disabled:opacity-50 w-full sm:w-auto"
                                 >
                                     <Save size={18} /> Save Draft
                                 </button>
                                 <button
                                     onClick={() => handleSave('published')}
                                     disabled={saving || !draft.title || seoScore < 60}
-                                    className="flex items-center gap-2 bg-slate-900 text-white px-8 py-2.5 rounded-xl font-bold shadow-lg hover:bg-black transition-all disabled:opacity-50"
+                                    className="flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-3 sm:py-2.5 rounded-xl font-bold shadow-lg hover:bg-black transition-all disabled:opacity-50 w-full sm:w-auto"
                                 >
                                     {saving ? '⏳ Publishing...' : saveStatus === 'success' ? '✅ Published!' : <><Save size={18} /> Post Now 🚀</>}
                                 </button>
                                 <button
                                     onClick={publishToGMB}
-                                    className="flex items-center gap-2 bg-[#4285F4] text-white px-4 py-2.5 rounded-xl font-bold shadow-sm hover:bg-[#3367d6] transition-all"
+                                    className="flex items-center justify-center gap-2 bg-[#4285F4] text-white px-6 py-3 sm:py-2.5 rounded-xl font-bold shadow-sm hover:bg-[#3367d6] transition-all w-full sm:w-auto"
                                     title="Publish to Google My Business"
                                 >
                                     GMB Sync
