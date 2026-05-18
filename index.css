@@ -1,0 +1,9 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles from index.html style tag if we want to move them, but simpler to leave them there for now. 
+   Actually, the user said "index.css (or equivalent) includes @tailwind...". 
+   I will create this file. 
+*/

@@ -1,0 +1,767 @@
+[
+  {
+    "property_id": "UMUNNA_001",
+    "name": "Nate Signature Stays",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Nate Signature Stays in Benin City, Edo. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "nate-signature-stays"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Benin City luxury stays",
+          "Luxury Duplex Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_002",
+    "name": "Enclave 02",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Enclave 02 in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "enclave-02"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_003",
+    "name": "Azraa 2",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Azraa 2 in Awka, Anambra. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "azraa-2"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Awka luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_004",
+    "name": "Nine A Apartment",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Nine A Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "nine-a-apartment"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_005",
+    "name": "Elkridge Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Elkridge Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "elkridge-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Home / Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_006",
+    "name": "Hamaboi Presidential",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Hamaboi Presidential in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "hamaboi-presidential"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_007",
+    "name": "4‑Bedroom Waterfront Villa",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "4‑Bedroom Waterfront Villa in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "4-bedroom-waterfront-villa"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Villa Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_008",
+    "name": "Aniyah’s Home (GRA)",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Aniyah’s Home (GRA) in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "aniyah-s-home-gra"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Luxury Home Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_009",
+    "name": "Olive Branch Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Olive Branch Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "olive-branch-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_010",
+    "name": "Fobbs Apartments and Suites",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Fobbs Apartments and Suites in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "fobbs-apartments-and-suites"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Aparthotel Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_011",
+    "name": "Lexaren Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Lexaren Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "lexaren-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment / Aparthotel Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_012",
+    "name": "Dejudex Apartment",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Dejudex Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "dejudex-apartment"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_014",
+    "name": "Abijudex",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 20
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Abijudex in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "abijudex"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "SCHEDULE_CONTENT_REFRESH",
+        "interval": "3d"
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_015",
+    "name": "Judexia Apartment",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 20
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Judexia Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "judexia-apartment"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "SCHEDULE_CONTENT_REFRESH",
+        "interval": "3d"
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_016",
+    "name": "Umunna Loft",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 20
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Umunna Loft in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "umunna-loft"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "SCHEDULE_CONTENT_REFRESH",
+        "interval": "3d"
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_017",
+    "name": "Ulo City Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Ulo City Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "ulo-city-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_018",
+    "name": "Gudjud Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Gudjud Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "gudjud-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_019",
+    "name": "Pearl City Apartment",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Pearl City Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "pearl-city-apartment"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  },
+  {
+    "property_id": "UMUNNA_020",
+    "name": "Selina Spice Apartments",
+    "actions": [
+      {
+        "type": "UPDATE_SEO_PRIORITY",
+        "value": 30
+      },
+      {
+        "type": "UPDATE_META",
+        "value": "Selina Spice Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays."
+      },
+      {
+        "type": "UPDATE_SLUG",
+        "value": "selina-spice-apartments"
+      },
+      {
+        "type": "UPDATE_KEYWORDS",
+        "value": [
+          "Asaba luxury stays",
+          "Apartment Nigeria",
+          "short let Nigeria",
+          "Umunna Stays booking"
+        ]
+      },
+      {
+        "type": "TRIGGER_REBUILD_PAGE",
+        "priority": "HIGH"
+      },
+      {
+        "type": "SUBMIT_TO_SITEMAP",
+        "priority": 1
+      },
+      {
+        "type": "PING_SEARCH_ENGINES",
+        "targets": [
+          "google",
+          "bing"
+        ]
+      }
+    ]
+  }
+]

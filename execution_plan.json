@@ -1,0 +1,246 @@
+[
+  {
+    "property_id": "UMUNNA_001",
+    "name": "Nate Signature Stays",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.419Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_002",
+    "name": "Enclave 02",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_003",
+    "name": "Azraa 2",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_004",
+    "name": "Nine A Apartment",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_005",
+    "name": "Elkridge Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_006",
+    "name": "Hamaboi Presidential",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_007",
+    "name": "4‑Bedroom Waterfront Villa",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_008",
+    "name": "Aniyah’s Home (GRA)",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_009",
+    "name": "Olive Branch Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_010",
+    "name": "Fobbs Apartments and Suites",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_011",
+    "name": "Lexaren Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_012",
+    "name": "Dejudex Apartment",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_014",
+    "name": "Abijudex",
+    "mode": "ACTIVE_SELL",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_015",
+    "name": "Judexia Apartment",
+    "mode": "ACTIVE_SELL",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_016",
+    "name": "Umunna Loft",
+    "mode": "ACTIVE_SELL",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_017",
+    "name": "Ulo City Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_018",
+    "name": "Gudjud Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_019",
+    "name": "Pearl City Apartment",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  },
+  {
+    "property_id": "UMUNNA_020",
+    "name": "Selina Spice Apartments",
+    "mode": "AUTO_PUSH",
+    "timestamp": "2026-05-16T08:34:28.421Z",
+    "actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ]
+  }
+]

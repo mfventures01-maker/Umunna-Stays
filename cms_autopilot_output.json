@@ -1,0 +1,894 @@
+[
+  {
+    "property_id": "UMUNNA_001",
+    "name": "Nate Signature Stays",
+    "city": "Benin City",
+    "state": "Edo",
+    "category": "Luxury Duplex",
+    "capacity": "8 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 500000,
+    "hero_image_url": "https://i.postimg.cc/FRLmJ1Fc/4_bed_living_space.jpg",
+    "badges": [
+      "Smart Home",
+      "Cinema",
+      "PS5",
+      "Jacuzzi",
+      "24/7 Power",
+      "Safe Neighborhood"
+    ],
+    "about_this_space": "Our property offers one of the best in its class, not only at a price point that maximizes value but also in terms of location, design and amenities. Strategically located in one of the few upscale neighborhood behind Wellspring university on Ihriri, you are assured of a safe, private, comfortable yet enjoyable stay when you book with us.\n\nOur home is a four (4) bedroom duplex with 4.5 baths. All 4 bedrooms are ensuite with private bathrooms. Rooms also come standard with Smart TVs, Bose soundbar 700 and bass module 700 premium sound systems, Yamaha TSR receiver 5.1.2 capable systems. They also come with Amazon Alexa voice control devices for voice automation, wifi smoke detectors, smart switches, wardrobes, artistic wall arts and the best cozy feeling you've ever experienced.\n\nRegarding other spaces, our home comes with a Sport's lounge with a snooker board, smart tv and Yamaha RX V481 5.1 channel receiver. Our living room comes equipped with a 85 inch smart tv paired with dolby atmos enabled Bose Soundbar 900. Our kitchen comes standard with all appliances and we have an in house LG washer/dryer. Home is also backed with a 12kva SRNE hybrid inverter, 32KWH batteries and a generator. We also have a cinema room which comes standard with the latest UST (Ultra Short Throw) projector from Hisense. Finally our home comes with a private game room with a wall mounted Sony Playstation 5 with two (2) controllers.",
+    "is_featured": true,
+    "display_order": 1,
+    "host": {
+      "host_name": "RAPHAEL",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nate Signature Stays in Benin City for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Benin City luxury stays",
+      "Luxury Duplex Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "nate-signature-stays",
+    "seo_meta": "Nate Signature Stays in Benin City, Edo. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_002",
+    "name": "Enclave 02",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "12 Adults",
+    "bedrooms": 12,
+    "nightly_rate": 150000,
+    "hero_image_url": "https://i.postimg.cc/8cbhpkCN/enclave_apartments.jpg",
+    "badges": [
+      "Private Entrance",
+      "Secure",
+      "Modern Living",
+      "Concierge"
+    ],
+    "about_this_space": "Private short-stay apartments in Asaba with easy city access and a calm, comfortable setup. Curated short-let stay offering privacy, comfort, and easy access to the city. Sitting room is a modern living space for luxury short-stay guests and business travel. Secure and private apartment accommodation with night views.",
+    "is_featured": true,
+    "display_order": 2,
+    "host": {
+      "host_name": "Umunna",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Enclave 02 in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "enclave-02",
+    "seo_meta": "Enclave 02 in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_003",
+    "name": "Azraa 2",
+    "city": "Awka",
+    "state": "Anambra",
+    "category": "Apartment",
+    "capacity": "18 Adults",
+    "bedrooms": 2,
+    "nightly_rate": 260000,
+    "hero_image_url": "https://i.postimg.cc/c1gYGKYj/AZRRAAOUTT.jpg",
+    "badges": [
+      "Modern",
+      "Business Stay",
+      "24/7 Power",
+      "Anambra Stays"
+    ],
+    "about_this_space": "Modern short-stay apartment in Awka designed for comfort, privacy, and convenience. Ideal for business trips and weekend getaways. Clean, stylish living space for a private short-let apartment stay. Cozy short-stay bedroom with hotel-style comfort and guest privacy.",
+    "is_featured": true,
+    "display_order": 3,
+    "host": {
+      "host_name": "Umunna",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Azraa 2 in Awka for [dates].",
+      "minimum_stay": 2
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Awka luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "azraa-2",
+    "seo_meta": "Azraa 2 in Awka, Anambra. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_004",
+    "name": "Nine A Apartment",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "4 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 160000,
+    "hero_image_url": "https://i.postimg.cc/7Zwy0WkM/9a_apt_exterior.avif",
+    "badges": [
+      "Secure",
+      "Private",
+      "Guest Ready",
+      "Bright Space"
+    ],
+    "about_this_space": "Nine A Apartment in Asaba offers private short-stay accommodation with secure surroundings. Modern short-let stay designed for comfort and privacy. Bright living space for a curated short-stay apartment experience and comfortable short-stay bedrooms with restful setups for guests.",
+    "is_featured": false,
+    "display_order": 4,
+    "host": {
+      "host_name": "Umunna",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Nine A Apartment in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "nine-a-apartment",
+    "seo_meta": "Nine A Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_005",
+    "name": "Elkridge Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Home / Apartment",
+    "capacity": "9 Adults",
+    "bedrooms": 3,
+    "nightly_rate": 200000,
+    "hero_image_url": "https://i.postimg.cc/0Q3tnbKd/elk_exterior.jpg",
+    "badges": [
+      "PS5",
+      "Family Friendly",
+      "Free Wi-Fi",
+      "Outdoor Space"
+    ],
+    "about_this_space": "Step into this charming 3-bedroom getaway, where comfort meets style. Ideal for families, friends, or business travelers, this home boasts a bright and airy living space, a fully stocked kitchen, and cozy bedrooms for restful nights. Enjoy some fun downtime with the PS5 gaming console or relax in the outdoor space. Conveniently located near attractions, restaurants, and shops, this home offers modern amenities, free Wi-Fi, and thoughtful touches throughout.",
+    "is_featured": false,
+    "display_order": 5,
+    "host": {
+      "host_name": "Oluchukwu J",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Elkridge Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Home / Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "elkridge-apartments",
+    "seo_meta": "Elkridge Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_006",
+    "name": "Hamaboi Presidential",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "6 Adults",
+    "bedrooms": 3,
+    "nightly_rate": 220000,
+    "hero_image_url": "https://i.postimg.cc/ryrdYB2M/hamaboi_living_room_1.avif",
+    "badges": [
+      "Presidential",
+      "Executive",
+      "Refined Living",
+      "Spacious"
+    ],
+    "about_this_space": "Step into elegance at the Presidential Apartment. This expansive 3-bedroom apartment is designed for guests who appreciate space, comfort, and refined living. Perfect for families, executives, or long stays, the Presidential offers beautifully furnished rooms, a spacious living area, and a serene ambiance that feels like home—only better. Whether you’re visiting for business or leisure, this apartment delivers a truly presidential experience in the heart of Asaba.",
+    "is_featured": true,
+    "display_order": 6,
+    "host": {
+      "host_name": "Henry",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Hamaboi Presidential for [dates].",
+      "minimum_stay": 3
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "hamaboi-presidential",
+    "seo_meta": "Hamaboi Presidential in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_007",
+    "name": "4‑Bedroom Waterfront Villa",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Villa",
+    "capacity": "6 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 450000,
+    "hero_image_url": "https://i.postimg.cc/bNyVqcHZ/beach_front_exterior.avif",
+    "badges": [
+      "Waterfront",
+      "Pool Side",
+      "Solar Power",
+      "Pool Table"
+    ],
+    "about_this_space": "Relax with the whole family at this peaceful place to stay. Private waterfront short-stay villa for families and group trips. Features a serene riverside outdoor space for a private short-stay villa experience. Eco-friendly setup with solar power backup. Pool table and games area available for leisure during your stay.",
+    "is_featured": false,
+    "display_order": 7,
+    "host": {
+      "host_name": "luxury.ng",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in 4‑Bedroom Waterfront Villa in Asaba for [dates].",
+      "minimum_stay": 3
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Villa Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "4-bedroom-waterfront-villa",
+    "seo_meta": "4‑Bedroom Waterfront Villa in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_008",
+    "name": "Aniyah’s Home (GRA)",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Luxury Home",
+    "capacity": "10 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 500000,
+    "hero_image_url": "https://i.postimg.cc/Dyfn1jsr/aniyah_exterior.avif",
+    "badges": [
+      "Poolside",
+      "GRA Location",
+      "Waterfront Garden",
+      "Executive"
+    ],
+    "about_this_space": "Aniyah’s Home is rightly situated in one of the highbrow area of Asaba and is within 7 minutes drive from Asaba International Airport, 4 minutes to ShopRite Asaba Mall. Features a beautiful poolside, waterfront garden, and spacious living rooms designed for elite comfort and luxury short-stay experiences.",
+    "is_featured": true,
+    "display_order": 8,
+    "host": {
+      "host_name": "Fidelis",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Aniyah’s Home (GRA) in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Luxury Home Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "aniyah-s-home-gra",
+    "seo_meta": "Aniyah’s Home (GRA) in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_009",
+    "name": "Olive Branch Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "15 Adults",
+    "bedrooms": 12,
+    "nightly_rate": 200000,
+    "hero_image_url": "https://i.postimg.cc/v8qHvMm2/olive_branch_exterior22.avif",
+    "badges": [
+      "Highbrow Area",
+      "Near Airport",
+      "Modern",
+      "Group Stay"
+    ],
+    "about_this_space": "Olive Branch Apartment is in a highbrow area of Asaba—about 7 minutes to Asaba International Airport, 4 minutes to ShopRite Asaba Mall, and near Asaba Specialist Hospital. Features a bright living room, guest-ready kitchen, and comfortable bedrooms for large group short-stays.",
+    "is_featured": false,
+    "display_order": 9,
+    "host": {
+      "host_name": "Olive",
+      "host_whatsapp": "2347036095489",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Olive Branch Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "olive-branch-apartments",
+    "seo_meta": "Olive Branch Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_010",
+    "name": "Fobbs Apartments and Suites",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Aparthotel",
+    "capacity": "30 Adults",
+    "bedrooms": 25,
+    "nightly_rate": 100000,
+    "hero_image_url": "https://i.postimg.cc/nhj4sVcN/fobbs_apartments_and_suites_ng_asaba_ep_49006928_0.jpg",
+    "badges": [
+      "Hotel Suite",
+      "Poolside Bar",
+      "Breakfast",
+      "Concierge"
+    ],
+    "about_this_space": "Fobbs Apartments and Suites offers premium hotel-style living with suite amenities. Relax in a hotel suite or executive living area. Features a poolside bar and complimentary breakfast services for all guests.",
+    "is_featured": true,
+    "display_order": 10,
+    "host": {
+      "host_name": "Fobbs Stays",
+      "host_whatsapp": "2349077917808",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Fobbs Apartments and Suites in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Aparthotel Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "fobbs-apartments-and-suites",
+    "seo_meta": "Fobbs Apartments and Suites in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_011",
+    "name": "Lexaren Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment / Aparthotel",
+    "capacity": "30 Adults",
+    "bedrooms": 10,
+    "nightly_rate": 100000,
+    "hero_image_url": "https://i.postimg.cc/PxLqzgHm/LIVINMG_ROOM.jpg",
+    "badges": [
+      "Duplex",
+      "Jacuzzi",
+      "Premium Furniture",
+      "Modern"
+    ],
+    "about_this_space": "Lexaren Apartments offers duplex living with premium finishes. Features include a spacious living room, duplex stairs leading to upstairs suites, a relaxing jacuzzi, and well-furnished bedrooms for comfortable short-stays in Asaba.",
+    "is_featured": false,
+    "display_order": 11,
+    "host": {
+      "host_name": "Umunna",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Lexaren Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment / Aparthotel Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "lexaren-apartments",
+    "seo_meta": "Lexaren Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_012",
+    "name": "Dejudex Apartment",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "4 Adults",
+    "bedrooms": 1,
+    "nightly_rate": 180000,
+    "hero_image_url": "https://i.postimg.cc/MTjWj10N/SUTTING_ROOM.jpg",
+    "badges": [
+      "Private Balcony",
+      "Terrace",
+      "Quiet",
+      "City Access"
+    ],
+    "about_this_space": "Dejudex Apartment is a private apartment in Asaba, ideal for guests seeking comfort and quiet. Features include a cozy sitting room, private balcony, terrace outdoor space, and well-appointed bedrooms.",
+    "is_featured": false,
+    "display_order": 12,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Dejudex Apartment in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "dejudex-apartment",
+    "seo_meta": "Dejudex Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_014",
+    "name": "Abijudex",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "4 Adults",
+    "bedrooms": 2,
+    "nightly_rate": 90000,
+    "hero_image_url": "https://i.postimg.cc/YSWV6RVW/SITTING_RROM_2.jpg",
+    "badges": [
+      "Clean Basics",
+      "Affordable",
+      "Secure",
+      "Convenient"
+    ],
+    "about_this_space": "Abijudex is a private apartment in Asaba designed for simple, comfortable short stays. Clean basics for guests who want value without stress. Features multiple sitting rooms and cozy bedrooms.",
+    "is_featured": false,
+    "display_order": 14,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Abijudex in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 20,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "abijudex",
+    "seo_meta": "Abijudex in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "ACTIVE_SELL",
+    "cms_actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ],
+    "search_index_boost": "MEDIUM"
+  },
+  {
+    "property_id": "UMUNNA_015",
+    "name": "Judexia Apartment",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "4 Adults",
+    "bedrooms": 2,
+    "nightly_rate": 90000,
+    "hero_image_url": "https://i.postimg.cc/7PfQz7sF/OUTDOOR.jpg",
+    "badges": [
+      "Outdoor Patio",
+      "Dining Area",
+      "Family Friendly",
+      "Secure"
+    ],
+    "about_this_space": "Judexia Apartment in Asaba features a private outdoor area and comfortable lounge space for premium short-stays. Ideal for families, couples, and business travelers. Includes a guest-ready cooking space and dining area.",
+    "is_featured": false,
+    "display_order": 15,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Judexia Apartment in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 20,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "judexia-apartment",
+    "seo_meta": "Judexia Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "ACTIVE_SELL",
+    "cms_actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ],
+    "search_index_boost": "MEDIUM"
+  },
+  {
+    "property_id": "UMUNNA_016",
+    "name": "Umunna Loft",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "4 Adults",
+    "bedrooms": 2,
+    "nightly_rate": 110000,
+    "hero_image_url": "https://i.postimg.cc/BnGDq9Ph/3_BED_DUPLEX_STAIR.jpg",
+    "badges": [
+      "Loft Style",
+      "Dining Area",
+      "Modern",
+      "Serviced"
+    ],
+    "about_this_space": "Modern serviced short-stay apartment in Asaba for comfortable stays. Features loft-style duplex stairs, an inviting sitting room, dining area, and multiple bedrooms designed for the modern guest.",
+    "is_featured": false,
+    "display_order": 16,
+    "host": {
+      "host_name": "Umunna",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I'm interested in Umunna Loft in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 20,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "umunna-loft",
+    "seo_meta": "Umunna Loft in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "ACTIVE_SELL",
+    "cms_actions": [
+      "retargeting_ads",
+      "whatsapp_followup_sequence",
+      "urgency_content_generation",
+      "email_drip_campaign"
+    ],
+    "search_index_boost": "MEDIUM"
+  },
+  {
+    "property_id": "UMUNNA_017",
+    "name": "Ulo City Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "8 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 300000,
+    "hero_image_url": "https://i.postimg.cc/h4T5Dm2N/BEDROOM2.jpg",
+    "badges": [
+      "Games Lounge",
+      "Snooker",
+      "City Stay",
+      "Spacious"
+    ],
+    "about_this_space": "Ulo City Apartments in Asaba features modern serviced short-stay suites. Includes a dedicated games lounge with a snooker board for entertainment, a bright sitting room, and multiple bedrooms.",
+    "is_featured": false,
+    "display_order": 17,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Ulo City Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "ulo-city-apartments",
+    "seo_meta": "Ulo City Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_018",
+    "name": "Gudjud Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "8 Adults",
+    "bedrooms": 4,
+    "nightly_rate": 340000,
+    "hero_image_url": "https://i.postimg.cc/W33SMFjR/SITTING_ROOM.jpg",
+    "badges": [
+      "Poolside",
+      "Games Lounge",
+      "Corridor",
+      "Premium"
+    ],
+    "about_this_space": "Gudjud Apartments in Asaba offers a premium lifestyle experience. Features include a beautiful poolside area, a games lounge, spacious corridors, and beautifully appointed suites for a luxury short-let stay.",
+    "is_featured": false,
+    "display_order": 18,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Gudjud Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "gudjud-apartments",
+    "seo_meta": "Gudjud Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_019",
+    "name": "Pearl City Apartment",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "6 Adults",
+    "bedrooms": 3,
+    "nightly_rate": 282000,
+    "hero_image_url": "https://i.postimg.cc/sxw9N3cV/BEDROOM22.jpg",
+    "badges": [
+      "Outdoor Pool",
+      "Art Decor",
+      "Dining",
+      "Luxury"
+    ],
+    "about_this_space": "Pearl City Apartment in Asaba is a modern serviced short-stay residence. Features include a beautiful outdoor pool, elegant art decor throughout the sitting room, and a designated dining area for family or group meals.",
+    "is_featured": false,
+    "display_order": 19,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Pearl City Apartment in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "pearl-city-apartment",
+    "seo_meta": "Pearl City Apartment in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  },
+  {
+    "property_id": "UMUNNA_020",
+    "name": "Selina Spice Apartments",
+    "city": "Asaba",
+    "state": "Delta",
+    "category": "Apartment",
+    "capacity": "3 Adults",
+    "bedrooms": 1,
+    "nightly_rate": 195000,
+    "hero_image_url": "https://i.postimg.cc/2jGJ1KbX/LIVING_ROOM.jpg",
+    "badges": [
+      "Gym",
+      "Full Sitting Room",
+      "Indoor Lounge",
+      "Modern"
+    ],
+    "about_this_space": "Selina Spice Apartments in Asaba features a private gym for health-conscious guests. Offers a full sitting room, indoor lounge areas, and modern bedroom suites for a comfortable and active short-stay experience.",
+    "is_featured": false,
+    "display_order": 20,
+    "host": {
+      "host_name": "Judith",
+      "host_whatsapp": "2347048033575",
+      "host_photo_url": ""
+    },
+    "booking": {
+      "whatsapp_prefill": "Hello Umunna Stays, I’m interested in Selina Spice Apartments in Asaba for [dates].",
+      "minimum_stay": 1
+    },
+    "seo_priority_score": 30,
+    "seo_keywords": [
+      "Asaba luxury stays",
+      "Apartment Nigeria",
+      "short let Nigeria",
+      "Umunna Stays booking"
+    ],
+    "seo_slug": "selina-spice-apartments",
+    "seo_meta": "Selina Spice Apartments in Asaba, Delta. Book verified short-let apartments in Nigeria with Umunna Stays.",
+    "cms_activation_mode": "AUTO_PUSH",
+    "cms_actions": [
+      "boost_seo_priority",
+      "push_featured_listing",
+      "trigger_paid_ads_campaign",
+      "whatsapp_broadcast_high_intent",
+      "inject_sitemap_priority_1"
+    ],
+    "search_index_boost": "HIGH"
+  }
+]

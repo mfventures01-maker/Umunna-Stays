@@ -1,0 +1,154 @@
+[
+  {
+    "property_id": "UMUNNA_001",
+    "name": "Nate Signature Stays",
+    "traveler_type": "Luxury Traveler",
+    "conversion_probability": 100,
+    "high_ticket_probability": 100,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_002",
+    "name": "Enclave 02",
+    "traveler_type": "Luxury Traveler",
+    "conversion_probability": 100,
+    "high_ticket_probability": 70,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_003",
+    "name": "Azraa 2",
+    "traveler_type": "Business Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 60,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_004",
+    "name": "Nine A Apartment",
+    "traveler_type": "Family Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 70,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_005",
+    "name": "Elkridge Apartments",
+    "traveler_type": "Business Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 60,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_006",
+    "name": "Hamaboi Presidential",
+    "traveler_type": "Business Traveler",
+    "conversion_probability": 100,
+    "high_ticket_probability": 60,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_007",
+    "name": "4‑Bedroom Waterfront Villa",
+    "traveler_type": "Family Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 70,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_008",
+    "name": "Aniyah’s Home (GRA)",
+    "traveler_type": "Luxury Traveler",
+    "conversion_probability": 100,
+    "high_ticket_probability": 90,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_009",
+    "name": "Olive Branch Apartments",
+    "traveler_type": "Family Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 70,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_010",
+    "name": "Fobbs Apartments and Suites",
+    "traveler_type": "Business Traveler",
+    "conversion_probability": 100,
+    "high_ticket_probability": 30,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_011",
+    "name": "Lexaren Apartments",
+    "traveler_type": "Luxury Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 30,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_012",
+    "name": "Dejudex Apartment",
+    "traveler_type": "General Traveler",
+    "conversion_probability": 80,
+    "high_ticket_probability": 60,
+    "urgency_level": "WARM"
+  },
+  {
+    "property_id": "UMUNNA_014",
+    "name": "Abijudex",
+    "traveler_type": "General Traveler",
+    "conversion_probability": 65,
+    "high_ticket_probability": 20,
+    "urgency_level": "ACTIVE"
+  },
+  {
+    "property_id": "UMUNNA_015",
+    "name": "Judexia Apartment",
+    "traveler_type": "Business Traveler",
+    "conversion_probability": 80,
+    "high_ticket_probability": 20,
+    "urgency_level": "WARM"
+  },
+  {
+    "property_id": "UMUNNA_016",
+    "name": "Umunna Loft",
+    "traveler_type": "General Traveler",
+    "conversion_probability": 65,
+    "high_ticket_probability": 20,
+    "urgency_level": "ACTIVE"
+  },
+  {
+    "property_id": "UMUNNA_017",
+    "name": "Ulo City Apartments",
+    "traveler_type": "Family Traveler",
+    "conversion_probability": 75,
+    "high_ticket_probability": 70,
+    "urgency_level": "WARM"
+  },
+  {
+    "property_id": "UMUNNA_018",
+    "name": "Gudjud Apartments",
+    "traveler_type": "Luxury Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 70,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_019",
+    "name": "Pearl City Apartment",
+    "traveler_type": "Family Traveler",
+    "conversion_probability": 90,
+    "high_ticket_probability": 60,
+    "urgency_level": "HOT"
+  },
+  {
+    "property_id": "UMUNNA_020",
+    "name": "Selina Spice Apartments",
+    "traveler_type": "General Traveler",
+    "conversion_probability": 80,
+    "high_ticket_probability": 60,
+    "urgency_level": "WARM"
+  }
+]

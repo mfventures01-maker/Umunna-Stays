@@ -1,0 +1,82 @@
+/**
+ * CMS Reflection Store — Backend Authority Mirror
+ * 
+ * This store is a READ-ONLY REFLECTION of the backend state.
+ * It has NO mutation authority. All changes must flow through cmsActions.dispatch.
+ */
+
+import { create } from 'zustand';
+import { Post, CMSAction } from '../types';
+import { cmsGateway } from '../services/cmsGateway';
+
+interface PostState {
+  posts: Post[];
+  loading: boolean;
+  error: string | null;
+  
+  // Reflection Actions
+  fetchPosts: () => Promise<void>;
+  
+  // Command Dispatcher
+  dispatch: (action: CMSAction, payload: any) => Promise<void>;
+  
+  // Normalization Helper
+  normalizePost: (row: any) => Post;
+}
+
+export const usePostStore = create<PostState>((set, get) => ({
+  posts: [],
+  loading: false,
+  error: null,
+
+  fetchPosts: async () => {
+    set({ loading: true, error: null });
+    const { data, error } = await cmsGateway.getPosts();
+    if (error) {
+      set({ error: String(error), loading: false });
+    } else {
+      const normalized = (data || []).map(post => get().normalizePost(post));
+      set({ posts: normalized, loading: false });
+    }
+  },
+
+  normalizePost: (row: any): Post => ({
+    id: row.id,
+    title: row.title ?? "",
+    slug: row.slug ?? "",
+    content: row.content ?? "",
+
+    lifecycle_state: row.lifecycle_state ?? "draft",
+    is_locked: row.is_locked ?? false,
+    version_number: row.version_number ?? 1,
+
+    is_indexed: row.is_indexed ?? false,
+    internal_link_count: row.internal_link_count ?? 0,
+
+    seo_snapshot: row.seo_snapshot ?? {
+      score: 0,
+      keyword: "",
+      density: 0
+    },
+
+    tags: row.tags ?? [],
+    categories: row.categories ?? [],
+    internal_links: row.internal_links ?? []
+  }),
+
+  dispatch: async (action: CMSAction, payload: any) => {
+    set({ loading: true, error: null });
+    
+    const { data, error } = await cmsGateway.dispatch(action, payload);
+    
+    if (error) {
+      // Fail-Loud Governance: Surface backend rejection
+      set({ error: `CMS Authority Rejected Action: ${error}`, loading: false });
+      throw new Error(error); // Re-throw to block UI interaction if needed
+    } else {
+      // On success, we re-fetch to reflect the new backend truth
+      await get().fetchPosts();
+      set({ loading: false });
+    }
+  }
+}));

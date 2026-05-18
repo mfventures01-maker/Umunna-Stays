@@ -1,0 +1,41 @@
+{
+  "name": "umunna-stays",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "generate-static-blog": "node scripts/generate-static-blog.mjs",
+    "build": "vite build && node scripts/generate-sitemap.mjs && node scripts/generate-static-blog.mjs && node scripts/generate-static-stays.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
+    "@tiptap/extension-image": "^3.22.5",
+    "@tiptap/extension-link": "^3.22.5",
+    "@tiptap/extension-placeholder": "^3.22.5",
+    "@tiptap/react": "^3.22.5",
+    "@tiptap/starter-kit": "^3.22.5",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.28.1",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.12.0",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.19.7",
+    "@vitejs/plugin-react": "^5.1.2",
+    "autoprefixer": "^10.5.0",
+    "dotenv": "^17.2.3",
+    "postcss": "^8.5.14",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.8.2",
+    "vite": "^6.4.1"
+  }
+}
