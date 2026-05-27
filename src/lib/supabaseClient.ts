@@ -13,3 +13,7 @@ if (!supabase) {
     console.warn("Supabase not configured. App running in frontend-only mode.");
 }
 
+if (typeof window !== 'undefined' && supabase) {
+    (window as any).supabase = supabase;
+}
+
