@@ -45,7 +45,7 @@
 
   <url>
     <loc>https://www.umunnastays.com.ng/blog/asaba-security-protocol</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -59,55 +59,6 @@
 
   <url>
     <loc>https://www.umunnastays.com.ng/stays/UMUNNA_003</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_004</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_005</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_006</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_007</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_008</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_009</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_010</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -149,14 +100,42 @@
   </url>
 
   <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_017</loc>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_006</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_018</loc>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_007</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_008</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_009</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_010</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_004</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -178,6 +157,27 @@
 
   <url>
     <loc>https://www.umunnastays.com.ng/stays/UMUNNA_001</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_005</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_017</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.umunnastays.com.ng/stays/UMUNNA_018</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

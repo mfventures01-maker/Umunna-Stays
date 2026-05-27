@@ -89,34 +89,16 @@ export const loadAppData = async (): Promise<AppData> => {
         category,
         bedrooms,
         about_this_space,
-        host_name,
-        host_whatsapp,
-        host_photo_url,
-        booking_whatsapp_prefill,
-        booking_minimum_stay,
-        created_at,
-        updated_at
+        host,
+        booking,
+        created_at
       `),
       supabase.from('property_images').select('photo_id, property_id, image_url, caption, alt_text, sequence_order, room_category')
     ]);
 
-    // Map property flat fields to the nested host and booking structures
-    const mappedProperties = (properties || []).map((p: any) => ({
-      ...p,
-      host: {
-        host_name: p.host_name || '',
-        host_whatsapp: p.host_whatsapp || '',
-        host_photo_url: p.host_photo_url || ''
-      },
-      booking: {
-        whatsapp_prefill: p.booking_whatsapp_prefill || '',
-        minimum_stay: p.booking_minimum_stay || 1
-      }
-    }));
-
     appData = {
       meta: { brand_name: "Umunna Stays", whatsapp_main_number: "2347048033575", default_city: "Asaba", currency_symbol: "₦" },
-      properties: mappedProperties as unknown as Property[],
+      properties: (properties || []) as unknown as Property[],
       photo_gallery: { photos: (images || []) as Photo[] },
       transport_services: [], 
       transport_vendors: [],  
