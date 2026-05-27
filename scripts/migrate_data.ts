@@ -182,8 +182,12 @@ function mapProperty(p: any) {
         category: p.category,
         bedrooms: p.bedrooms,
         about_this_space: p.about_this_space,
-        host: p.host,
-        booking: p.booking
+        // PHASE 1 ALIGNMENT: Flatten nested objects to match actual DB columns
+        host_name: p.host?.host_name || '',
+        host_whatsapp: p.host?.host_whatsapp || '',
+        host_photo_url: p.host?.host_photo_url || '',
+        booking_whatsapp_prefill: p.booking?.whatsapp_prefill || '',
+        booking_minimum_stay: p.booking?.minimum_stay || 1
     };
 }
 
