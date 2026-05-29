@@ -1,4 +1,4 @@
-﻿import { test, expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 const BASE = "http://localhost:4173";
 
@@ -131,17 +131,17 @@ test.describe("Umunna Local Preview QA @4173", () => {
             await page.waitForTimeout(500); // Brief wait for redirect logic
 
             // Route-lock: Verify redirect to transport
-            await expect(page).toHaveURL(/#\/transport/i, { timeout: 15000 });
+            await expect(page).toHaveURL(/\/transport/i, { timeout: 15000 });
             await page.screenshot({ path: "rides_redirect_result.png", fullPage: true });
-            console.log("✅ PASS: /rides redirected to #/transport");
+            console.log("✅ PASS: /rides redirected to /transport");
 
-            // Go to stays hash route
-            await page.goto(`${BASE}/#/stays`, { waitUntil: "domcontentloaded" });
+            // Go to stays route
+            await page.goto(`${BASE}/stays`, { waitUntil: "domcontentloaded" });
             await page.waitForTimeout(500); // Brief animation wait
 
             // Route-lock: Verify we're on stays
-            await expect(page).toHaveURL(/#\/stays/i, { timeout: 15000 });
-            console.log("✅ PASS: Navigated to /#/stays");
+            await expect(page).toHaveURL(/\/stays/i, { timeout: 15000 });
+            console.log("✅ PASS: Navigated to /stays");
 
             // Wait for properties to load - use stable selector instead of timeout
             await expect(page.getByRole("button", { name: /Details/i }).first()).toBeVisible({ timeout: 15000 });
@@ -187,7 +187,7 @@ test.describe("Umunna Local Preview QA @4173", () => {
             await page.waitForTimeout(500);
 
             // Route-lock: Verify we're back on stays
-            await expect(page).toHaveURL(/#\/stays/i, { timeout: 15000 });
+            await expect(page).toHaveURL(/\/stays/i, { timeout: 15000 });
             await expect(page.getByRole("button", { name: /Details/i }).first()).toBeVisible();
             console.log("✅ PASS: Back navigation worked");
 
@@ -195,11 +195,11 @@ test.describe("Umunna Local Preview QA @4173", () => {
             console.log("STARTING TEST: Mobile Viewport");
             await page.setViewportSize({ width: 375, height: 812 });
 
-            await page.goto(`${BASE}/#/transport`, { waitUntil: "domcontentloaded" });
+            await page.goto(`${BASE}/transport`, { waitUntil: "domcontentloaded" });
             await page.waitForTimeout(500);
 
             // Route-lock: Verify we're on transport
-            await expect(page).toHaveURL(/#\/transport/i, { timeout: 15000 });
+            await expect(page).toHaveURL(/\/transport/i, { timeout: 15000 });
 
             const fleetHeading = page.getByText(/Available Fleet/i).first();
             if (await fleetHeading.isVisible()) {
@@ -321,8 +321,8 @@ test.describe("Umunna Local Preview QA @4173", () => {
             // 3) Stress/Stability
             console.log("STARTING TEST: Stress/Stability");
             for (let i = 0; i < 5; i++) {
-                await page.goto(`${BASE}/#/stays`, { waitUntil: "domcontentloaded" });
-                await page.goto(`${BASE}/#/transport`, { waitUntil: "domcontentloaded" });
+                await page.goto(`${BASE}/stays`, { waitUntil: "domcontentloaded" });
+                await page.goto(`${BASE}/transport`, { waitUntil: "domcontentloaded" });
             }
 
             const crash = await page.getByText(/Something went wrong/i).count();

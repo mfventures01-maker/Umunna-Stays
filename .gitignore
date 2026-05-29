@@ -16,6 +16,7 @@ dist-ssr
 .env.local
 .env.*.local
 .env.production
+scratch/
 scratch/last_screenshot.png
 
 # Editor directories and files

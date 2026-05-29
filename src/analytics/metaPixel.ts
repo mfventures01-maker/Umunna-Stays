@@ -7,9 +7,10 @@
 
 export const initMetaPixel = () => {
     const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
+    if (!PIXEL_ID) return;
 
     // 1. Validation Logic
-    if (!PIXEL_ID || PIXEL_ID === 'YOUR_META_PIXEL_ID') {
+    if (PIXEL_ID === 'YOUR_META_PIXEL_ID') {
         console.warn("Meta Pixel disabled: Missing or default Pixel ID detected.");
         return;
     }

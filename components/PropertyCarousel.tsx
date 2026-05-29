@@ -86,12 +86,13 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ properties, appData
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 1.5; // Multiplier for speed
-    if (Math.abs(walk) > 5) setHasMoved(true);
+    if (Math.abs(walk) > 30) setHasMoved(true);
     scrollRef.current.scrollLeft = scrollLeftState - walk;
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    setHasMoved(false);
     if (scrollRef.current) {
       scrollRef.current.style.scrollBehavior = 'smooth';
       scrollRef.current.style.cursor = 'grab';

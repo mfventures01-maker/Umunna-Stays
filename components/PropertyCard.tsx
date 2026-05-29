@@ -118,7 +118,11 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, appData, onClick 
 
         <div className="mt-auto flex flex-col gap-3">
           <button
-            onClick={() => onClick(property)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick(property);
+            }}
+            onMouseDown={(e) => e.stopPropagation()}
             className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-[0.97] shadow-lg"
           >
             Details <ArrowRight size={14} />
@@ -127,6 +131,8 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, appData, onClick 
             href={`https://wa.me/2347048033575?text=${encodeURIComponent(`Hello, I'm interested in ${property.name} (${property.property_id}). Please render assistance.`)}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
             className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#20bd5a] hover:shadow-xl transition-all active:scale-[0.97]"
           >
             <MessageCircle size={16} /> Chat on WhatsApp

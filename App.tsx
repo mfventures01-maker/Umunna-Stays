@@ -34,13 +34,18 @@ import { CmsErrorBoundary } from './src/cms/components/CmsErrorBoundary';
 // These modules are split into separate chunks and loaded on demand.
 // Admin infrastructure NEVER loads on public routes.
 // ═══════════════════════════════════════════════════════════════
-const SecureAdminLogin = lazy(() => import('./pages/SecureAdminLogin'));
+const AdminLogin = lazy(() => import('./pages/SecureAdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const AdminBlogCMS = lazy(() => import('./src/cms/AdminBlogCMS'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Profile = lazy(() => import('./pages/Profile'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const SetPassword = lazy(() => import('./pages/SetPassword'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+
+import { useAuth } from './src/auth/AuthProvider';
+import { useAuthFlowHandler } from './src/hooks/useAuthFlowHandler';
 
 const App: React.FC = () => {
   return (
@@ -77,8 +82,12 @@ const HashRedirector: React.FC = () => {
 const AppContent: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { authStatus } = useAuth();
   const [appData, setAppData] = useState<AppData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // ── Auth Lifecycle: intercept email/reset/invite callbacks ──
+  useAuthFlowHandler();
 
   // Transport Data State
   const [transportData, setTransportData] = useState<{
@@ -113,7 +122,7 @@ const AppContent: React.FC = () => {
     if (!path) return 'home';
     if (path.startsWith('stays/')) return 'property-detail';
     
-    const validViews: View[] = ['home', 'stays', 'services', 'host', 'property-detail', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'admin-blog-cms', 'blog', 'blog-post'];
+    const validViews: View[] = ['home', 'stays', 'services', 'host', 'property-detail', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin', 'admin-blog-cms', 'blog', 'blog-post'];
     const baseView = path.split('/')[0] as View;
     if (validViews.includes(baseView)) return baseView;
     
@@ -121,22 +130,27 @@ const AppContent: React.FC = () => {
   };
 
   const navigateTo = (view: View, property?: Property) => {
+    console.log(`[navigateTo] view: ${view}, property_id: ${property ? property.property_id : 'undefined'}`);
     if (view === 'blog-post' && property) {
       navigate(`/blog/${property.property_id}`);
     } else if (property) {
+      console.log(`[navigateTo] navigating to /stays/${property.property_id}`);
       navigate(`/stays/${property.property_id}`);
     } else {
+      console.log(`[navigateTo] navigating to ${view === 'home' ? '/' : `/${view}`}`);
       navigate(view === 'home' ? '/' : `/${view}`);
     }
     window.scrollTo(0, 0);
   };
 
-  if (loading || !appData) {
+  if (loading || !appData || authStatus === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#C46210] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-500 font-medium">Loading Umunna Stays...</p>
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
+        <div className="text-center flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#C46210] border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-slate-400 font-medium uppercase tracking-widest text-xs">
+            {authStatus === 'loading' ? 'Initializing Auth...' : 'Loading Umunna Stays...'}
+          </p>
         </div>
       </div>
     );
@@ -164,9 +178,11 @@ const AppContent: React.FC = () => {
           <Route path="/host" element={<Host appData={appData} />} />
           <Route path="/profile" element={<Suspense fallback={<LazyLoader label="Loading profile..." />}><Profile appData={appData} onNavigate={navigateTo} /></Suspense>} />
           <Route path="/favorites" element={<Suspense fallback={<LazyLoader label="Loading profile..." />}><Profile appData={appData} onNavigate={navigateTo} /></Suspense>} />
-          <Route path="/secure-admin-login" element={<Suspense fallback={<LazyLoader label="Loading admin..." />}><SecureAdminLogin /></Suspense>} />
-          <Route path="/admin-dashboard" element={<ProtectedRoute requiredRole="viewer"><Suspense fallback={<LazyLoader label="Loading dashboard..." />}><AdminDashboard /></Suspense></ProtectedRoute>} />
-          <Route path="/admin-blog-cms" element={<ProtectedRoute requiredRole="writer"><Suspense fallback={<LazyLoader label="Loading CMS..." />}><CmsErrorBoundary><AdminBlogCMS /></CmsErrorBoundary></Suspense></ProtectedRoute>} />
+          <Route path="/secure-admin-login" element={<Suspense fallback={<LazyLoader label="Loading admin..." />}><AdminLogin /></Suspense>} />
+          <Route path="/set-password" element={<Suspense fallback={<LazyLoader label="Loading..." />}><SetPassword /></Suspense>} />
+          <Route path="/forgot-password" element={<Suspense fallback={<LazyLoader label="Loading..." />}><ForgotPassword /></Suspense>} />
+          <Route path="/admin" element={<ProtectedRoute><Suspense fallback={<LazyLoader label="Loading dashboard..." />}><AdminDashboard /></Suspense></ProtectedRoute>} />
+          <Route path="/admin-blog-cms" element={<ProtectedRoute><Suspense fallback={<LazyLoader label="Loading CMS..." />}><CmsErrorBoundary><AdminBlogCMS /></CmsErrorBoundary></Suspense></ProtectedRoute>} />
           <Route path="/blog" element={<Suspense fallback={<LazyLoader label="Loading blog..." />}><Blog /></Suspense>} />
           <Route path="/blog/:slug" element={<Suspense fallback={<LazyLoader label="Loading article..." />}><BlogPostWrapper /></Suspense>} />
           <Route path="/404" element={<Suspense fallback={<LazyLoader minimal />}><NotFound /></Suspense>} />
@@ -193,7 +209,12 @@ const PropertyDetailWrapper: React.FC<{ appData: AppData }> = ({ appData }) => {
   const { id } = useParams<{ id: string }>();
   const property = id ? getPropertyById(appData, id) : null;
   
-  if (!property) return <Navigate to="/stays" replace />;
+  console.log(`[PropertyDetailWrapper] id: ${id}, found property: ${property ? property.name : 'null'}, total properties in appData: ${appData?.properties?.length}`);
+  
+  if (!property) {
+    console.warn(`[PropertyDetailWrapper] Property not found! Redirecting to /stays. Current properties:`, appData?.properties?.map(p => p.property_id));
+    return <Navigate to="/stays" replace />;
+  }
   return <PropertyDetail property={property} appData={appData} />;
 };
 

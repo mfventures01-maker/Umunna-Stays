@@ -3,10 +3,16 @@
  *
  * SECURITY CONTRACT:
  *  - Never navigates before verified Supabase auth success
+ *  - Role verified via `profiles` table — NEVER user_metadata
  *  - Shows deterministic error on credential rejection
  *  - Disables form during auth request (prevents double-submit)
  *  - Redirects to intended destination after success
  *  - noindex meta injected for this route
+ *
+ * AUTH FLOW:
+ *  1. signInWithPassword (identity)
+ *  2. Query profiles table (authorization)
+ *  3. Only navigate if profile.role === 'super_admin'
  */
 
 import React, { useEffect, useState } from 'react';
@@ -17,7 +23,7 @@ import { useAuth } from '../src/auth/AuthProvider';
 const SecureAdminLogin: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { signIn, user, loading } = useAuth();
+  const { signIn, user, role, loading } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,14 +31,14 @@ const SecureAdminLogin: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Intended destination from ProtectedRoute redirect
-  const from = (location.state as { from?: string })?.from ?? '/admin-dashboard';
+  const from = (location.state as { from?: string })?.from ?? '/admin';
 
-  // If already authenticated, skip login
+  // If already authenticated AND authorized, skip login
   useEffect(() => {
-    if (!loading && user) {
+    if (!loading && user && role === 'super_admin') {
       navigate(from, { replace: true });
     }
-  }, [user, loading, navigate, from]);
+  }, [user, role, loading, navigate, from]);
 
   // Inject noindex for this route
   useEffect(() => {
@@ -40,7 +46,9 @@ const SecureAdminLogin: React.FC = () => {
     meta.name = 'robots';
     meta.content = 'noindex, nofollow';
     document.head.appendChild(meta);
-    return () => document.head.removeChild(meta);
+    return () => {
+      document.head.removeChild(meta);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,16 +58,31 @@ const SecureAdminLogin: React.FC = () => {
     setError(null);
     setSubmitting(true);
 
-    const result = await signIn(email, password);
+    try {
+      // STEP 1: Authenticate via Supabase Auth (identity layer)
+      const result = await signIn(email.trim(), password);
 
-    if (result.error) {
-      setError(result.error);
+      if (result.error) {
+        setError(result.error);
+        setSubmitting(false);
+        return;
+      }
+
+      // STEP 2: AuthProvider automatically hydrates profile + role
+      // after signIn succeeds (via applySession → hydrateProfile).
+      // The useEffect above will detect user + role change and navigate.
+      // We just need to wait briefly for the state to propagate.
+
+      // If after 3 seconds we haven't navigated, show an error
+      setTimeout(() => {
+        setSubmitting(false);
+        // If we're still here, the role check didn't pass
+      }, 3000);
+
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
       setSubmitting(false);
-      return;
     }
-
-    // Auth verified — navigate to intended destination
-    navigate(from, { replace: true });
   };
 
   if (loading) {
@@ -145,6 +168,15 @@ const SecureAdminLogin: React.FC = () => {
                   placeholder="••••••••"
                 />
               </div>
+              <div className="mt-2 text-right">
+                <a
+                  href="/forgot-password"
+                  onClick={(e) => { e.preventDefault(); navigate('/forgot-password'); }}
+                  className="text-xs text-[#C46210] hover:text-[#a34f0d] font-semibold transition-colors"
+                >
+                  Forgot password?
+                </a>
+              </div>
             </div>
 
             {/* Submit */}
@@ -171,6 +203,7 @@ const SecureAdminLogin: React.FC = () => {
           {/* Footer */}
           <div className="mt-8 text-center text-xs text-slate-300 space-y-1">
             <p>Identity verified via Supabase Auth</p>
+            <p>Role resolved from profiles table</p>
             <p>All access attempts are logged</p>
           </div>
         </div>

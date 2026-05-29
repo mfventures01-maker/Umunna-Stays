@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 
 // Load env vars
-dotenv.config({ path: path.join(process.cwd(), '.env.local') });
+dotenv.config();
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL!;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY!; // Or service role key if needed, but ANON + RLS policy 'true' for insert might work if we set it temporarily, or we use service role. 
@@ -182,12 +182,8 @@ function mapProperty(p: any) {
         category: p.category,
         bedrooms: p.bedrooms,
         about_this_space: p.about_this_space,
-        // PHASE 1 ALIGNMENT: Flatten nested objects to match actual DB columns
-        host_name: p.host?.host_name || '',
-        host_whatsapp: p.host?.host_whatsapp || '',
-        host_photo_url: p.host?.host_photo_url || '',
-        booking_whatsapp_prefill: p.booking?.whatsapp_prefill || '',
-        booking_minimum_stay: p.booking?.minimum_stay || 1
+        host: p.host || {},
+        booking: p.booking || {}
     };
 }
 

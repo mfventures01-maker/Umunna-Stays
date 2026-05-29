@@ -1,66 +1,67 @@
 /**
- * ProtectedRoute.tsx — Route Protection Gate
+ * ProtectedRoute.tsx — Admin Route Protection Layer
  *
- * Wraps any route that requires authentication and/or a minimum role.
- *
- * Behavior:
- *  - While auth is loading → renders a loading gate (prevents hydration flicker)
- *  - If unauthenticated → redirects to /secure-admin-login
- *  - If authenticated but insufficient role → redirects to /
- *  - If authorized → renders children
+ * SECURITY CONTRACT:
+ *  - Uses AuthProvider as SINGLE SOURCE OF TRUTH
+ *  - Role resolved from `profiles` table — NEVER from user_metadata
+ *  - Blocks unauthorized access at routing level
+ *  - Survives page refresh (AuthProvider re-hydrates session)
+ *  - Cannot be bypassed via URL manipulation
  */
 
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthProvider';
-import { hasRole, type Role } from './permissions';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
-  /** Minimum role required to access this route. Defaults to 'viewer'. */
-  requiredRole?: Role;
+  requiredRole?: string;
 }
-
-const LoadingGate: React.FC = () => (
-  <div className="min-h-screen flex items-center justify-center bg-slate-950">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-[#C46210] border-t-transparent rounded-full animate-spin" />
-      <p className="text-slate-400 text-sm font-semibold tracking-widest uppercase">
-        Verifying identity…
-      </p>
-    </div>
-  </div>
-);
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
-  requiredRole = 'viewer',
+  requiredRole = 'super_admin',
 }) => {
   const { user, role, loading } = useAuth();
   const location = useLocation();
 
-  // Phase 1: Auth not yet resolved — show loading gate, never render the page
+  // ── Still hydrating session/profile — show loading spinner ──
   if (loading) {
-    return <LoadingGate />;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#C46210] border-t-transparent rounded-full animate-spin" />
+          <p className="text-slate-400 text-sm font-semibold tracking-widest uppercase">
+            Verifying identity…
+          </p>
+        </div>
+      </div>
+    );
   }
 
-  // Phase 2: No authenticated user — redirect to login preserving intended destination
+  // ── No authenticated user → redirect to login ──
   if (!user) {
     return (
       <Navigate
         to="/secure-admin-login"
-        state={{ from: location.pathname }}
         replace
+        state={{ from: location.pathname }}
       />
     );
   }
 
-  // Phase 3: Authenticated but insufficient role
-  if (!hasRole(role, requiredRole)) {
-    return <Navigate to="/" replace />;
+  // ── User exists but role doesn't match → redirect to login ──
+  if (role !== requiredRole) {
+    return (
+      <Navigate
+        to="/secure-admin-login"
+        replace
+        state={{ from: location.pathname }}
+      />
+    );
   }
 
-  // Phase 4: Fully authorized — render the protected content
+  // ── Authorized — render children ──
   return <>{children}</>;
 };
 

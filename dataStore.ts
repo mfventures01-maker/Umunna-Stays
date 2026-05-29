@@ -11,6 +11,7 @@ const transportEnabled = import.meta.env.VITE_ENABLE_TRANSPORT_VERTICAL !== 'fal
 
 import { AppData, TransportService, TransportVendor, FoodVendor, Dish, TransportVehicle, Property, Photo, TransportLead } from './types';
 import { supabase } from './src/lib/supabaseClient';
+import fallbackData from './umunna_properties_20.json';
 
 // --- CACHE CONFIGURATION ---
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
@@ -68,9 +69,7 @@ export const mockFoodItems: Dish[] = [
 export const loadAppData = async (): Promise<AppData> => {
   if (appData) return appData;
   try {
-
-
-    // CORE QUERIES ONLY: properties + property_images
+    // CORE QUERIES: properties + property_images
     const [
       { data: properties },
       { data: images }
@@ -96,16 +95,25 @@ export const loadAppData = async (): Promise<AppData> => {
       supabase.from('property_images').select('photo_id, property_id, image_url, caption, alt_text, sequence_order, room_category')
     ]);
 
+    let finalProperties = (properties || []) as unknown as Property[];
+    let finalPhotos = (images || []) as Photo[];
+
+    if (finalProperties.length === 0) {
+      console.warn("⚠️ Properties list from Supabase is empty. Falling back to local JSON data.");
+      finalProperties = fallbackData.properties as unknown as Property[];
+      finalPhotos = fallbackData.photo_gallery.photos as unknown as Photo[];
+    }
+
     appData = {
       meta: { brand_name: "Umunna Stays", whatsapp_main_number: "2347048033575", default_city: "Asaba", currency_symbol: "₦" },
-      properties: (properties || []) as unknown as Property[],
-      photo_gallery: { photos: (images || []) as Photo[] },
+      properties: finalProperties,
+      photo_gallery: { photos: finalPhotos },
       transport_services: [], 
       transport_vendors: [],  
       transport_vehicles: [], 
       city_summary: [],
       services_catalog: [],
-      policies_global: {
+      policies_global: (fallbackData.policies_global || {
         check_in: "2:00 PM",
         check_out: "12:00 PM",
         self_check_in: "Contact concierge for access",
@@ -113,13 +121,37 @@ export const loadAppData = async (): Promise<AppData> => {
         beds: "Per listing",
         pets: "Not allowed",
         service_animals: "Allowed"
-      }
+      }) as any
     } as unknown as AppData;
 
-    // PHASE 1 ALIGNMENT: food_vendors/food_items tables do not exist in Supabase.
-    // Mock data IS the production data source. No network calls needed.
-    const foodVendorsData = foodEnabled ? mockFoodVendors : [];
-    const foodItemsData = foodEnabled ? mockFoodItems : [];
+    // Load Food Vendors and Food Items from Supabase, falling back to mock data on error
+    let foodVendorsData = [];
+    let foodItemsData = [];
+
+    if (foodEnabled) {
+      try {
+        const [
+          { data: fv, error: fvErr },
+          { data: fi, error: fiErr }
+        ] = await Promise.all([
+          supabase.from('food_vendors').select('*'),
+          supabase.from('food_items').select('*')
+        ]);
+
+        if (fvErr || fiErr || !fv || fv.length === 0) {
+          console.warn("⚠️ Failed or empty food data from Supabase, using mock:", { fvErr, fiErr });
+          foodVendorsData = mockFoodVendors;
+          foodItemsData = mockFoodItems;
+        } else {
+          foodVendorsData = fv || [];
+          foodItemsData = fi || [];
+        }
+      } catch (err) {
+        console.error("❌ Error loading food from Supabase, using mock:", err);
+        foodVendorsData = mockFoodVendors;
+        foodItemsData = mockFoodItems;
+      }
+    }
 
     (appData as any).food_vendors = foodVendorsData;
     (appData as any).food_items = foodItemsData;
@@ -128,18 +160,34 @@ export const loadAppData = async (): Promise<AppData> => {
     console.log('property_images loaded');
     return appData;
   } catch (error) {
-    console.error('❌ Error loading Supabase data:', error);
-    return {
+    console.error('❌ Error loading Supabase data, falling back to local JSON:', error);
+    const finalProperties = fallbackData.properties as unknown as Property[];
+    const finalPhotos = fallbackData.photo_gallery.photos as unknown as Photo[];
+    
+    const fallbackAppData = {
       meta: { brand_name: "Umunna Stays", whatsapp_main_number: "2347048033575", default_city: "Asaba", currency_symbol: "₦" },
-      properties: [],
-      photo_gallery: { photos: [] },
+      properties: finalProperties,
+      photo_gallery: { photos: finalPhotos },
+      transport_services: mockTransportData.services,
+      transport_vendors: mockTransportData.vendors,
+      transport_vehicles: mockTransportData.vehicles,
       city_summary: [],
       services_catalog: [],
-      transport_services: [],
-      transport_vendors: [],
-      transport_vehicles: [],
-      policies_global: {}
-    } as AppData;
+      policies_global: fallbackData.policies_global || {
+        check_in: "2:00 PM",
+        check_out: "12:00 PM",
+        self_check_in: "Contact concierge for access",
+        children: "Allowed",
+        beds: "Per listing",
+        pets: "Not allowed",
+        service_animals: "Allowed"
+      },
+      food_vendors: mockFoodVendors,
+      food_items: mockFoodItems
+    } as unknown as AppData;
+    
+    appData = fallbackAppData;
+    return appData;
   }
 };
 
@@ -240,10 +288,6 @@ export const loadTransportData = async (): Promise<{
   vendors: TransportVendor[];
   vehicles: TransportVehicle[];
 }> => {
-  // PHASE 1 ALIGNMENT: transport_services/transport_vendors/transport_vehicles
-  // tables do not exist in Supabase. Mock data IS the production data source.
-  // No network calls needed — eliminates 3 × 404 requests per page load.
-
   if (!transportEnabled) {
     return mockTransportData;
   }
@@ -252,7 +296,32 @@ export const loadTransportData = async (): Promise<{
     return cachedTransportData;
   }
 
-  cachedTransportData = mockTransportData;
+  try {
+    const [
+      { data: services, error: sErr },
+      { data: vendors, error: vErr },
+      { data: vehicles, error: vhErr }
+    ] = await Promise.all([
+      supabase.from('transport_services').select('*'),
+      supabase.from('transport_vendors').select('*'),
+      supabase.from('transport_vehicles').select('*')
+    ]);
+
+    if (sErr || vErr || vhErr) {
+      console.warn("⚠️ Failed to load transport data from Supabase, using mock:", { sErr, vErr, vhErr });
+      cachedTransportData = mockTransportData;
+    } else {
+      cachedTransportData = {
+        services: (services || []) as TransportService[],
+        vendors: (vendors || []) as TransportVendor[],
+        vehicles: (vehicles || []) as TransportVehicle[]
+      };
+    }
+  } catch (error) {
+    console.error("❌ Error loading transport data from Supabase, using mock:", error);
+    cachedTransportData = mockTransportData;
+  }
+
   lastCacheTime = Date.now();
 
   // Backfill main appData so legacy getters still work
@@ -346,7 +415,7 @@ export const saveTransportLead = async (lead: TransportLead, endpointUrl?: strin
 
   // 1. Supabase Insert (Primary)
   try {
-    const data = await createTransportLead('Frontend', {
+    const { data, error } = await supabase.from('leads').insert({
       user_id: null, // or auth user id if available
       full_name: lead.guest_name,
       phone: lead.guest_phone,
@@ -365,7 +434,11 @@ export const saveTransportLead = async (lead: TransportLead, endpointUrl?: strin
         vehicle_id: (lead as any).vehicle_id, // Ensure TS compliance or cast
         vendor_id: lead.vendor_id
       }
-    });
+    }).select();
+
+    if (error) {
+      throw error;
+    }
 
     if (isDevelopment()) console.log('✅ Lead saved to Supabase');
 
