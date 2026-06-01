@@ -8,8 +8,8 @@
     "preview": "vite preview",
     "generate:icons": "node scripts/generate-icons.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
-    "generate-static-blog": "node scripts/generate-static-blog.mjs",
-    "build": "vite build && node scripts/generate-sitemap.mjs && node scripts/generate-static-blog.mjs && node scripts/generate-static-stays.mjs"
+    "build": "vite build",
+    "build:full": "vite build && node scripts/generate-sitemap.mjs && node scripts/generate-static-blog.mjs && node scripts/generate-static-stays.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.90.1",
