@@ -17,7 +17,7 @@ export const initMetaPixel = () => {
 
     // 2. Script Injection (Deterministic)
     if (typeof window !== 'undefined' && !(window as any).fbq) {
-        (function(f: any, b: any, e: any, v: any, n: any, t: any, s: any) {
+        (function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
             if (f.fbq) return;
             n = f.fbq = function() {
                 n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);

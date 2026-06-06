@@ -19,7 +19,7 @@ import {
 } from './authClient';
 import { fetchAdminProfile, type AdminProfile } from './session';
 import type { Role } from './permissions';
-import AuthModal from '../../components/auth/AuthModal';
+import AuthModal from './AuthModal';
 
 // ─── Auth Status Gate ─────────────────────────────────────────────────────────
 
@@ -44,6 +44,8 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  login: (email: string, password: string) => Promise<{ error: string | null }>;
+  logout: () => Promise<void>;
   toggleFavorite: (propertyId: string) => Promise<void>;
   openAuthModal: (view?: 'login' | 'signup') => void;
   closeAuthModal: () => void;
@@ -225,10 +227,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         logAuthTransition('PASSWORD_RECOVERY_EVENT_ROUTING');
         // Hydrate session state immediately
         await runDeterministicAuthSequence(sess);
-        // Clean navigation with buildRedirect
-        const targetRedirect = buildRedirect('/set-password');
-        logAuthTransition('PASSWORD_RECOVERY_REDIRECT_EXECUTE', { target: targetRedirect });
-        window.location.href = targetRedirect;
         return;
       }
 
@@ -320,6 +318,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     signIn,
     signUp,
     signOut: signOutUser,
+    login: signIn,
+    logout: signOutUser,
     toggleFavorite,
     openAuthModal,
     closeAuthModal,

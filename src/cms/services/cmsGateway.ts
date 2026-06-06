@@ -55,24 +55,29 @@ export const cmsGateway = {
       title: row.title ?? "",
       slug: row.slug ?? "",
       content: row.content ?? "",
-
       lifecycle_state: row.lifecycle_state ?? "draft",
       is_locked: row.is_locked ?? false,
       version_number: row.version_number ?? 1,
-
-      is_indexed: row.is_indexed ?? false,
-      internal_link_count: row.internal_link_count ?? 0,
-
       seo_snapshot: row.seo_snapshot ?? {
         score: 0,
         keyword: "",
         density: 0
       },
-
-      tags: row.tags ?? [],
-      categories: row.categories ?? [],
-      internal_links: row.internal_links ?? []
-    } as Post;
+      last_audit_event: row.last_audit_event ?? "",
+      published_at: row.published_at ?? null,
+      excerpt: row.excerpt ?? "",
+      category: row.category ?? "",
+      featured_image_url: row.featured_image_url ?? "",
+      image_alt: row.image_alt ?? "",
+      meta_title: row.meta_title ?? "",
+      meta_description: row.meta_description ?? "",
+      search_intent: row.search_intent ?? "",
+      status: row.status ?? "draft",
+      index_status: row.index_status ?? (row.is_indexed ? "indexed" : "pending"),
+      internal_link_count: row.internal_link_count ?? 0,
+      created_at: row.created_at ?? "",
+      tags: row.tags ?? []
+    };
   },
 
   /**

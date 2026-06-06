@@ -1,32 +1,32 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import LazyLoader from './components/LazyLoader';
+import Header from './src/shared/ui/Header';
+import Footer from './src/shared/ui/Footer';
+import WhatsAppButton from './src/concierge/components/WhatsAppButton';
+import LazyLoader from './src/shared/loaders/LazyLoader';
 
 // ═══════════════════════════════════════════════════════════════
 // EAGER IMPORTS — Public SEO-critical pages (must be in initial bundle)
 // ═══════════════════════════════════════════════════════════════
-import Home from './pages/Home';
-import Stays from './pages/Stays';
-import PropertyDetail from './pages/PropertyDetail';
-import Services from './pages/Services';
-import Food from './pages/Food';
-import Transport from './pages/Transport';
-import Host from './pages/Host';
+import Home from './src/app/pages/Home';
+import Stays from './src/stays/pages/Stays';
+import PropertyDetail from './src/stays/pages/PropertyDetail';
+import Services from './src/app/pages/Services';
+import Food from './src/app/pages/Food';
+import Transport from './src/transport/pages/Transport';
+import Host from './src/app/pages/Host';
 
 import { View, Property, AppData } from './types';
 import { loadAppData, getPropertyById } from './dataStore';
 import { AuthProvider } from './src/auth/AuthProvider';
 import ProtectedRoute from './src/auth/ProtectedRoute';
-import ErrorBoundary from './src/components/ErrorBoundary';
+import ErrorBoundary from './src/shared/ui/ErrorBoundary';
 import { initMetaPixel } from './src/analytics/metaPixel';
 
 // Lightweight global components (small footprint — keep eager)
-import AdminShield from './components/AdminShield';
-import ExitIntentPopup from './components/ExitIntentPopup';
+import AdminShield from './src/auth/AdminShield';
+import ExitIntentPopup from './src/shared/ui/ExitIntentPopup';
 import { CmsErrorBoundary } from './src/cms/components/CmsErrorBoundary';
 
 // ═══════════════════════════════════════════════════════════════
@@ -34,15 +34,15 @@ import { CmsErrorBoundary } from './src/cms/components/CmsErrorBoundary';
 // These modules are split into separate chunks and loaded on demand.
 // Admin infrastructure NEVER loads on public routes.
 // ═══════════════════════════════════════════════════════════════
-const AdminLogin = lazy(() => import('./pages/SecureAdminLogin'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const AdminLogin = lazy(() => import('./src/auth/pages/SecureAdminLogin'));
+const AdminDashboard = lazy(() => import('./src/cms/pages/AdminDashboard'));
 const AdminBlogCMS = lazy(() => import('./src/cms/AdminBlogCMS'));
-const Blog = lazy(() => import('./pages/Blog'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-const Profile = lazy(() => import('./pages/Profile'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const SetPassword = lazy(() => import('./pages/SetPassword'));
-const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const Blog = lazy(() => import('./src/cms/pages/Blog'));
+const BlogPost = lazy(() => import('./src/cms/pages/BlogPost'));
+const Profile = lazy(() => import('./src/auth/pages/Profile'));
+const NotFound = lazy(() => import('./src/app/pages/NotFound'));
+const SetPassword = lazy(() => import('./src/auth/pages/SetPassword'));
+const ForgotPassword = lazy(() => import('./src/auth/pages/ForgotPassword'));
 
 import { useAuth } from './src/auth/AuthProvider';
 import { useAuthFlowHandler } from './src/hooks/useAuthFlowHandler';
@@ -122,7 +122,7 @@ const AppContent: React.FC = () => {
     if (!path) return 'home';
     if (path.startsWith('stays/')) return 'property-detail';
     
-    const validViews: View[] = ['home', 'stays', 'services', 'host', 'property-detail', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin', 'admin-blog-cms', 'blog', 'blog-post'];
+    const validViews: View[] = ['home', 'stays', 'services', 'host', 'property-detail', 'food', 'transport', 'profile', 'favorites', 'secure-admin-login', 'admin-dashboard', 'admin-blog-cms', 'blog', 'blog-post'];
     const baseView = path.split('/')[0] as View;
     if (validViews.includes(baseView)) return baseView;
     

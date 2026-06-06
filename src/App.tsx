@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { loadAppData } from "./dataStore";
+import { loadAppData } from "../dataStore";
 
 const App = () => {
   const [appData, setAppData] = useState<any>(null);

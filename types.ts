@@ -114,6 +114,7 @@ export interface Dish {
   is_available: string;
   category: string;
   sort_order: number;
+  vendor_id?: string;
 }
 
 export interface TransportLead {

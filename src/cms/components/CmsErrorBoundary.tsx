@@ -58,6 +58,6 @@ export class CmsErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }

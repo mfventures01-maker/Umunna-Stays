@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { cmsGateway } from './services/cmsGateway';
 import { Post, CMSAction, PostLifecycleState } from './types';
 import { usePostStore } from './state/postStore';
-import TiptapEditor from '../components/editor/TiptapEditor';
+import TiptapEditor from './components/editor/TiptapEditor';
 import {
     ArrowLeft, CheckCircle2, AlertCircle, 
     Search, FileText, LayoutDashboard, Sparkles, Zap, RefreshCcw, Link as LinkIcon, 
