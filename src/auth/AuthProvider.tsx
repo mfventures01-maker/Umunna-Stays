@@ -166,8 +166,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const canonicalHostname = hostname.replace('www.', '');
             const newUrl = `${window.location.protocol}//${canonicalHostname}${window.location.pathname}${window.location.search}${window.location.hash}`;
             logAuthTransition('DOMAIN_NORMALIZATION_BOOTSTRAP_REDIRECT', { original: window.location.href, target: newUrl });
-            window.location.replace(newUrl);
-            return;
+            // window.location.replace(newUrl);
+// return;
           }
 
           // Intercept PKCE codes before session hydration
