@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
+import {  Routes, Route, useNavigate, useLocation, Navigate, useParams } from 'react-router-dom';
 
 import Header from './src/shared/ui/Header';
 import Footer from './src/shared/ui/Footer';
@@ -49,11 +49,9 @@ import { useAuthFlowHandler } from './src/hooks/useAuthFlowHandler';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
       <ErrorBoundary>
         <AppContent />
       </ErrorBoundary>
-    </BrowserRouter>
   );
 };
 
