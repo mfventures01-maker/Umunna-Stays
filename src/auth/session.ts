@@ -2,7 +2,7 @@
  * session.ts — Session Utilities
  *
  * Role resolution, profile hydration, and session inspection helpers.
- * All role data is resolved from the Supabase `profiles` table — never client-side.
+ * All role data is resolved from the Supabase `profiles` table.
  */
 
 import { supabase } from '../lib/supabaseClient';
@@ -10,17 +10,15 @@ import type { Role } from './permissions';
 
 export interface AdminProfile {
   id: string;
-  email: string | null;
   full_name: string | null;
+  phone: string | null;
   role: Role;
-  avatar_url: string | null;
 }
 
 const DEFAULT_ROLE: Role = 'viewer';
 
 /**
  * Fetch the role and profile for a given Supabase user ID.
- * Falls back to 'viewer' if the profile row does not exist.
  */
 export const fetchAdminProfile = async (
   userId: string
@@ -30,21 +28,21 @@ export const fetchAdminProfile = async (
   try {
     const { data, error } = await supabase
       .from('profiles')
-      .select('id, email, full_name, role, avatar_url')
+      .select('id, full_name, phone, role')
       .eq('id', userId)
       .single();
 
     if (error || !data) {
       console.warn('[session] Profile not found for user:', userId);
+      console.warn('[session] Supabase error:', error);
       return null;
     }
 
     return {
       id: data.id,
-      email: data.email ?? null,
       full_name: data.full_name ?? null,
+      phone: data.phone ?? null,
       role: (data.role as Role) ?? DEFAULT_ROLE,
-      avatar_url: data.avatar_url ?? null,
     };
   } catch (err) {
     console.error('[session] fetchAdminProfile error:', err);
@@ -53,11 +51,13 @@ export const fetchAdminProfile = async (
 };
 
 /**
- * Determine if a JWT session is considered active (not expired).
- * Supabase tokens include `expires_at` as a Unix timestamp.
+ * Determine if a JWT session is considered active.
  */
-export const isSessionActive = (expiresAt: number | undefined): boolean => {
+export const isSessionActive = (
+  expiresAt: number | undefined
+): boolean => {
   if (!expiresAt) return false;
-  // Give a 60-second buffer before expiry
+
+  // 60 second expiry buffer
   return Date.now() / 1000 < expiresAt - 60;
 };
