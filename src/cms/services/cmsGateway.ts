@@ -17,75 +17,105 @@ export const cmsGateway = {
   /**
    * Fetch all blog posts (Reflection Layer)
    */
-  async getPosts(): Promise<CMSResponse<Post[]>> {
-    if (!supabase) throw new Error("Supabase client not initialized");
-    const { data, error } = await supabase
-      .from('posts')
-      .select(`
-        id, 
-        title, 
-        slug, 
-        content, 
-        lifecycle_state, 
-        is_locked, 
-        seo_snapshot, 
-        version_number, 
-        internal_link_count, 
-        published_at, 
-        created_at, 
-        excerpt, 
-        category, 
-        featured_image_url, 
-        image_alt, 
-        meta_title, 
-        meta_description, 
-        status, 
-        index_status, 
-        tags
-      `)
-      .order('created_at', { ascending: false });
-    
-    const normalizedData = data ? data.map(row => this.normalizePost(row)) : null;
-    return { data: normalizedData as Post[], error: error?.message || null };
-  },
+async getPosts(): Promise<CMSResponse<Post[]>> {
+  if (!supabase) throw new Error("Supabase client not initialized");
 
-  normalizePost(row: any): Post {
-    return {
-      id: row.id,
-      title: row.title ?? "",
-      slug: row.slug ?? "",
-      content: row.content ?? "",
-      lifecycle_state: row.lifecycle_state ?? "draft",
-      is_locked: row.is_locked ?? false,
-      version_number: row.version_number ?? 1,
-      seo_snapshot: row.seo_snapshot ?? {
-        score: 0,
-        keyword: "",
-        density: 0
-      },
-      last_audit_event: row.last_audit_event ?? "",
-      published_at: row.published_at ?? null,
-      excerpt: row.excerpt ?? "",
-      category: row.category ?? "",
-      featured_image_url: row.featured_image_url ?? "",
-      image_alt: row.image_alt ?? "",
-      meta_title: row.meta_title ?? "",
-      meta_description: row.meta_description ?? "",
-      search_intent: row.search_intent ?? "",
-      status: row.status ?? "draft",
-      index_status: row.index_status ?? (row.is_indexed ? "indexed" : "pending"),
-      internal_link_count: row.internal_link_count ?? 0,
-      created_at: row.created_at ?? "",
-      tags: row.tags ?? []
-    };
-  },
+  const { data, error } = await supabase
+    .from('posts')
+    .select(`
+      id,
+      author_id,
+      category_id,
+      title,
+      slug,
+      content,
+      excerpt,
+      featured_image_url,
+      featured_image_alt,
+      meta_title,
+      meta_description,
+      focus_keyword,
+      secondary_keywords,
+      canonical_url,
+      search_intent,
+      status,
+      is_indexed,
+      noindex,
+      schema_markup,
+      published_at,
+      created_at,
+      updated_at,
+      lifecycle_state
+    `)
+    .order('created_at', { ascending: false });
 
-  /**
-   * The Single Authority Entry Point for Mutations
-   */
-  async dispatch(action: CMSAction, payload: any): Promise<CMSResponse<any>> {
-    if (!supabase) throw new Error("Supabase client not initialized");
+  const normalizedData = data
+    ? data.map(row => this.normalizePost(row))
+    : null;
 
+  return {
+    data: normalizedData as Post[],
+    error: error?.message || null
+  };
+},
+
+normalizePost(row: any): Post {
+  return {
+    id: row.id,
+
+    title: row.title ?? "",
+    slug: row.slug ?? "",
+    content: row.content ?? "",
+
+    lifecycle_state: row.lifecycle_state ?? "draft",
+
+    // Legacy compatibility for AdminBlogCMS
+    is_locked: false,
+
+    version_number: 1,
+
+    seo_snapshot: {
+      score: 0,
+      keyword: row.focus_keyword ?? "",
+      density: 0
+    },
+
+    last_audit_event: "",
+
+    published_at: row.published_at ?? null,
+
+    excerpt: row.excerpt ?? "",
+
+    category: row.category_id ?? "",
+
+    featured_image_url: row.featured_image_url ?? "",
+
+    image_alt: row.featured_image_alt ?? "",
+
+    meta_title: row.meta_title ?? "",
+
+    meta_description: row.meta_description ?? "",
+
+    search_intent: row.search_intent ?? "",
+
+    status: row.status ?? "draft",
+
+    index_status: row.is_indexed
+      ? "indexed"
+      : "pending",
+
+    internal_link_count: 0,
+
+    created_at: row.created_at ?? "",
+
+    tags: row.secondary_keywords ?? []
+  };
+},
+
+/**
+ * The Single Authority Entry Point for Mutations
+ */
+async dispatch(action: CMSAction, payload: any): Promise<CMSResponse<any>> {
     console.log(`[CMS Gateway] Dispatching Action: ${action}`, payload);
 
     let rpcMethod = '';
