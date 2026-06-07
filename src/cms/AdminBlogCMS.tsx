@@ -20,7 +20,42 @@ const LIFECYCLE_RING: { state: PostLifecycleState; label: string; color: string;
     { state: "published", label: "Live Universe", color: "#10b981", actions: ["ARCHIVE", "SAVE_DRAFT"] },
     { state: "archived", label: "Deep Archive", color: "#ef4444", actions: ["RESTORE"] },
 ];
+import { supabase } from '@/lib/supabaseClient';
 
+function AuditCount({ postId }: { postId: string }) {
+    const [count, setCount] = useState<number | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        let mounted = true;
+        async function fetchCount() {
+            try {
+                const { count: currentCount, error } = await supabase
+                    .from('cms_audit_log')
+                    .select('*', { count: 'exact', head: true })
+                    .eq('post_id', postId);
+                
+                if (error) throw error;
+                if (mounted) {
+                    setCount(currentCount);
+                    setLoading(false);
+                }
+            } catch (err) {
+                if (mounted) {
+                    setError(true);
+                    setLoading(false);
+                }
+            }
+        }
+        fetchCount();
+        return () => { mounted = false; };
+    }, [postId]);
+
+    if (loading) return <span className="animate-pulse text-slate-300">...</span>;
+    if (error) return <span className="text-red-400">Error</span>;
+    return <span className="text-slate-900 font-black">{count} Events</span>;
+}
 export default function AdminBlogCMS() {
     const navigate = useNavigate();
     const [view, setView] = useState<'list' | 'cockpit'>('list');
@@ -109,8 +144,8 @@ export default function AdminBlogCMS() {
                                 <div className="flex -space-x-2">
                                     {[1, 2, 3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200" />)}
                                 </div>
-                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                                    Audit History: {post.version_number} Events
+                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                    Audit History: <AuditCount postId={post.id} />
                                 </div>
                             </div>
                         </div>
@@ -252,15 +287,7 @@ export default function AdminBlogCMS() {
                     <div className="space-y-4">
                         <div className="flex justify-between items-center p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Focus Intent</span>
-                            <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{selectedPost?.seo_snapshot?.keyword || 'NOT SET'}</span>
-                        </div>
-                        <div className="flex justify-between items-center p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Indexing Rank</span>
-                            <span className="text-xs font-black text-slate-900">PRE-COMPUTED</span>
-                        </div>
-                        <div className="flex justify-between items-center p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Internal Link Density</span>
-                            <span className="text-xs font-black text-slate-900">{selectedPost?.internal_link_count || 0} Nodes</span>
+                            <span className="text-xs font-black text-slate-900 uppercase tracking-tight">{selectedPost?.search_intent || 'No Intent Set'}</span>
                         </div>
                     </div>
 
