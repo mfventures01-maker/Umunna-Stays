@@ -72,8 +72,21 @@ export const signUp = async (
 /** Return the current active session, or null. */
 export const getSession = async (): Promise<Session | null> => {
   if (!supabase) return null;
-  const { data } = await supabase.auth.getSession();
-  return data.session ?? null;
+  try {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) {
+      logAuthTransition('GET_SESSION_ERROR', { error: error.message });
+      return null;
+    }
+    return data?.session ?? null;
+  } catch (err: any) {
+    if (err?.name === 'AbortError') {
+      logAuthTransition('GET_SESSION_ABORT_CAUGHT', { message: err.message });
+      return null;
+    }
+    logAuthTransition('GET_SESSION_UNEXPECTED_ERROR', { error: String(err) });
+    return null;
+  }
 };
 
 /** Return the currently authenticated user, or null. */

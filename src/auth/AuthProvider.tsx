@@ -175,22 +175,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const code = url.searchParams.get('code');
           if (code && supabase) {
             logAuthTransition('CODE_EXCHANGE_BOOTSTRAP_START', { codeLength: code.length });
-            const { error } = await supabase.auth.exchangeCodeForSession(code);
-            if (error) {
-              logAuthTransition('CODE_EXCHANGE_BOOTSTRAP_ERROR', { error: error.message });
-              // Clean URL to prevent infinite reload loops
+            try {
+              const { error } = await supabase.auth.exchangeCodeForSession(code);
+              if (error) {
+                logAuthTransition('CODE_EXCHANGE_BOOTSTRAP_ERROR', { error: error.message });
+                // Clean URL to prevent infinite reload loops
+                url.searchParams.delete('code');
+                window.history.replaceState({}, '', url.toString());
+                if (!cancelled) {
+                  setAuthStatus(AUTH_STATUS.UNAUTHENTICATED);
+                  setLoading(false);
+                }
+                return;
+              }
+              logAuthTransition('CODE_EXCHANGE_BOOTSTRAP_SUCCESS');
+              // Clean code parameter
               url.searchParams.delete('code');
               window.history.replaceState({}, '', url.toString());
-              if (!cancelled) {
-                setAuthStatus(AUTH_STATUS.UNAUTHENTICATED);
-                setLoading(false);
+            } catch (err: any) {
+              if (err?.name === 'AbortError') {
+                logAuthTransition('CODE_EXCHANGE_ABORT_CAUGHT', { message: err.message });
+              } else {
+                logAuthTransition('CODE_EXCHANGE_UNEXPECTED_ERROR', { error: String(err) });
               }
-              return;
+              url.searchParams.delete('code');
+              window.history.replaceState({}, '', url.toString());
             }
-            logAuthTransition('CODE_EXCHANGE_BOOTSTRAP_SUCCESS');
-            // Clean code parameter
-            url.searchParams.delete('code');
-            window.history.replaceState({}, '', url.toString());
           }
         }
 

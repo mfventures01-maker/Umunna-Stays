@@ -47,17 +47,40 @@ interface PropertyDetailProps {
   appData: AppData;
 }
 
+import { buildPropertySchema } from '../../seo/schema/propertySchema';
+
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, appData }) => {
   const { intent, trackEvent } = useIntent(property.property_id);
 
   useEffect(() => {
     const brand = appData.meta.brand_name;
     document.title = `${property.name} | ${property.city} | ${brand}`;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      const seoSnippet = `${property.name} in ${property.city}, ${property.state}. ${property.category} with ${property.bedrooms} bedrooms. ${property.about_this_space.slice(0, 150)}...`;
-      metaDesc.setAttribute('content', seoSnippet);
+    
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
     }
+    const seoSnippet = `${property.name} in ${property.city}, ${property.state}. ${property.category} with ${property.bedrooms} bedrooms. ${property.about_this_space.slice(0, 150)}...`;
+    metaDesc.setAttribute('content', seoSnippet);
+
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkCanonical);
+    }
+    linkCanonical.setAttribute("href", `https://www.umunnastays.com.ng/stays/${property.property_id}`);
+
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute("content", "index, follow");
+
     window.scrollTo(0, 0);
     trackEvent('page_view', { property_id: property.property_id, entry_intent: intent });
   }, [property, appData, trackEvent]);
@@ -135,6 +158,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, appData }) =>
       <ScrollTracker onThreshold={(t) => trackEvent('scroll_threshold', { depth: t })} />
       
       <div className="container mx-auto px-4">
+        <script type="application/ld+json">
+          {JSON.stringify(buildPropertySchema(property))}
+        </script>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           {/* Main Content */}
           <div className="lg:col-span-8">

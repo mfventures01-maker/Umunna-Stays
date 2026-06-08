@@ -12,10 +12,49 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowRight, FileText, BarChart3, Link as LinkIcon, Settings, LogOut, User } from 'lucide-react';
 import { useAuth } from '../../auth/AuthProvider';
 import { hasPermission } from '../../auth/permissions';
+import { supabase } from '../../lib/supabaseClient';
 
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { user, role, profile, signOut } = useAuth();
+  const [stats, setStats] = React.useState({
+    properties: '...',
+    publishedPosts: '...',
+    leads: '...',
+    auditEvents: '...',
+    scheduledPosts: '...',
+  });
+
+  React.useEffect(() => {
+    let mounted = true;
+    async function fetchKPIs() {
+      const [
+        { count: p },
+        { count: pp },
+        { count: l },
+        { count: ae },
+        { count: sp }
+      ] = await Promise.all([
+        supabase.from('properties').select('*', { count: 'exact', head: true }),
+        supabase.from('posts').select('*', { count: 'exact', head: true }).eq('lifecycle_state', 'published'),
+        supabase.from('leads').select('*', { count: 'exact', head: true }),
+        supabase.from('cms_audit_log').select('*', { count: 'exact', head: true }),
+        supabase.from('posts').select('*', { count: 'exact', head: true }).not('scheduled_for', 'is', null)
+      ]);
+      
+      if (mounted) {
+        setStats({
+          properties: String(p ?? 0),
+          publishedPosts: String(pp ?? 0),
+          leads: String(l ?? 0),
+          auditEvents: String(ae ?? 0),
+          scheduledPosts: String(sp ?? 0)
+        });
+      }
+    }
+    fetchKPIs();
+    return () => { mounted = false; };
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -50,11 +89,13 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-6 mb-8">
           {[
-            { label: 'Active Bookings', value: '14' },
-            { label: 'Pending Transport', value: '3' },
-            { label: 'Total Properties', value: '20' },
+            { label: 'Published Posts', value: stats.publishedPosts },
+            { label: 'Total Leads', value: stats.leads },
+            { label: 'Total Properties', value: stats.properties },
+            { label: 'CMS Audit Events', value: stats.auditEvents },
+            { label: 'Scheduled Posts', value: stats.scheduledPosts }
           ].map((stat) => (
             <div
               key={stat.label}
@@ -157,7 +198,7 @@ const AdminDashboard: React.FC = () => {
             </div>
           </div>
           <p className="text-slate-400 text-xs">
-            All sitemaps verified. Next indexing ping in 12 hours.
+            All sitemaps verified. SEO pipeline operating dynamically.
           </p>
         </div>
 
