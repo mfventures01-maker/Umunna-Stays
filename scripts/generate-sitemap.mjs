@@ -41,10 +41,9 @@ async function generateSitemap() {
   }
 
   // 2. PROPERTIES
-  const { data: properties, error: propError } = await supabase
-    .from('properties')
-    .select('property_id, created_at');
-
+ const { data: properties, error: propError } = await supabase
+  .from('properties')
+  .select('slug, city, created_at');
   if (propError) {
     console.error("❌ Failed to fetch properties:", propError.message);
     process.exit(1);

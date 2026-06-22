@@ -62,6 +62,7 @@ export const usePostStore = create<PostState>((set, get) => ({
     meta_title: row.meta_title ?? "",
     meta_description: row.meta_description ?? "",
     search_intent: row.search_intent ?? "",
+    canonical_url: row.canonical_url ?? "",
     status: row.status ?? "draft",
     index_status: row.index_status ?? (row.is_indexed ? "indexed" : "pending"),
     internal_link_count: row.internal_link_count ?? 0,
@@ -85,3 +86,4 @@ export const usePostStore = create<PostState>((set, get) => ({
     }
   }
 }));
+

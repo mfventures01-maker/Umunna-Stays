@@ -98,6 +98,8 @@ normalizePost(row: any): Post {
 
     search_intent: row.search_intent ?? "",
 
+    canonical_url: row.canonical_url ?? "",
+
     status: row.status ?? "draft",
 
     index_status: row.is_indexed
@@ -214,3 +216,5 @@ async dispatch(action: CMSAction, payload: any): Promise<CMSResponse<any>> {
     return { data, error: error?.message || null };
   }
 };
+
+

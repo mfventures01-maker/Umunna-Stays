@@ -42,6 +42,7 @@ export interface Post extends PostMirror {
   image_alt: string;
   meta_title: string;
   meta_description: string;
+  canonical_url?: string;
   search_intent?: string;
   status: 'draft' | 'published';
   index_status: string;
@@ -49,3 +50,4 @@ export interface Post extends PostMirror {
   created_at?: string;
   tags?: string[];
 }
+

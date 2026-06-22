@@ -284,6 +284,37 @@ export default function AdminBlogCMS() {
                     </div>
 
                     {/* Snapshot Metadata */}
+
+                    <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            SEO Metadata
+                        </h4>
+
+                        <input
+                            placeholder="Focus Keyword"
+                            defaultValue={selectedPost?.focus_keyword || ""}
+                            className="w-full p-3 border rounded-xl"
+                        />
+
+                        <input
+                            placeholder="Meta Title"
+                            defaultValue={selectedPost?.meta_title || ""}
+                            className="w-full p-3 border rounded-xl"
+                        />
+
+                        <textarea
+                            placeholder="Meta Description"
+                            defaultValue={selectedPost?.meta_description || ""}
+                            className="w-full p-3 border rounded-xl"
+                            rows={4}
+                        />
+
+                        <input
+                            placeholder="Canonical URL"
+                            defaultValue={selectedPost?.canonical_url || ""}
+                            className="w-full p-3 border rounded-xl"
+                        />
+                    </div>
                     <div className="space-y-4">
                         <div className="flex justify-between items-center p-5 bg-white rounded-3xl border border-slate-100 shadow-sm">
                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Focus Intent</span>
@@ -305,3 +336,4 @@ export default function AdminBlogCMS() {
         </div>
     );
 }
+
